@@ -122,3 +122,72 @@ input.form-control, textarea.form-control {
 	height: 100vh;
 	background-position: -40px 0px;
 }
+
+/*grid*/
+*{
+	box-sizing: border-box;
+}
+
+.grid{
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+
+.col-1{
+	width: 8.333333%;
+
+}
+
+.col-2{
+	width: 16.666666%;
+}
+
+.col-3{
+	width: 24.9999999%;
+}
+
+.col-4{
+	width: 33.333332%;
+}
+
+.col-5{
+	width:  41.6666665%;
+}
+
+.col-6{
+	width: 49.999998%;
+}
+
+.col-7{
+	width: 58.333331%;
+}
+
+.col-8{
+	width: 66.666664%;
+}
+
+.col-9{
+	width: 74.999997%;
+}
+
+.col-10{
+	width: 83.333333%;
+}
+
+.col-11{
+	width: 91.666663%;
+}
+
+.col-12{
+	width: 100%;
+
+}
+[class*='col-']{
+	float: left;
+	padding-right: 20px;
+}
+
+[class*='col-']:last-of-type{
+	padding-right: 0px;
+
+}
