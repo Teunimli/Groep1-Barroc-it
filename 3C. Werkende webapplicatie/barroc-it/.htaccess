@@ -1,0 +1,13 @@
+# RewriteEngine On
+
+#	Used to set a subfolder if needed, else /
+# RewriteBase localhost/barroc-it/
+
+#	if the request is not for an existing file...
+# RewriteCond %{REQUEST_FILENAME} !-f
+
+#	if the request is not for an existing file...
+# RewriteCond %{REQUEST_FILENAME} !-d
+
+#	force the request to enter index.php
+# RewriteRule ((.*)+)? /public/index.php?request=$1 [L,QSA]
