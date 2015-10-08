@@ -80,14 +80,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="customercontroller.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="customercontroller.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/customercontroller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2556391">
-              <caret line="59" column="22" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
+            <state vertical-scroll-proportion="-17.0">
+              <caret line="90" column="90" selection-start-line="90" selection-start-column="90" selection-end-line="90" selection-end-column="90" />
               <folding>
-                <marker date="1444293797227" expanded="true" signature="1552:1611" placeholder="SELECT * FRO..tbl_customer..." />
-                <marker date="1444293797227" expanded="true" signature="2559:3525" placeholder="INSERT INTO ..." />
+                <element signature="e#66#813#0#PHP" expanded="false" />
+                <element signature="e#818#846#0#PHP" expanded="false" />
+                <element signature="e#851#984#0#PHP" expanded="false" />
+                <element signature="n#alert#0;n#!!top" expanded="false" />
+                <marker date="1444298746424" expanded="true" signature="1552:1611" placeholder="SELECT * FRO..tbl_customer..." />
+                <marker date="1444298746424" expanded="true" signature="2559:3526" placeholder="INSERT INTO ..." />
               </folding>
             </state>
           </provider>
@@ -135,7 +139,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="barroc_it.tbl_customer" pinned="false" current-in-tab="false">
+      <file leaf-file-name="barroc_it.tbl_customer" pinned="false" current-in-tab="true">
         <entry file="dbDummy://dbtable:/ec48c8d8/38e965fd-689c-4236-ac20-e9aa1cd252e5/barroc_it..tbl_customer">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
             <state>
@@ -153,8 +157,8 @@
       <file leaf-file-name="add.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/views/customers/add.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.615385">
-              <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+            <state vertical-scroll-proportion="-2.6153846">
+              <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -451,7 +455,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -490,19 +494,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/ec48c8d8/38e965fd-689c-4236-ac20-e9aa1cd252e5/barroc_it..tbl_customer">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -519,6 +510,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/customers/add.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.6153846">
+          <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/init.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.5">
@@ -527,22 +526,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/customers/add.php">
+    <entry file="file://$PROJECT_DIR$/app/controllers/customercontroller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.615385">
-          <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="-17.0">
+          <caret line="90" column="90" selection-start-line="90" selection-start-column="90" selection-end-line="90" selection-end-column="90" />
+          <folding>
+            <element signature="e#66#813#0#PHP" expanded="false" />
+            <element signature="e#818#846#0#PHP" expanded="false" />
+            <element signature="e#851#984#0#PHP" expanded="false" />
+            <element signature="n#alert#0;n#!!top" expanded="false" />
+            <marker date="1444298746424" expanded="true" signature="1552:1611" placeholder="SELECT * FRO..tbl_customer..." />
+            <marker date="1444298746424" expanded="true" signature="2559:3526" placeholder="INSERT INTO ..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/customercontroller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2556391">
-          <caret line="59" column="22" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
-          <folding>
-            <marker date="1444293797227" expanded="true" signature="1552:1611" placeholder="SELECT * FRO..tbl_customer..." />
-            <marker date="1444293797227" expanded="true" signature="2559:3525" placeholder="INSERT INTO ..." />
-          </folding>
+    <entry file="dbDummy://dbtable:/ec48c8d8/38e965fd-689c-4236-ac20-e9aa1cd252e5/barroc_it..tbl_customer">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

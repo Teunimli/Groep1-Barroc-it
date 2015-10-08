@@ -1,7 +1,8 @@
 <?php require_once  '../../header.php'; ?>
 
+
 <form class="col-md-4 col-md-push-4" action="../../../app/controllers/customercontroller.php" method="POST">
-    <h1 class="text-center">Add Contact</h1>
+    <h1 class="text-center">Add Customer</h1>
 
     <input type="hidden" name="type" value="add"/>
 

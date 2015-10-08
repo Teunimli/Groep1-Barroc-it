@@ -1,5 +1,6 @@
 <?php
 require_once '../init.php';
+
 switch( $_POST['type'] ) {
     case 'add' :
         add($_POST['contact_name'],
@@ -47,7 +48,6 @@ function add($contact_name, $contact_lastname,
     $controle = 2;
 
     $created_at = time();
-
     $sql = "SELECT * FROM tbl_customer WHERE companyname = :companyname";
     $q = $db->prepare($sql);
     $q->bindParam(':companyname', $companyname);
@@ -88,7 +88,7 @@ function add($contact_name, $contact_lastname,
                                       second_city, second_housenumber, contactperson, initials,
                                       first_telephonenumber, second_telephonenumber, fax, email,
                                       ledgeraccountnumber, taxcode, created_at )
-                    VALUES (:contact_name, :contact_lastname, :companyname, :first_adress
+                    VALUES (:contact_name, :contact_lastname, :companyname, :first_adress,
                             :first_zipcode, :first_city, :first_housenumber, :second_adress,
                             :second_zipcode, :second_city, :second_housenumber, :contactperson,
                             :initials, :first_telephonenumber, :second_telephonenumber, :fax, :email,
