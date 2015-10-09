@@ -1,4 +1,16 @@
-<?php require_once '../header.php';?>
+<?php require_once '../../header.php';?>
+
+<?php
+$id = $_GET['id'];
+$sql = "SELECT * FROM contacts WHERE id = :id";
+$q= $db->prepare($sql);
+$q->bindParam(':id', $id);
+$q->execute();
+
+$customer = $q->fetch();
+?>
+
+
 <div class="contaier">
     <header>
 
@@ -18,18 +30,18 @@
 
     </header>
     <div class="container-content">
-        <h2 class="text-center">Edit customer</h2>
+        <h2 class="text-center">Customer information</h2>
         <form action="">
             <div class="grid">
                 <div class="col-6">
                     <div class="form-group">
                         <label for="firstname">Customer firstname *:</label>
-                        <input type="text" name="firstname" value="<?= $customer['firstname'] ?>">
+                        <input type="text" name="firstname" value="<?= $customer['contact_name'] ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="lastname">Customer lastname *:</label>
-                        <input type="text" name="lastname" value="<?= $customer['lastname'] ?>">
+                        <input type="text" name="lastname" value="<?= $customer['contact_lastname'] ?>">
                     </div>
 
                     <div class="form-group">
@@ -39,42 +51,42 @@
 
                     <div class="form-group">
                         <label for="address">address *:</label>
-                        <input type="text" name="address"value="<?= $customer['address'] ?>">
+                        <input type="text" name="address"value="<?= $customer['first_address'] ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="housenumber">Housenumber *:</label>
-                        <input type="text" name="housenumber" value="<?= $customer['housenumber'] ?>">
+                        <input type="text" name="housenumber" value="<?= $customer['first_housenumber'] ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="zipcode">Zipcode *:</label>
-                        <input type="text" name="zipcode" value="<?= $customer['zipcode'] ?>">
+                        <input type="text" name="zipcode" value="<?= $customer['first_zipcode'] ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="city">City *:</label>
-                        <input type="text" name="city" value="<?= $customer['city'] ?>">
+                        <input type="text" name="city" value="<?= $customer['first_city'] ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="address2">address 2:</label>
-                        <input type="text" name="address2" value="<?= $customer['address2'] ?>">
+                        <input type="text" name="address2" value="<?= $customer['second_address'] ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="housenumber2">Housenumber 2:</label>
-                        <input type="text" name="housenumber2" value="<?= $customer['housenumber2'] ?>">
+                        <input type="text" name="housenumber2" value="<?= $customer['second_housenumber'] ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="zipcode2">Zipcode 2:</label>
-                        <input type="text" name="zipcode2" value="<?= $customer['zipcode2'] ?>">
+                        <input type="text" name="zipcode2" value="<?= $customer['second_zipcode'] ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="city2">City 2:</label>
-                        <input type="text" name="city2" value="<?= $customer['city2'] ?>">
+                        <input type="text" name="city2" value="<?= $customer['second_city'] ?>">
                     </div>
                 </div><!--end col-6--->
 
@@ -86,17 +98,17 @@
 
                     <div class="form-group">
                         <label for="telephone1">Tel 1:</label>
-                        <input type="text" name="telephone1" value="<?= $customer['telephone1'] ?>">
+                        <input type="text" name="telephone1" value="<?= $customer['first_telephonenumber'] ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="telephone2">Tel 2:</label>
-                        <input type="text" name="telephone2" value="<?= $customer['telephone2'] ?>">
+                        <input type="text" name="telephone2" value="<?= $customer['second_telephonenumber'] ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="faxnumber">Faxnumber:</label>
-                        <input type="text" name="faxnumber" value="<?= $customer['faxnumber'] ?>">
+                        <input type="text" name="faxnumber" value="<?= $customer['fax'] ?>">
                     </div>
 
                     <div class="form-group">
@@ -106,16 +118,25 @@
                 </div><!--end col-6--->
 
             </div><!--end grid--->
-            <input type="submit" value="Edit">
         </form>
-        <a href="">Back</a>
+        <div class="buttons">
+            <a href="">Make appointment</a>
+            <a href="">Archive</a>
+            <a href="">View project</a>
+            <a href="">Make project</a>
+            <a href="">Back</a>
+            <a href="">Change</a>
+
+
+
+        </div><!--end buttons-->
 
     </div><!--end container-content-->
 </div><!--end container--->
 
 
 
-<?php require_once __DIR__ . '/../footer.php';?>
+<?php require_once __DIR__ . '/../../footer.php';?>
 
 
 
