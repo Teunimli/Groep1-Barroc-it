@@ -22,6 +22,29 @@ switch( $_POST['type'] ) {
             $db );
         break;
     case 'edit' :
+        edit($_POST['id'],
+            $_POST['contact_name'],
+            $_POST['contact_lastname'],
+            $_POST['companyname'],
+            $_POST['first_adress'],
+            $_POST['first_zipcode'],
+            $_POST['first_city'],
+            $_POST['first_housenumber'],
+            $_POST['second_adress'],
+            $_POST['second_zipcode'],
+            $_POST['second_city'],
+            $_POST['second_housenumber'],
+            $_POST['initials'],
+            $_POST['first_telephonenumber'],
+            $_POST['second_telephonenumber'],
+            $_POST['fax'],
+            $_POST['email'],
+            $_POST['ledgeraccountnumber'],
+            $_POST['taxcode'],
+            $_POST['creditworthy'],
+            $_POST['bkrcheck'],
+            $_POST['open_project'],
+            $db );
         break;
     case 'delete' :
         $id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
@@ -114,4 +137,71 @@ function add($contact_name, $contact_lastname,
 
         header('location:' . HTTP . '/public/index.php');
     }
+}
+
+function edit ($id, $contact_name, $contact_lastname,
+               $companyname,$first_adress,
+               $first_zipcode,$first_city, $first_housenumber,
+               $second_adress, $second_zipcode, $second_city,
+               $second_housenumber, $initials,
+               $first_telephonenumber, $second_telephonenumber,
+               $fax, $email, $ledgeraccountnumber, $taxcode,
+               $creditworthy, $bkrcheck, $open_project ,$db) {
+
+            $updated_at = time();
+    $sql = "UPDATE tbl_customer SET
+                                    id = :id,
+                                    contact_name = :contact_name,
+                                    contact_lastname = :contact_lastname,
+                                    companyname = :companyname,
+                                    first_adress = :first_adress,
+                                    first_zipcode = :first_zipcode,
+                                    first_city = :first_city,
+                                    first_housenumber = :first_housenumber,
+                                    second_adress = :second_adress,
+                                    second_zipcode = :second_zipcode,
+                                    second_city = :second_city,
+                                    second_housenumber = :second_housenumber,
+                                    initials = :initials,
+                                    first_telephonenumber = :first_telephonenumber,
+                                    second_telephonenumber = :second_telephonenumber,
+                                    fax = :fax,
+                                    email = :email,
+                                    ledgeraccountnumber = :ledgeraccountnumber,
+                                    taxcode = :taxcode,
+                                    creditworthy = :creditworthy,
+                                    bkrcheck = :bkrcheck,
+                                    open_project = :open_project,
+                                    updated_at = :updated_at
+
+
+                                    WHERE id = :id";
+
+    $q = $db->prepare($sql);
+    $q->bindParam(':contact_name',$contact_name);
+    $q->bindParam(':contact_lastname',$contact_lastname);
+    $q->bindParam(':companyname',$companyname);
+    $q->bindParam(':first_adress',$first_adress);
+    $q->bindParam(':first_zipcode',$first_zipcode);
+    $q->bindParam(':first_city',$first_city);
+    $q->bindParam(':first_housenumber',$first_housenumber);
+    $q->bindParam(':second_adress',$second_adress);
+    $q->bindParam(':second_zipcode',$second_zipcode);
+    $q->bindParam(':second_city',$second_city);
+    $q->bindParam(':second_housenumber',$second_housenumber);
+    $q->bindParam(':initials',$initials);
+    $q->bindParam(':first_telephonenumber',$first_telephonenumber);
+    $q->bindParam(':second_telephonenumber',$second_telephonenumber);
+    $q->bindParam(':fax',$fax);
+    $q->bindParam(':email',$email);
+    $q->bindParam(':ledgeraccountnumber',$ledgeraccountnumber);
+    $q->bindParam(':taxcode',$taxcode);
+    $q->bindParam(':creditworthy',$creditworthy);
+    $q->bindParam(':bkrcheck',$bkrcheck);
+    $q->bindParam(':open_project',$open_project);
+    $q->bindParam(':updated_at',$updated_at);
+    $q->bindParam(':id',$id);
+    $q->execute();
+
+    header('Location: '.HTTP. '/public/index.php');
 }
