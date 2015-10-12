@@ -2,7 +2,7 @@
 
 <?php
 $id = $_GET['id'];
-$sql = "SELECT * FROM contacts WHERE id = :id";
+$sql = "SELECT * FROM tbl_customer WHERE id = :id";
 $q= $db->prepare($sql);
 $q->bindParam(':id', $id);
 $q->execute();
@@ -33,6 +33,10 @@ $customer = $q->fetch();
         <form action="">
             <div class="grid">
                 <div class="col-6">
+
+                    <input type="hidden" name="type" value="edit"/>
+                    <input type="hidden" name="id" value="<?= $customer['id'] ?>"/>
+
                     <div class="form-group">
                         <label for="firstname">Customer firstname *:</label>
                         <input type="text" name="firstname" value="<?= $customer['contact_name'] ?>">
