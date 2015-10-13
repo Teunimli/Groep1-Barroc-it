@@ -19,7 +19,7 @@ $customers = $q->fetchAll();
     <ul class="list-group">
         <?php foreach($customers as $customer): ?>
             <li class="list-group-item">
-                <?= $customer['companyname'] ?>
+                <a href="<?php echo HTTP . 'public/views/customers/customerinfo.php?id=' . $customer['id']?>"><?= $customer['companyname'] ?></a>
                 <a href="<?php echo HTTP . 'public/views/customers/editcustomer.php?id=' . $customer['id']?>">edit</a>
                 <form action="<?php echo HTTP . '/app/controllers/customercontroller.php'?>" method="post">
                     <input type="hidden" name="id" value="<?php echo $customer['id'] ?>">

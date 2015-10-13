@@ -135,7 +135,7 @@ function add($contact_name, $contact_lastname,
         $q->bindParam(':created_at', $created_at);
         $q->execute();
 
-        header('location:' . HTTP . '/public/index.php');
+        header('location:' . HTTP . '/public/views/dashboard/dashboard.php');
     }
 }
 
@@ -154,7 +154,7 @@ function edit ($id, $contact_name, $contact_lastname,
                                     contact_name = :contact_name,
                                     contact_lastname = :contact_lastname,
                                     companyname = :companyname,
-                                    first_adress = :first_adress,
+                                    first_address = :first_adress,
                                     first_zipcode = :first_zipcode,
                                     first_city = :first_city,
                                     first_housenumber = :first_housenumber,

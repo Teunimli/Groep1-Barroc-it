@@ -45,7 +45,6 @@ function login($username, $password, $db) {
             $_SESSION['username'] = $user['username'];
             $_SESSION['id'] = $user['id'];
             $_SESSION['role_id'] = $user['role_id'];
-            var_dump($user['username']);
            // session_destroy();
            // session_unset();
         }
