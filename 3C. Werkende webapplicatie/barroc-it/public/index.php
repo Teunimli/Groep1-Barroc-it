@@ -62,7 +62,7 @@
                            
                                 <li><a class="btn-secondary" href="#"><b>Dashboard</b></a></li>
                             
-                                <li><a class="btn-secondary" href="login.php"><b>Login</b></a></li>
+                                <li><a class="btn-secondary" href="assets/views/auth/login.php"><b>Login</b></a></li>
                             
                         </ul>
                     </div>

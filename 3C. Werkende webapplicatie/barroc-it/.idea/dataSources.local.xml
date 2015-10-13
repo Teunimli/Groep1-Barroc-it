@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - barroc_it@localhost" uuid="1631d350-d841-4fa1-ad49-0f8a55672830">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>barroc_it.*</schema-pattern>
+      <default-schemas>barroc_it.*</default-schemas>
+    </data-source>
+  </component>
+</project>
