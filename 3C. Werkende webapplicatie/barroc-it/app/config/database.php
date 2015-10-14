@@ -1,11 +1,12 @@
 <?php
 
-//$dsn = 'mysql:host=localhost;dbname=adresboek';
-//$username = 'root';
-//$password = 'root';           let op met wamp!!!!±!
+$dsn = 'mysql:host=localhost;dbname=barroc_it';
+$username = 'root';
+$password = '';
 
-//try {
-//$db = new PDO($dsn, $username, $password);
-//} catch(PDOException $e) {
-  //  echo $e->getMessage();
-//}
+try {
+    $db = new PDO($dsn, $username, $password);
+} catch(PDOException $e) {
+    echo $e->getMessage();
+}
+

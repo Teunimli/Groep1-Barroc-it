@@ -1,7 +1,5 @@
 <?php require_once __DIR__ . '/header.php';?>
-   <!--[if lt IE 7]>
-   <!-- <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+
     <div class="jumbotron ">
         <div class="container">
             <h1 class="text_1">BARROC IT. </h1>
@@ -62,7 +60,7 @@
                            
                                 <li><a class="btn-secondary" href="#"><b>Dashboard</b></a></li>
                             
-                                <li><a class="btn-secondary" href="login.php"><b>Login</b></a></li>
+                                <li><a class="btn-secondary" href="views/auth/login.php"><b>Login</b></a></li>
                             
                         </ul>
                     </div>
