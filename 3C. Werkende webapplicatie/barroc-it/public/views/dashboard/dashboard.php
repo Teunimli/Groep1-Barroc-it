@@ -31,6 +31,11 @@ $customers = $q->fetchAll();
             <form action="<?php echo  '../../../app/controllers/customercontroller.php'?>" method="post">
                 <input type="hidden" name="id" value="<?php echo $customer['id'] ?>">
             </form>
+            <form action="<? echo '../../../app/controllers/customercontroller.php'?>"  method="post">
+                <input type="hidden" name="id" value="<? echo $customer['id'] ?>" />
+                <input type="hidden" name="type" value="archive"  />
+                <button class="pull-right" type="submit">archive</button>
+            </form>
             <br />
         </li>
     <?php endforeach; ?>

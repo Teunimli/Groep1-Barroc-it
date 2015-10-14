@@ -153,7 +153,7 @@ $customer = $q->fetch();
             <a href="">Make appointment</a>
             <a href="">Archive</a>
             <a href="">View project</a>
-            <a href="">Make project</a>
+            <a href="../project/addproject.php">Make project</a>
             <a href="">Back</a>
             <a href="<?php echo '/../customers/editcustomer.php?id=' . $customer['id']?>">edit</a>
 
@@ -166,7 +166,7 @@ $customer = $q->fetch();
 
 
 
-<?php require_once __DIR__ . '/../../footer.php';?>
+<?php require_once '../../footer.php';?>
 
 
 

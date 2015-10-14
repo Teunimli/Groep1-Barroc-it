@@ -46,9 +46,9 @@ switch( $_POST['type'] ) {
             $_POST['open_project'],
             $db );
         break;
-    case 'delete' :
+    case 'archive' :
         $id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
-        remove($db, $_POST['id']);
+        archive($db, $_POST['id']);
         break;
 }
 
@@ -204,4 +204,54 @@ function edit ($id, $contact_name, $contact_lastname,
     $q->execute();
 
     header('location: ../../public/views/dashboard/dashboard.php');
+}
+
+function archive($db, $id){
+
+    $now = time  ();
+
+    $sql = "SELECT * FROM tbl_customer WHERE id = :id";
+
+    $q = $db->prepare($sql);
+    $q->bindParam(':id', $id);
+    $q->execute();
+
+    $result = $q->fetch(PDO::FETCH_ASSOC);
+
+    if(count($result == 1)){
+
+        $sql = "SELECT tbl_customer.archived_at, tbl_projects.archived_at, tbl_invoices.paid
+                FROM tbl_projects
+                INNER JOIN tbl_invoices ON tbl_projects.id = tbl_invoices.projects_id
+                INNER JOIN tbl_customer ON tbl_projects.id = tbl_customer.id
+                WHERE tbl_projects.archived_at = 0 OR tbl_invoices.paid = 0 OR tbl_customer.id = :id";
+
+        $q = $db->prepare($sql);
+        $q->bindParam(':id', $id);
+        $q->execute();
+
+        if($q->rowCount() > 0 ) {
+
+            $results = $q->fetchall();
+
+            echo "Niet alles van deze customer is gearchiveerd of betaald";
+
+
+        }else{
+
+            $sql = "UPDATE tbl_customer SET archived_at = :time WHERE id = :id";
+
+            $q = $db->prepare($sql);
+            $q->bindParam(':id', $id);
+            $q->bindParam('time', $now);
+            $q->execute();
+
+            header('location: ../../public/views/dashboard/dashboard.php');
+
+        }
+
+    }else{
+        header('location: ../../public/views/dashboard/dashboard.php');
+    }
+
 }

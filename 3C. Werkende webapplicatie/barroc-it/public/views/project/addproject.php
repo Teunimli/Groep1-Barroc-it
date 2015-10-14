@@ -23,11 +23,6 @@
             <div class="grid">
                 <div class="col-6">
                     <div class="form-group">
-                        <label for="projectid">Project ID:</label>
-                        <input type="number" name="firstname">
-                    </div>
-
-                    <div class="form-group">
                         <label for="customername">Customer name:</label>
                         <input type="text" name="customername">
                     </div>
@@ -91,4 +86,4 @@
 
 
 
-<?php require_once __DIR__ . '../../footer.php';?>
+<?php require_once __DIR__ . '/../../footer.php';?>
