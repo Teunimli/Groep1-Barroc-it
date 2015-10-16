@@ -7,7 +7,7 @@ define('ROOT', __DIR__. '/../');
 define('PUBLIC_FOLDER', ROOT . 'public/');
 define('APP_FOLDER', ROOT . 'app/');
 
-define('HTTP', SCHEME . '://localhost/barroc-itPR/');
+define('HTTP', SCHEME . '://localhost:8888/leerjaar2/barroc_it/public');
 
 
 require_once __DIR__ . '/config/config.php';

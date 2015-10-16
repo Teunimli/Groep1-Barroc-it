@@ -38,7 +38,7 @@ $customer = $q->fetch();
                 <div class="col-6">
                     <div class="form-group">
                         <label for="customerid">Customer id:</label>
-                        <input type="text" name="firstname" value="<?= $customer['id'] ?>">
+                        <input type="text" name="customerid" value="<?= $customer['id'] ?>">
                     </div>
                     <div class="form-group">
                         <label for="firstname">Customer firstname:</label>
