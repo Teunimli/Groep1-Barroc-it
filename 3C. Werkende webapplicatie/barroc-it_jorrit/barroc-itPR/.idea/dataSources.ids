@@ -10,12 +10,12 @@
     <table name="tbl_appointment" schema="" catalog="barroc_it" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="customer_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="appointment_date" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
-      <column name="description" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
-      <column name="lastcontact" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="appointment_date" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="description" sqlType="VARCHAR" precision="250" scale="0" nullable="true" jdbcType="12"/>
+      <column name="lastcontact" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="employee" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
-      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
-      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="created_at" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="updated_at" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="fk_appointment_customer1" columns="customer_id" ref-table="tbl_customer" ref-schema="" ref-catalog="barroc_it" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="fk_appointment_customer1_idx" unique="false" columns="customer_id"/>
@@ -82,6 +82,7 @@
       <column name="paid_invoices" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="remaining_invoices" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="deadline" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="active" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="fk_projects_customer1" columns="customer_id" ref-table="tbl_customer" ref-schema="" ref-catalog="barroc_it" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="fk_invoices_projects" table="tbl_invoices" schema="" catalog="barroc_it" columns="projects_id"/>

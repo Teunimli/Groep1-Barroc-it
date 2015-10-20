@@ -15,6 +15,13 @@ $customers = $q->fetchAll();
 
 ?>
 <form action="../../../app/controllers/authController.php" method="POST">
+    <div class="message">
+        <?php
+        if($messageBag->hasMsg()){
+            echo $messageBag->show();
+        }
+        ?>
+    </div>
     <h2 class="text-center">Dashboard</h2>
     <a href="../customers/addcustomer.php" class="btn btn-primary">Add Customer</a>
     <input type="hidden" name="type" value="logout">
@@ -26,9 +33,15 @@ $customers = $q->fetchAll();
 <ul class="list-group">
     <?php foreach($customers as $customer): ?>
         <li class="list-group-item">
-            <a href="<?php echo HTTP . '/../public/views/customers/customerinfo.php?id=' . $customer['id']?>"><?= $customer['companyname'] ?></a>
-            <a href="<?php echo HTTP . '/../public/views/customers/editcustomer.php?id=' . $customer['id']?>">edit</a>
-            <form action="<?php echo HTTP . '/../app/controllers/customercontroller.php'?>" method="post">
+            <a href="<?php echo  '../customers/customerinfo.php?id=' . $customer['id']?>"><?= $customer['companyname'] ?></a>
+            <?php
+            if(in_array("Sales",$_SESSION['user']) || in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>
+                <a href="<?php echo  '../customers/editcustomer.php?id=' . $customer['id']?>">edit</a>
+                <?php
+            }
+            ?>
+
+            <form action="<?php echo  '../../../app/controllers/customercontroller.php'?>" method="post">
                 <input type="hidden" name="id" value="<?php echo $customer['id'] ?>">
             </form>
             <br />

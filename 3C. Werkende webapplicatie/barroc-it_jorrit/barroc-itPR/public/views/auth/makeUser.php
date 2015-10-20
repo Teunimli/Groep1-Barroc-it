@@ -1,8 +1,8 @@
 <?php require_once __DIR__ . '/../../../app/init.php';
 
-$username = "Finance";
-$password = "Finance";
-$role_id = 1;
+$username = "Development";
+$password = "Development";
+$role_id = 3;
 
 $hashed = password_hash($password, PASSWORD_DEFAULT);
 

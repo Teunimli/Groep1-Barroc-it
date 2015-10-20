@@ -3,7 +3,7 @@ require_once '../init.php';
 
 switch( $_POST['type'] ) {
     case 'add' :
-        add($_POST['contact_name'],
+        if(add($_POST['contact_name'],
             $_POST['contact_lastname'],
             $_POST['companyname'],
             $_POST['first_adress'],
@@ -19,7 +19,12 @@ switch( $_POST['type'] ) {
             $_POST['second_telephonenumber'],
             $_POST['fax'],
             $_POST['email'],
-            $db );
+            $db )) {
+            header('location: ../../public/views/dashboard/dashboard.php');
+        } else {
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
+
         break;
     case 'edit' :
         edit($_POST['id'],
@@ -66,6 +71,7 @@ function add($contact_name, $contact_lastname,
              $first_telephonenumber, $second_telephonenumber,
              $fax, $email, $db) {
 
+    global $messageBag;
     $controle = 2;
 
     $created_at = time();
@@ -76,9 +82,9 @@ function add($contact_name, $contact_lastname,
 
     // kijkt of de rij al bestaat
     if ($q->rowCount() > 0) {
-        $exists = 'customer already exists';
-        alert($exists);
+        $messageBag->add('w', 'Customer already excists');
         $controle = 1;
+        return false;
 
     } else if(
         empty($_POST['contact_name']) ||
@@ -93,9 +99,9 @@ function add($contact_name, $contact_lastname,
         empty($_POST['email']) ) {
 
 
-        $notFilled = 'data is incomplete';
-        alert($notFilled);
+        $messageBag->add('w', 'One ore more fields are missing');
         $controle = 1;
+        return false;
        // header('location:' . HTTP . '/public/views/customers/add.php');
     }
 
@@ -134,8 +140,8 @@ function add($contact_name, $contact_lastname,
         $q->bindParam(':email', $email);
         $q->bindParam(':created_at', $created_at);
         $q->execute();
-
-        header('location:' . HTTP . '/public/views/dashboard/dashboard.php');
+        $messageBag->add('s', 'customer is succesfully created');
+        return true;
     }
 }
 
@@ -150,11 +156,10 @@ function edit ($id, $contact_name, $contact_lastname,
 
             $updated_at = time();
     $sql = "UPDATE tbl_customer SET
-                                    id = :id,
                                     contact_name = :contact_name,
                                     contact_lastname = :contact_lastname,
                                     companyname = :companyname,
-                                    first_address = :first_adress,
+                                    first_adress = :first_adress,
                                     first_zipcode = :first_zipcode,
                                     first_city = :first_city,
                                     first_housenumber = :first_housenumber,
@@ -203,5 +208,5 @@ function edit ($id, $contact_name, $contact_lastname,
     $q->bindParam(':id',$id);
     $q->execute();
 
-    header('Location: '.HTTP. '/public/index.php');
+    header('location: ../../public/views/dashboard/dashboard.php');
 }

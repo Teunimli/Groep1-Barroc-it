@@ -1,38 +1,14 @@
 <?php require_once __DIR__ . '/header.php';?>
-   <!--[if lt IE 7]>
-   <!-- <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
 
-<?php
-
-// de query die gedaan moet worden
-$sql = "SELECT * FROM tbl_customer";
-
-// de query wordt opgeslagen
-$q = $db->query($sql);
-
-// de data wordt opgeslagen
-$customers = $q->fetchAll();
-
-?>
-
-    <ul class="list-group">
-        <?php foreach($customers as $customer): ?>
-            <li class="list-group-item">
-                <a href="<?php echo HTTP . 'public/views/customers/customerinfo.php?id=' . $customer['id']?>"><?= $customer['companyname'] ?></a>
-                <a href="<?php echo HTTP . 'public/views/customers/editcustomer.php?id=' . $customer['id']?>">edit</a>
-                <form action="<?php echo HTTP . '/app/controllers/customercontroller.php'?>" method="post">
-                    <input type="hidden" name="id" value="<?php echo $customer['id'] ?>">
-                </form>
-                <br />
-            </li>
-        <?php endforeach; ?>
-    </ul>
-
-    <a href="views/customers/addcustomer.php" class="btn btn-primary">Add Contact</a>
-    <a href="views/auth/login.php" class="btn btn-primary">Login</a>
     <div class="jumbotron ">
         <div class="container">
+            <div class="message">
+                <?php
+                if($messageBag->hasMsg()){
+                    echo $messageBag->show();
+                }
+                ?>
+            </div>
             <h1 class="text_1">BARROC IT. </h1>
             <h1 class="text_2">SOFTWARE FOR REAL.</h1>
         </div>
@@ -91,7 +67,7 @@ $customers = $q->fetchAll();
                            
                                 <li><a class="btn-secondary" href="#"><b>Dashboard</b></a></li>
                             
-                                <li><a class="btn-secondary" href="login.php"><b>Login</b></a></li>
+                                <li><a class="btn-secondary" href="views/auth/login.php"><b>Login</b></a></li>
                             
                         </ul>
                     </div>

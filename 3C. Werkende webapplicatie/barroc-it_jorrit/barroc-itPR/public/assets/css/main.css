@@ -8,7 +8,6 @@ body {
 
 }
 
-
 .jumbotron {
 	position: relative;
 	margin-top: 0px;
@@ -122,6 +121,73 @@ input.form-control, textarea.form-control {
 .jumbo-login {
 	height: 100vh;
 	background-position: -40px 0px;
+}
+
+/*menu*/
+.menu ul li {
+	list-style-type: none;
+	width: 50px;
+	display: inline;
+}
+.menu ul li a{
+	color: black;
+
+	margin: 0px ;
+	border: 1px black solid;
+}
+.menu ul li a {
+
+	text-decoration: none;
+}
+
+
+/*sales.php*/
+.container-content{
+	padding: 20px;
+}
+
+.sales .sidebar h4{
+	margin-top: 0px;
+}
+
+.homesales form{
+	float: left;
+	padding-top: 11px;
+}
+.sidebar{
+	width: 30%;
+	float: left;
+}
+
+.section{
+	width: 70%;
+
+}
+.sales form{
+	float: left;
+
+}
+
+/*sales.php add customer*/
+
+
+
+/*admin*/
+.admin .navbar-default{
+	background-color: #FFFFFF;
+	border: none;
+}
+.admin ul{
+	/*display: block;*/
+	/*margin-right: auto;*/
+	/*margin-left: auto;*/
+}
+.admin .nav  li {
+	margin-right: 80px;
+	width: 150px;
+}
+.admin .nav  li a {
+	text-align: center;
 }
 
 /*grid*/
