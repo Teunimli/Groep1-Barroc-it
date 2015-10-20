@@ -1,5 +1,5 @@
 <?php require_once '../../header.php';?>
-<div class="contaier">
+<div class="container">
     <header>
 
 
@@ -9,6 +9,13 @@
             <!-- Collection of nav links and other content for toggling -->
             <div id="navbarCollapse" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
+                    <div class="message">
+                        <?php
+                        if($messageBag->hasMsg()){
+                            echo $messageBag->show();
+                        }
+                        ?>
+                    </div>
                     <li class="active"><a href="../dashboard/dashboard.php">Home</a></li>
 
                 </ul>
@@ -20,6 +27,7 @@
     <div class="container-content">
 
     <form action="../../../app/controllers/customercontroller.php" method="POST">
+
          <h2 class="text-center">Add customer</h2>
          <input type="hidden" name="type" value="add">
 
@@ -111,7 +119,7 @@
         </div><!--end grid--->
         <input type="submit" value="Create">
     </form>
-        <a href="">Back</a>
+        <a onclick="goBack()">Back</a>
 
     </div><!--end container-content-->
 </div><!--end container--->

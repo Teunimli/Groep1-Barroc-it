@@ -18,11 +18,24 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="assets/css/boostrap-theme.min.html"/>
     <link rel="stylesheet" href="assets/css/main.css"/>
-    <link rel="stylesheet" href="http://bootswatch.com/flatly/bootstrap.min.css"/>
+
+
+    <link rel="stylesheet" href="../../assets/css/main.css"/>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../assets/css/boostrap-theme.min.html"/>
+
 
     <script src="assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript">
+        $(document).ready( function() {
+            $('.message').delay(8000).fadeOut();
+        });
+    </script>
 </head>
 <body>
-
-

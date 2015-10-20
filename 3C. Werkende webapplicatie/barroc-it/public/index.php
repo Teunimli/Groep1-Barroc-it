@@ -2,6 +2,13 @@
 
     <div class="jumbotron ">
         <div class="container">
+            <div class="message">
+                <?php
+                if($messageBag->hasMsg()){
+                    echo $messageBag->show();
+                }
+                ?>
+            </div>
             <h1 class="text_1">BARROC IT. </h1>
             <h1 class="text_2">SOFTWARE FOR REAL.</h1>
         </div>

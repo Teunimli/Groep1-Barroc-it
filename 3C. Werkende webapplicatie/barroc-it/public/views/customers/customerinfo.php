@@ -8,6 +8,7 @@ $q->bindParam(':id', $id);
 $q->execute();
 
 $customer = $q->fetch();
+
 ?>
 
 
@@ -32,7 +33,13 @@ $customer = $q->fetch();
     <div class="container-content">
         <h2 class="text-center">Customer information</h2>
         <form action="">
-            <input type="hidden" name="type" value="edit"/>
+            <div class="message">
+                <?php
+                if($messageBag->hasMsg()){
+                    echo $messageBag->show();
+                }
+                ?>
+            </div>
             <input type="hidden" name="id" value="<?= $customer['id'] ?>"/>
             <div class="grid">
                 <div class="col-6">
@@ -123,7 +130,7 @@ $customer = $q->fetch();
 
                     <div class="form-group">
                         <label for="creditworthy">Creditworthy:</label>
-                        <input type="email" name="creditworthy" value="<?= $customer['creditworthy'] ?>" readonly>
+                        <input type="email" name="creditworthy" value="<?php if($customer['creditworthy']) { echo 'Yes'; } else {echo 'No';}?>" readonly>
                     </div>
 
                     <div class="form-group">
@@ -138,24 +145,37 @@ $customer = $q->fetch();
 
                     <div class="form-group">
                         <label for="created_at">Date of input:</label>
-                        <input type="text" name="created_at" value="<?= date('m/d/Y', $customer['created_at']); ?>" readonly>
+                        <input type="date" name="created_at" value="<?= date('Y-m-d', $customer['created_at']); ?>" readonly>
                     </div>
 
                     <div class="form-group">
                         <label for="updated_at">Last contact:</label>
-                        <input type="text" name="updated_at" value="<?= date('m/d/Y', $customer['updated_at']); ?>" readonly>
+                        <input type="date" name="updated_at" value="<?= date('Y-m-d', $customer['updated_at']); ?>" readonly>
                     </div>
                 </div><!--end col-6--->
 
             </div><!--end grid--->
         </form>
         <div class="buttons">
-            <a href="">Make appointment</a>
-            <a href="">Archive</a>
-            <a href="">View project</a>
-            <a href="../project/addproject.php">Make project</a>
-            <a href="">Back</a>
-            <a href="<?php echo '/../customers/editcustomer.php?id=' . $customer['id']?>">edit</a>
+            <?php
+            if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>
+                 <a href="../sales/appointments.php<?php echo '?id=' . $customer['id']?>">Appointments</a>
+                <?php
+            }
+            ?>
+
+
+                <a href="">Archive</a>
+            <a href="<?php echo  '../project/viewprojects.php?id=' . $customer['id']?>">View project</a>
+            <a href="<?php echo  '../project/addproject.php?id=' . $customer['id']?>">make project</a>
+            <a onclick="goBack()">Back</a>
+            <?php
+            if(in_array("Sales",$_SESSION['user']) || in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>
+                <a href="../customers/editcustomer.php<?php echo '?id=' . $customer['id'] ?>">edit</a>
+                <?php
+            }
+            ?>
+
 
 
 
@@ -166,7 +186,7 @@ $customer = $q->fetch();
 
 
 
-<?php require_once '../../footer.php';?>
+<?php require_once __DIR__ . '/../../footer.php';?>
 
 
 
