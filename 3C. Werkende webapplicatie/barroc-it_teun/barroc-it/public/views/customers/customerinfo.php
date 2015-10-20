@@ -148,10 +148,10 @@ $customer = $q->fetch();
         <div class="buttons">
             <a href="">Make appointment</a>
             <a href="">Archive</a>
-            <a href="">View project</a>
+            <a href="<?php echo  '../project/viewprojects.php?id=' . $customer['id']?>">View project</a>
             <a href="<?php echo  '../project/addproject.php?id=' . $customer['id']?>">make project</a>
             <a href="">Back</a>
-            <a href="<?php echo '/../customers/editcustomer.php?id=' . $customer['id']?>">edit</a>
+            <a href="<?php echo '../customers/editcustomer.php?id=' . $customer['id']?>">edit</a>
 
 
 
