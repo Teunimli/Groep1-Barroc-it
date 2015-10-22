@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-  <data-source name="MySQL - barroc_it@localhost" uuid="0c7a8bdc-a47e-4499-a432-d8a87ab31226">
+  <data-source name="MySQL - barroc_it@localhost" uuid="e7f9313e-2a20-4998-b537-4843747e0dda">
     <database-info product="MySQL" version="5.5.42" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
