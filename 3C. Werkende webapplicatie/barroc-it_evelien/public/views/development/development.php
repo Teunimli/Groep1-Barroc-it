@@ -42,7 +42,7 @@
 
         </header>
         <div class="container-content">
-            <h1>Contacts</h1>
+            <h1 class="subhead">Contacts</h1>
             <ul class="list-group">
                 <li class="list-group-item">
                     <table class="table">
@@ -56,19 +56,19 @@
 
                         </tr>
                         </thead>
-
+                        subhead
 
                         <tbody>
-                        <?php //foreach($customers as $customer){ ?>
-                            <tr>
+                        <?php foreach($customers as $customer){ ?>
+                        <tr>
 
-                                <td> <?= $customer['contact_name']; ?> </td>
-                                <td> <?= $customer['contact_lastname']; ?> </td>
-                                <td> <?= $customer['companyname']; ?> </td>
-                                <td> <?= $customer['projectname']; ?> </td>
-                                <td> <button> <a href="<?= '../.....?id=' . $customer['id'] ?>"</a>View</button></td>;
+                            <td> <?= $customer['contact_name']; ?> </td>
+                            <td> <?= $customer['contact_lastname']; ?> </td>
+                            <td> <?= $customer['companyname']; ?> </td>
+                            <td> <?= $customer['projectname']; ?> </td>
+                            <td> <button> <a href="<?= '../.....?id=' . $customer['id'] ?>"</a>View</button></td>;
 
-                            </tr>
+                        </tr>
                         <?php// } ?>
                         </tbody>
                     </table>

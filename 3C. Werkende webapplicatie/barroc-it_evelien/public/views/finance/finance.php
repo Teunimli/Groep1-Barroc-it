@@ -42,7 +42,7 @@ $customers = $q->fetchAll(PDO::FETCH_ASSOC);
 
         </header>
         <div class="container-content">
-            <h1>Contacts</h1>
+            <h1 class="subhead">Contacts</h1>
             <ul class="list-group">
                 <li class="list-group-item">
                     <table class="table">

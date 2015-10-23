@@ -38,7 +38,7 @@
                 }
                 ?>
             </div>
-            <h2 class="text-center">Edit invoice</h2>
+            <h2 class="text-center subhead">Edit invoice</h2>
             <input type="hidden" name="type" value="edit">
             <input type="hidden" name="id" value="<?= $customer['id'] ?>" />
 

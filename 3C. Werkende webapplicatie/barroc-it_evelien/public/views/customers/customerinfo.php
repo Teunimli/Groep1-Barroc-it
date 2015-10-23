@@ -163,11 +163,20 @@ $customer = $q->fetch();
                 <?php
             }
             ?>
+            <?php if(in_array("Finance",$_SESSION['user'])) { ?>
+                <a href="<?php echo  '../invoice/viewInvoices.php?id=' . $customer['id']?>">Invoices</a>
 
-
+            <?php }
+            if(in_array("Sales",$_SESSION['user'])) { ?>
                 <a href="">Archive</a>
+                <?php
+            }
+            if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user']) || in_array("Development", $_SESSION['user'])) { ?>
             <a href="<?php echo  '../project/viewprojects.php?id=' . $customer['id']?>">View project</a>
+            <?php }
+            if(in_array("Sales",$_SESSION['user'])) { ?>
             <a href="<?php echo  '../project/addproject.php?id=' . $customer['id']?>">make project</a>
+            <?php } ?>
             <a onclick="goBack()">Back</a>
             <?php
             if(in_array("Sales",$_SESSION['user']) || in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>

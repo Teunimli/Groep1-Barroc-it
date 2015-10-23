@@ -42,7 +42,7 @@ $invoices = $q->fetchAll(PDO::FETCH_ASSOC);
 
     </header>
     <div class="container-content">
-        <h1>Invoices</h1>
+        <h1 class="subhead">Invoices</h1>
         <ul class="list-group">
             <li class="list-group-item">
                 <table class="table">

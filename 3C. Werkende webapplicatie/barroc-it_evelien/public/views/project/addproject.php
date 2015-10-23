@@ -1,6 +1,6 @@
 <?php require_once '../../header.php';?>
 
-<?
+<?php
 $id = $_GET['id'];
 $sql = "SELECT * FROM tbl_customer WHERE id = :id";
 $q = $db->prepare($sql);
@@ -30,7 +30,7 @@ $customers = $q->fetchAll();
 
     </header>
     <div class="container-content">
-        <h2 class="text-center">Add project</h2>
+        <h2 class="text-center subhead">Add project</h2>
         <form action="<? echo '../../../app/controllers/projectController.php'?>"  method="POST">
             <div class="grid">
                 <div class="col-6">
@@ -74,7 +74,7 @@ $customers = $q->fetchAll();
                         <label for="operating_system" class="col-4">operating system:</label>
                         <input type="text" name="operating_system">
                     </div>
-</div>
+                </div>
                 <div class="col-6">
                     <div class="form-group">
                         <label for="status" class="col-4">Status:</label>
@@ -112,6 +112,7 @@ $customers = $q->fetchAll();
                     </div>
 
                 </div><!--end col-6--->
+
 
             </div><!--end grid--->
             <input type="submit" value="Submit">

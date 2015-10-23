@@ -2,7 +2,7 @@
 
 $dsn = 'mysql:host=localhost;dbname=barroc_it';
 $username = 'root';
-$password = 'root';
+$password = '';
 
 try {
     $db = new PDO($dsn, $username, $password);

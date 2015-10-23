@@ -42,9 +42,11 @@ function login($username, $password, $db) {
     if ($q->rowCount() > 0) {
         $user = $q->fetch();
         if (password_verify($password, $user['password'])) {
+            session_start();
             $_SESSION['user']['username'] = $user['username'];
             $_SESSION['user']['id'] = $user['id'];
             $_SESSION['user']['role_id'] = $user['role_id'];
+            $messageBag->add('s', 'Welcome ' . $_SESSION['user']['username']);
             return true;
         }
     } else {

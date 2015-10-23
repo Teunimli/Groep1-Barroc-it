@@ -38,7 +38,7 @@ $customer = $q->fetch();
 
     </header>
     <div class="container-content">
-        <h2 class="text-center">Add Appointment</h2>
+        <h2 class="text-center subhead">Add Appointment</h2>
         <form action="../../../app/controllers/appointmentController.php" method="POST">
             <input type="hidden" name="type" value="add">
             <div class="grid">
@@ -82,9 +82,9 @@ $customer = $q->fetch();
 
 
 
-            <input type="submit" value="Submit">
-                    </div>
-            </div>
+
+
+                    <input type="submit" value="Submit">
         </form>
         <a onclick="goBack()">Back</a>
 

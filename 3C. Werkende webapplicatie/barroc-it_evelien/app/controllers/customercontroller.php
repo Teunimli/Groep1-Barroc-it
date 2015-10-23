@@ -27,7 +27,7 @@ switch( $_POST['type'] ) {
 
         break;
     case 'edit' :
-        edit($_POST['id'],
+        if(edit($_POST['id'],
             $_POST['contact_name'],
             $_POST['contact_lastname'],
             $_POST['companyname'],
@@ -49,7 +49,11 @@ switch( $_POST['type'] ) {
             $_POST['creditworthy'],
             $_POST['bkrcheck'],
             $_POST['open_project'],
-            $db );
+            $db )) {
+            header('location: ../../public/views/dashboard/dashboard.php');
+        } else {
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
         break;
     case 'delete' :
         $id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
@@ -153,8 +157,51 @@ function edit ($id, $contact_name, $contact_lastname,
                $first_telephonenumber, $second_telephonenumber,
                $fax, $email, $ledgeraccountnumber, $taxcode,
                $creditworthy, $bkrcheck, $open_project ,$db) {
+    global $messageBag;
 
-            $updated_at = time();
+    $updated_at = time();
+    if(
+        empty($_POST['contact_name']) ||
+        empty($_POST['contact_lastname']) ||
+        empty($_POST['companyname']) ||
+        empty($_POST['first_adress']) ||
+        empty($_POST['first_zipcode']) ||
+        empty($_POST['first_city']) ||
+        empty($_POST['first_housenumber']) ||
+        empty($_POST['initials']) ||
+        empty($_POST['first_telephonenumber']) ||
+        empty($_POST['email']) ) {
+
+
+        $messageBag->add('w', 'One ore more fields are missing');
+        return false;
+    }
+    if($creditworthy == 'Yes' || $creditworthy == 'yes') {
+        $creditstatus = 1;
+    } else if($creditworthy == 'No' || $creditworthy == 'no') {
+        $creditstatus = 0;
+    } else {
+        $messageBag->add('w', 'Wrong input at "creditworthy"');
+        return false;
+    }
+
+    if($bkrcheck == 'Yes' || $bkrcheck == 'yes') {
+        $bkrstatus = 1;
+    } else if($creditworthy == 'No' || $creditworthy == 'no') {
+        $bkrstatus = 0;
+    } else {
+        $messageBag->add('w', 'Wrong input at "bkrcheck"');
+        return false;
+    }
+
+    if($open_project == 'Yes' || $open_project == 'yes') {
+        $openprojectstatus = 1;
+    } else if($creditworthy == 'No' || $creditworthy == 'no') {
+        $openprojectstatus = 0;
+    } else {
+        $messageBag->add('w', 'Wrong input at "open project"');
+        return false;
+    }
     $sql = "UPDATE tbl_customer SET
                                     contact_name = :contact_name,
                                     contact_lastname = :contact_lastname,
@@ -201,12 +248,12 @@ function edit ($id, $contact_name, $contact_lastname,
     $q->bindParam(':email',$email);
     $q->bindParam(':ledgeraccountnumber',$ledgeraccountnumber);
     $q->bindParam(':taxcode',$taxcode);
-    $q->bindParam(':creditworthy',$creditworthy);
-    $q->bindParam(':bkrcheck',$bkrcheck);
-    $q->bindParam(':open_project',$open_project);
+    $q->bindParam(':creditworthy',$creditstatus);
+    $q->bindParam(':bkrcheck',$bkrstatus);
+    $q->bindParam(':open_project',$openprojectstatus);
     $q->bindParam(':updated_at',$updated_at);
     $q->bindParam(':id',$id);
     $q->execute();
 
-    header('location: ../../public/views/dashboard/dashboard.php');
+    return true;
 }

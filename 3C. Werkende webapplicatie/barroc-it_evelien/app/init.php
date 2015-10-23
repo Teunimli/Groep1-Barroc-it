@@ -3,7 +3,6 @@
 define('SCHEME', 'http');
 session_start();
 
-
 define('ROOT', __DIR__ . '/../');
 define('PUBLIC_FOLDER', ROOT . 'public/');
 define('APP_FOLDER', ROOT . 'app/');
