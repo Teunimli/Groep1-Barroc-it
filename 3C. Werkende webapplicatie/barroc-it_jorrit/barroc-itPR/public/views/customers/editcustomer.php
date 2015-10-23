@@ -125,7 +125,7 @@ $contact = $q->fetch();
                     <label for="email">Email:</label>
                     <input type="email" name="email" value="<?= $contact['email']?>">
                 </div>
-
+                <?php if(in_array("Finance",$_SESSION['user'])) { ?>
                 <div class="form-group">
                     <label for="ledgeraccountnumber">Ledger account number:</label>
                     <input type="text" name="ledgeraccountnumber" value="<?= $contact['ledgeraccountnumber']?>">
@@ -150,7 +150,7 @@ $contact = $q->fetch();
                     <label for="open_project">Open project:</label>
                     <input type="text" name="open_project" value="<?php if($contact['open_project']) { echo 'Yes'; } else {echo 'No';}?>">
                 </div>
-
+                <?php } ?>
             </div><!--end col-6--->
 
         </div><!--end grid--->

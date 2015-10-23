@@ -1,13 +1,20 @@
 <?php require_once '../../header.php';?>
-
-<?
-$id = $_GET['id'];
+<?php
+$id = $_GET['customerid'];
 $sql = "SELECT * FROM tbl_customer WHERE id = :id";
-$q = $db->prepare($sql);
+$q= $db->prepare($sql);
 $q->bindParam(':id', $id);
 $q->execute();
 
-$customers = $q->fetchAll();
+$customer = $q->fetch();
+
+$id = $_GET['id'];
+$sql = "SELECT * FROM tbl_projects WHERE id = :id";
+$q= $db->prepare($sql);
+$q->bindParam(':id', $id);
+$q->execute();
+
+$project = $q->fetch();
 
 ?>
 
@@ -30,84 +37,91 @@ $customers = $q->fetchAll();
 
     </header>
     <div class="container-content">
-        <h2 class="text-center">Add project</h2>
-        <form action="<? echo '../../../app/controllers/projectController.php'?>"  method="POST">
+        <h2 class="text-center">Project information</h2>
+        <form action="../../../app/controllers/projectController.php" method="POST"">
             <div class="grid">
                 <div class="col-6">
-                    <? foreach($customers as $customer):?>
                     <div class="form-group">
-                        <label for="customername">Customer name:</label>
-                        <input type="" name="customername" value="<?= $customer['contact_name'] ?>" readonly>
+                        <input type="hidden" name="type" value="edit"/>
+                        <input type="hidden" name="customer_id" value="<?= $customer['id'] ?>"/>
+
+                        <input type="hidden" name="id" value="<?= $project['id'] ?>"/>
+
+                        <label for="customerfirstname">Customer firstname:</label>
+                        <input type="text" name="customerfirstname" value="<?= $customer['contact_name']?>" readonly>
                     </div>
-                        <input type="hidden" name="customer_id" value="<? echo $customer['id'] ?>" />
-                        <input type="hidden" name="type" value="add"  />
-                    <? endforeach;?>
+
+                    <div class="form-group">
+                        <label for="customerlastname">Customer lastname:</label>
+                        <input type="text" name="customerlastname" value="<?= $customer['contact_lastname']?>" readonly>
+                    </div>
+
                 </div><!--end col-6--->
 
                 <div class="col-6">
                     <div class="form-group">
                         <label for="projectname">Project name:</label>
-                        <input type="text" name="projectname">
+                        <input type="text" name="projectname" value="<?= $project['projectname']?>">
                     </div>
 
                     <div class="form-group">
-                        <label for="startdate">Start date:</label>
-                        <input type="date" name="start_date">
+                        <label for="start_date">Start date:</label>
+                        <input type="date" name="start_date"value="<?= date('Y-m-d',$project['start_date'])?>">
                     </div>
 
                     <div class="form-group">
-                        <label for="enddate">End date:</label>
-                        <input type="date" name="end_date">
+                        <label for="end_date">End date:</label>
+                        <input type="date" name="end_date" value="<?= date('Y-m-d',$project['end_date'])?>">
                     </div>
 
                     <div class="form-group">
                         <label for="hardware">Hardware:</label>
-                        <input type="text" name="hardware">
+                        <input type="textarea" name="hardware" value="<?= $project['hardware']?>">
                     </div>
 
                     <div class="form-group">
                         <label for="software">Software:</label>
-                        <input type="text" name="software">
+                        <input type="textarea" name="software" value="<?= $project['software']?>">
                     </div>
 
                     <div class="form-group">
-                        <label for="operating_system">operating system:</label>
-                        <input type="text" name="operating_system">
+                        <label for="operating_system">Operating system:</label>
+                        <input type="textarea" name="operating_system" value="<?= $project['operating_system']?>">
                     </div>
 
                     <div class="form-group">
                         <label for="status">Status:</label>
-                        <input type="text" name="status">
+                        <input type="text" name="status" value="<?= $project['status']?>">
                     </div>
 
                     <div class="form-group">
                         <label for="description">Description:</label>
-                        <input type="text" name="description">
+                        <input type="textarea" name="description" value="<?= $project['description']?>">
                     </div>
 
                     <div class="form-group">
                         <label for="limiten">limit:</label>
-                        <input type="text" name="limiten">
+                        <input type="text" name="limiten" value="<?= $project['limiten']?>">
                     </div>
 
                     <div class="form-group">
                         <label for="maintenance_contract">Maintenance contract:</label>
-                        <input type="text" name="maintenance_contract">
+                        <input type="text" name="maintenance_contract" value="<?= $project['maintenance_contract']?>">
                     </div>
 
                     <div class="form-group">
                         <label for="application">Application:</label>
-                        <input type="text" name="application">
+                        <input type="text" name="application" value="<?= $project['application']?>">
                     </div>
 
                     <div class="form-group">
                         <label for="deadline">Deadline:</label>
-                        <input type="date" name="deadline">
+                        <input type="date" name="deadline" value="<?= date('Y-m-d',$project['deadline'])?>">
                     </div>
 
                     <div class="form-group">
                         <label for="active">Active:</label>
-                        <input type="text" name="active">
+                        <input type="text" name="active" value="<?= $project['active']?>">
                     </div>
 
                 </div><!--end col-6--->

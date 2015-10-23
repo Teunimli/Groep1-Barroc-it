@@ -8,13 +8,6 @@
 
             <!-- Collection of nav links and other content for toggling -->
             <div id="navbarCollapse" class="collapse navbar-collapse">
-                <div class="message">
-                    <?php
-                    if($messageBag->hasMsg()){
-                        echo $messageBag->show();
-                    }
-                    ?>
-                </div>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Home</a></li>
 
