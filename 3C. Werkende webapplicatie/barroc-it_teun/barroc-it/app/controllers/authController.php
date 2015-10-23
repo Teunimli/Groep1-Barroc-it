@@ -4,16 +4,18 @@ require_once __DIR__ . '/../init.php';
 switch( $_POST['type'] ) {
 
     case 'login' :
-        login($_POST['username'],
+        if(login($_POST['username'],
             $_POST['password'],
-            $db);
-
-        if(session_start()) {
+            $db)) {
             header('location: ../../public/views/dashboard/dashboard.php');
+        } else {
+            header('location: ../../public/views/auth/login.php');
         }
         break;
     case 'logout' :
-        logout();
+        if(logout()) {
+            header('location: ../../public/views/auth/login.php');
+        };
         break;
 
 }
@@ -25,11 +27,11 @@ function alert($string)
 }
 
 function login($username, $password, $db) {
-
+    global $messageBag;
     if(empty($username) ||
         empty($password)) {
-        $notFilled = 'data is incomplete';
-        alert($notFilled);
+        $messageBag->add('w', 'One or more fields are missing');
+        return false;
     }
 
     $sql = "SELECT * FROM tbl_users WHERE username = :username";
@@ -41,29 +43,24 @@ function login($username, $password, $db) {
         $user = $q->fetch();
         if (password_verify($password, $user['password'])) {
             session_start();
-            $_SESSION['username'] = $user['username'];
-            $_SESSION['id'] = $user['id'];
-            $_SESSION['role_id'] = $user['role_id'];
+            $_SESSION['user']['username'] = $user['username'];
+            $_SESSION['user']['id'] = $user['id'];
+            $_SESSION['user']['role_id'] = $user['role_id'];
+            return true;
         }
     } else {
-        $exists = 'user does not excist';
-        alert($exists);
+        $messageBag->add('w', 'User does not excists');
+        return false;
     }
-
-    return true;
-
-
-
-
-
+    return false;
 
 
 }
 
 function logout() {
-    session_destroy();
-    session_unset();
-    $logout = "Logout succesfull";
-    alert($logout);
-    header('location: ../../public/views/auth/login.php');
+    global $messageBag;
+    unset($_SESSION['user']);
+    $messageBag->add('s', 'logout succesfull');
+    return true;
+
 }

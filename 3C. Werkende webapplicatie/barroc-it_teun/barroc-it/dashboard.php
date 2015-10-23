@@ -15,13 +15,6 @@ $customers = $q->fetchAll();
 
 ?>
 <form action="../../../app/controllers/authController.php" method="POST">
-    <div class="message">
-        <?php
-        if($messageBag->hasMsg()){
-            echo $messageBag->show();
-        }
-        ?>
-    </div>
     <h2 class="text-center">Dashboard</h2>
     <a href="../customers/addcustomer.php" class="btn btn-primary">Add Customer</a>
     <input type="hidden" name="type" value="logout">
@@ -34,15 +27,14 @@ $customers = $q->fetchAll();
     <?php foreach($customers as $customer): ?>
         <li class="list-group-item">
             <a href="<?php echo  '../customers/customerinfo.php?id=' . $customer['id']?>"><?= $customer['companyname'] ?></a>
-            <?php
-            if(in_array("Sales",$_SESSION['user']) || in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>
-                <a href="<?php echo  '../customers/editcustomer.php?id=' . $customer['id']?>">edit</a>
-                <?php
-            }
-            ?>
-
+            <a href="<?php echo  '../customers/editcustomer.php?id=' . $customer['id']?>">edit</a>
             <form action="<?php echo  '../../../app/controllers/customercontroller.php'?>" method="post">
                 <input type="hidden" name="id" value="<?php echo $customer['id'] ?>">
+            </form>
+            <form action="<? echo '../../../app/controllers/customercontroller.php'?>"  method="post">
+                <input type="hidden" name="id" value="<? echo $customer['id'] ?>" />
+                <input type="hidden" name="type" value="archive"  />
+                <button class="pull-right" type="submit">archive</button>
             </form>
             <br />
         </li>

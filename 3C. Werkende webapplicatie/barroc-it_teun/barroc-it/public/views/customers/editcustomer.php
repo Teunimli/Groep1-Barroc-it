@@ -31,6 +31,13 @@ $contact = $q->fetch();
     <div class="container-content">
 
     <form action="../../../app/controllers/customercontroller.php" method="POST">
+        <div class="message">
+            <?php
+            if($messageBag->hasMsg()){
+                echo $messageBag->show();
+            }
+            ?>
+        </div>
          <h2 class="text-center">Edit customer</h2>
          <input type="hidden" name="type" value="edit">
         <input type="hidden" name="id" value="<?= $contact['id'] ?>" />
@@ -131,17 +138,17 @@ $contact = $q->fetch();
 
                 <div class="form-group">
                     <label for="creditworthy">Credit Worthy:</label>
-                    <input type="text" name="creditworthy" value="<?= $contact['creditworthy']?>">
+                    <input type="text" name="creditworthy" value="<?php if($contact['creditworthy']) { echo 'Yes'; } else {echo 'No';}?>">
                 </div>
 
                 <div class="form-group">
                     <label for="bkrcheck">BKR-check:</label>
-                    <input type="text" name="bkrcheck" value="<?= $contact['bkrcheck']?>">
+                    <input type="text" name="bkrcheck" value="<?php if($contact['bkrcheck']) { echo 'Yes'; } else {echo 'No';}?>">
                 </div>
 
                 <div class="form-group">
                     <label for="open_project">Open project:</label>
-                    <input type="text" name="open_project" value="<?= $contact['open_project']?>">
+                    <input type="text" name="open_project" value="<?php if($contact['open_project']) { echo 'Yes'; } else {echo 'No';}?>">
                 </div>
 
             </div><!--end col-6--->
@@ -149,7 +156,7 @@ $contact = $q->fetch();
         </div><!--end grid--->
         <input type="submit" value="Save">
     </form>
-        <a href="">Back</a>
+        <a onclick="goBack()">Back</a>
 
     </div><!--end container-content-->
 </div><!--end container--->

@@ -207,7 +207,7 @@ function edit($id, $projectname, $start_date, $end_date,
         $q->bindParam(':updated_at', $updated_at);
         $q->bindParam(':id', $id);
         $q->execute();
-
+        header('location: ../../public/views/project/viewprojects.php?id=' . $_POST['customer_id']);
     }
 
 }

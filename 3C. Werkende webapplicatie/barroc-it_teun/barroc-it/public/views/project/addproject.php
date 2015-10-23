@@ -115,7 +115,7 @@ $customers = $q->fetchAll();
             </div><!--end grid--->
             <input type="submit" value="Submit">
         </form>
-        <a href="">Back</a>
+        <a onclick="goBack()">Back</a>
 
     </div><!--end container-content-->
 </div><!--end container--->

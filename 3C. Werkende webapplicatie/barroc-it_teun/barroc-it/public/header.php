@@ -26,6 +26,16 @@
 
 
     <script src="assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript">
+        $(document).ready( function() {
+            $('.message').delay(8000).fadeOut();
+        });
+    </script>
 </head>
 <body>

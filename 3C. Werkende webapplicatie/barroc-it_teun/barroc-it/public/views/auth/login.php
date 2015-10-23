@@ -2,6 +2,13 @@
 <link rel="stylesheet" href="../../assets/css/main.css"/>
  <div class="jumbotron jumbo-login">
       <div class="container">
+		  <div class="message">
+			  <?php
+			  if($messageBag->hasMsg()){
+				  echo $messageBag->show();
+			  }
+			  ?>
+		  </div>
         <h1 class="text_1 text-center">BARROC IT. </h1>
         <form action="../../../app/controllers/authController.php" class="form-login col-md-4 col-md-offset-4" method="POST" >
         	<legend class="subhead">Please Log in</legend>
