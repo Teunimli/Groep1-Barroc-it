@@ -121,7 +121,7 @@ $invoice = $q->fetch();
 
                     <div class="form-group">
                         <label for="paid" class="col-4">Paid:</label>
-                        <input type="text" name="paid" value="<?= $invoice['paid']?>">
+                        <input type="text" name="paid" value="<?if($invoice['paid'] == 1){ echo'Yes';}else{echo'No';}?>">
                     </div>
 
                 </div><!--end col-6--->

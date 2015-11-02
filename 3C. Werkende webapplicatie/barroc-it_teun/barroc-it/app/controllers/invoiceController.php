@@ -42,6 +42,12 @@ function edit($id,$date_of_invoice, $end_invoice_date, $activities, $price, $pai
 
     if($controle == 2){
 
+        if($_POST['paid'] == 'yes'){
+            $paid = 1;
+        }else{
+            $paid = 0;
+        }
+
         $dateofinvoice = strtotime($date_of_invoice);
         $endinvoicedate = strtotime($end_invoice_date);
 

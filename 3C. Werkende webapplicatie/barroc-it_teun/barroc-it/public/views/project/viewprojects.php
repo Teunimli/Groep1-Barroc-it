@@ -100,7 +100,7 @@ $projects = $q->fetchAll(PDO::FETCH_ASSOC);
 
                             <td> <?= date('d.m.Y',$project['deadline']); ?> </td>
                             <td> <?= $project['active']; ?> </td>
-                            <td> <button> <a href="<?= '../project/editproject.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>View</button></td>
+                            <td> <button> <a href="<?= '../project/editproject.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>Edit</button></td>
                             <td> <button> <a href="<?= '../finance/addinvoice.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>Add invoice</button></td>
                             <td> <button> <a href="<?= '../finance/invoiceinfo.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>View invoice</button></td>
 

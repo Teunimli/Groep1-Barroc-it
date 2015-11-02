@@ -63,7 +63,7 @@ $invoices = $q->fetchAll(PDO::FETCH_ASSOC);
                             <td> <?= date('d.m.Y',$invoice['date_of_invoice']); ?> </td>
                             <td> <?= date('d.m.Y',$invoice['end_invoice_date']); ?> </td>
                             <td> <?if($invoice['paid'] == 1){ echo'Yes';}else{echo'No';} ?> </td>
-                            <td> <button> <a href="<?= '../finance/editinvoice.php?id=' . $invoice['id'] . '&projectid='.$invoice['projects_id']. '&customerid=' . $_GET['customerid']?>"</a>View</button></td>
+                            <td> <button> <a href="<?= '../finance/editinvoice.php?id=' . $invoice['id'] . '&projectid='.$invoice['projects_id']. '&customerid=' . $_GET['customerid']?>"</a>Edit</button></td>
 
                         </tr>
                     <?php } ?>
