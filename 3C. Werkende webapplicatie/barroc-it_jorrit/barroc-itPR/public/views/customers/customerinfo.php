@@ -168,7 +168,7 @@ $customer = $q->fetch();
 
             <?php }
             if(in_array("Sales",$_SESSION['user'])) { ?>
-                <a href="">Archive</a>
+                <a href="<?php echo  '../../../app/controllers/customercontroller.php?id=' . $customer['id']?>">Archive</a>
                 <?php
             }
             if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user']) || in_array("Development", $_SESSION['user'])) { ?>

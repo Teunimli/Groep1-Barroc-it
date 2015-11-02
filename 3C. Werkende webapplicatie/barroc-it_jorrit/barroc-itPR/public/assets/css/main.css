@@ -108,7 +108,12 @@ input.form-control, textarea.form-control {
 	border: 0px;
 	border-radius: 0px;
 }
-
+label{
+	color: #333;
+}
+input[type="text"]{
+	color: #333 !important;
+}
 .address {
 	margin-top: 20px;
 }
@@ -258,4 +263,3 @@ input.form-control, textarea.form-control {
 	padding-right: 0px;
 
 }
-

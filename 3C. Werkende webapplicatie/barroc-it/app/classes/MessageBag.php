@@ -1,7 +1,7 @@
 <?php
 class MessageBag {
     public function add($type, $body) {
-        $types = ['s', 'a', 'i'];
+        $types = ['s', 'w', 'i'];
         if ( in_array($type, $types) )
         {
             $_SESSION['msg'][] = [

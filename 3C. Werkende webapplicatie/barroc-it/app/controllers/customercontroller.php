@@ -27,7 +27,7 @@ switch( $_POST['type'] ) {
 
         break;
     case 'edit' :
-        edit($_POST['id'],
+        if(edit($_POST['id'],
             $_POST['contact_name'],
             $_POST['contact_lastname'],
             $_POST['companyname'],
@@ -49,11 +49,15 @@ switch( $_POST['type'] ) {
             $_POST['creditworthy'],
             $_POST['bkrcheck'],
             $_POST['open_project'],
-            $db );
+            $db )) {
+            header('location: ../../public/views/dashboard/dashboard.php');
+        } else {
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
         break;
-    case 'delete' :
+    case 'archive' :
         $id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
-        remove($db, $_POST['id']);
+        archive($db, $_POST['id']);
         break;
 }
 
@@ -153,8 +157,51 @@ function edit ($id, $contact_name, $contact_lastname,
                $first_telephonenumber, $second_telephonenumber,
                $fax, $email, $ledgeraccountnumber, $taxcode,
                $creditworthy, $bkrcheck, $open_project ,$db) {
+    global $messageBag;
 
-            $updated_at = time();
+    $updated_at = time();
+    if(
+        empty($_POST['contact_name']) ||
+        empty($_POST['contact_lastname']) ||
+        empty($_POST['companyname']) ||
+        empty($_POST['first_adress']) ||
+        empty($_POST['first_zipcode']) ||
+        empty($_POST['first_city']) ||
+        empty($_POST['first_housenumber']) ||
+        empty($_POST['initials']) ||
+        empty($_POST['first_telephonenumber']) ||
+        empty($_POST['email']) ) {
+
+
+        $messageBag->add('w', 'One ore more fields are missing');
+        return false;
+    }
+    if($creditworthy == 'Yes' || $creditworthy == 'yes') {
+        $creditstatus = 1;
+    } else if($creditworthy == 'No' || $creditworthy == 'no') {
+        $creditstatus = 0;
+    } else {
+        $messageBag->add('w', 'Wrong input at "creditworthy"');
+        return false;
+    }
+
+    if($bkrcheck == 'Yes' || $bkrcheck == 'yes') {
+        $bkrstatus = 1;
+    } else if($creditworthy == 'No' || $creditworthy == 'no') {
+        $bkrstatus = 0;
+    } else {
+        $messageBag->add('w', 'Wrong input at "bkrcheck"');
+        return false;
+    }
+
+    if($open_project == 'Yes' || $open_project == 'yes') {
+        $openprojectstatus = 1;
+    } else if($creditworthy == 'No' || $creditworthy == 'no') {
+        $openprojectstatus = 0;
+    } else {
+        $messageBag->add('w', 'Wrong input at "open project"');
+        return false;
+    }
     $sql = "UPDATE tbl_customer SET
                                     contact_name = :contact_name,
                                     contact_lastname = :contact_lastname,
@@ -201,12 +248,62 @@ function edit ($id, $contact_name, $contact_lastname,
     $q->bindParam(':email',$email);
     $q->bindParam(':ledgeraccountnumber',$ledgeraccountnumber);
     $q->bindParam(':taxcode',$taxcode);
-    $q->bindParam(':creditworthy',$creditworthy);
-    $q->bindParam(':bkrcheck',$bkrcheck);
-    $q->bindParam(':open_project',$open_project);
+    $q->bindParam(':creditworthy',$creditstatus);
+    $q->bindParam(':bkrcheck',$bkrstatus);
+    $q->bindParam(':open_project',$openprojectstatus);
     $q->bindParam(':updated_at',$updated_at);
     $q->bindParam(':id',$id);
     $q->execute();
 
-    header('location: ../../public/views/dashboard/dashboard.php');
+    return true;
+}
+
+function archive($db, $id){
+
+    $now = time();
+
+    $sql = "SELECT * FROM tbl_customer WHERE id = :id";
+
+    $q = $db->prepare($sql);
+    $q->bindParam(':id', $id);
+    $q->execute();
+
+    $result = $q->fetch(PDO::FETCH_ASSOC);
+
+    if(count($result == 1)){
+
+        $sql = "SELECT tbl_customer.archived_at, tbl_projects.archived_at, tbl_invoices.paid
+                FROM tbl_projects
+                INNER JOIN tbl_invoices ON tbl_projects.id = tbl_invoices.projects_id
+                INNER JOIN tbl_customer ON tbl_projects.id = tbl_customer.id
+                WHERE tbl_projects.archived_at = 0 OR tbl_invoices.paid = 0 OR tbl_customer.id = :id";
+
+        $q = $db->prepare($sql);
+        $q->bindParam(':id', $id);
+        $q->execute();
+
+        if($q->rowCount() > 0 ) {
+
+            $results = $q->fetchall();
+
+            echo "Niet alles van deze customer is gearchiveerd of betaald";
+
+
+        }else{
+
+            $sql = "UPDATE tbl_customer SET archived_at = :time WHERE id = :id";
+
+            $q = $db->prepare($sql);
+            $q->bindParam(':id', $id);
+            $q->bindParam('time', $now);
+            $q->execute();
+
+            header('location:' . HTTP . '/public/index.php');
+
+        }
+
+    }else{
+        header('location:' . HTTP . '/public/index.php');
+    }
+
 }
