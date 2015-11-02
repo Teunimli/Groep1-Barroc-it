@@ -101,6 +101,7 @@ function add($id, $date_of_invoice, $end_invoice_date, $invoicenumber, $activiti
         }
     }
 
+
     if($controle == 2){
 
         $dateofinvoice = strtotime($date_of_invoice);
@@ -120,6 +121,10 @@ function add($id, $date_of_invoice, $end_invoice_date, $invoicenumber, $activiti
 
         header('location: ../../public/views/finance/invoiceinfo.php?id=' . $_POST['id']. '&customerid=' .$_POST['customerid']);
 
+    }else{
+        $messageBag->add('w','Something went wrong');
+
+        header('location: ../../public/views/finance/invoiceinfo.php?id=' . $_POST['id']. '&customerid=' .$_POST['customerid']);
     }
 
 }

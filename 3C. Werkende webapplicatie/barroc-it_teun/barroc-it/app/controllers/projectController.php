@@ -36,6 +36,7 @@ switch( $_POST['type'] ) {
             $_POST['application'],
             $_POST['deadline'],
             $_POST['active'],
+            $_POST['customer_id'],
             $db
         );
         break;
@@ -154,7 +155,7 @@ function add($customer_id, $projectname, $start_date, $end_date,
 
 function edit($id, $projectname, $start_date, $end_date,
               $hardware, $software, $operating_system, $status,
-              $description, $limiten, $maintenance_contract, $application, $deadline, $active, $db){
+              $description, $limiten, $maintenance_contract, $application, $deadline, $active,$customerid, $db){
 
     $updated_at = time();
 
@@ -163,7 +164,6 @@ function edit($id, $projectname, $start_date, $end_date,
     $start_timestamp = strtotime($start_date);
     $end_timestamp = strtotime($end_date);
     $deadline_timestamp = strtotime($deadline);
-
 
     if (empty($_POST['projectname']) ||
             empty($_POST['start_date']) ||
@@ -179,8 +179,20 @@ function edit($id, $projectname, $start_date, $end_date,
             $controle = 1;
 
         }else{
+            $sql= "SELECT * FROM tbl_projects WHERE customer_id = :id AND active = 1";
+            $q = $db->prepare($sql);
+            $q->bindParam(':id', $customerid);
+            $q->execute();
+
+        if($q->rowCount() >= 1){
+            $controle = 1;
+            header('location: ../../public/views/project/viewprojects.php?id=' . $_POST['customer_id']);
+        }else{
             $controle = 2;
         }
+    }
+
+
 
     if($controle == 2){
 
