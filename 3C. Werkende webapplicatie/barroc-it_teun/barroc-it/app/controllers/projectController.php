@@ -105,6 +105,18 @@ function add($customer_id, $projectname, $start_date, $end_date,
 
     if($controle == 2){
 
+        if($_POST['maintenance_contract'] == 'yes' || $_POST['maintenance_contract'] == 'Yes'){
+            $maintenance_contract = 1;
+        }else if($_POST['maintenance_contract'] == 'no' || $_POST['maintenance_contract'] == 'No'){
+            $maintenance_contract = 0;
+        }
+
+        if($_POST['active'] == 'yes' || $_POST['active'] == 'Yes'){
+            $active = 1;
+        }else if($_POST['active'] == 'no' || $_POST['active'] == 'No'){
+            $active = 0;
+        }
+
         $start_timestamp = strtotime($start_date);
         $end_timestamp = strtotime($end_date);
         $deadline_timestamp = strtotime($deadline);
@@ -135,7 +147,7 @@ function add($customer_id, $projectname, $start_date, $end_date,
         $q->bindParam(':created_at', $created_at);
         $q->execute();
 
-            header('location: ../../public/views/dashboard/dashboard.php');
+        header('location: ../../public/views/project/viewprojects.php?id=' . $_POST['customer_id']);
     }
 
 }
@@ -171,6 +183,18 @@ function edit($id, $projectname, $start_date, $end_date,
         }
 
     if($controle == 2){
+
+        if($_POST['maintenance_contract'] == 'yes' || $_POST['maintenance_contract'] == 'Yes'){
+            $maintenance_contract = 1;
+        }else if($_POST['maintenance_contract'] == 'no' || $_POST['maintenance_contract'] == 'No'){
+            $maintenance_contract = 0;
+        }
+
+        if($_POST['active'] == 'yes' || $_POST['active'] == 'Yes'){
+            $active = 1;
+        }else if($_POST['active'] == 'no' || $_POST['active'] == 'No'){
+            $active = 0;
+        }
 
         $sql = "UPDATE tbl_projects SET projectname = :projectname,
                                         start_date = :start_date,

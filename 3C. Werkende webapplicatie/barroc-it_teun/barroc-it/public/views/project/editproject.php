@@ -106,7 +106,7 @@ $project = $q->fetch();
 
                     <div class="form-group">
                         <label for="maintenance_contract">Maintenance contract:</label>
-                        <input type="text" name="maintenance_contract" value="<?= $project['maintenance_contract']?>">
+                        <input type="text" name="maintenance_contract" value="<?if($project['maintenance_contract'] == 1){ echo'Yes';}else{echo'No';}?>">
                     </div>
 
                     <div class="form-group">
@@ -121,7 +121,7 @@ $project = $q->fetch();
 
                     <div class="form-group">
                         <label for="active">Active:</label>
-                        <input type="text" name="active" value="<?= $project['active']?>">
+                        <input type="text" name="active" value="<?if($project['active'] == 1){ echo'Yes';}else{echo'No';}?>">
                     </div>
 
                 </div><!--end col-6--->

@@ -78,7 +78,7 @@ $projects = $q->fetchAll(PDO::FETCH_ASSOC);
                             <td> <?= $project['status']; ?> </td>
                             <td> <?= $project['description']; ?> </td>
                             <td> <?= $project['limiten']; ?> </td>
-                            <td> <?= $project['maintenance_contract']; ?> </td>
+                            <td> <?if($project['maintenance_contract'] == 1){ echo'Yes';}else{echo'No';} ?> </td>
                             <td> <?= $project['application']; ?> </td>
                             <?
                             $id = $project['id'];
@@ -99,7 +99,7 @@ $projects = $q->fetchAll(PDO::FETCH_ASSOC);
                             <td> <?= $in_paid['COUNT(paid)']; ?> </td>
 
                             <td> <?= date('d.m.Y',$project['deadline']); ?> </td>
-                            <td> <?= $project['active']; ?> </td>
+                            <td> <?if($project['active'] == 1){ echo'Yes';}else{echo'No';} ?> </td>
                             <td> <button> <a href="<?= '../project/editproject.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>Edit</button></td>
                             <td> <button> <a href="<?= '../finance/addinvoice.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>Add invoice</button></td>
                             <td> <button> <a href="<?= '../finance/invoiceinfo.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>View invoice</button></td>
