@@ -61,11 +61,6 @@ switch( $_POST['type'] ) {
         break;
 }
 
-function alert($string)
-{
-    echo '<script type="text/javascript">alert("' . $string . '");</script>';
-    echo '<script type="text/javascript">history.go(-1);</script>';
-}
 
 function add($contact_name, $contact_lastname,
              $companyname,$first_adress,
@@ -196,7 +191,7 @@ function edit ($id, $contact_name, $contact_lastname,
 
     if($open_project == 'Yes' || $open_project == 'yes') {
         $openprojectstatus = 1;
-    } else if($creditworthy == 'No' || $creditworthy == 'no') {
+    } else if($open_project == 'No' || $open_project == 'no') {
         $openprojectstatus = 0;
     } else {
         $messageBag->add('w', 'Wrong input at "open project"');

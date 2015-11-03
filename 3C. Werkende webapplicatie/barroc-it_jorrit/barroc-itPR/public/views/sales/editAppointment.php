@@ -24,8 +24,13 @@ $appointment = $q->fetch();
 ?>
 
 
-<div class="contaier">
+<div class="container">
     <header>
+        <div class="top-img">
+            <img src="../../assets/img/jumbotron_small.jpg" alt="barroc-it image" class="barroc-img">
+            <h1 class="barroc-title">BARROC IT. </h1>
+            <h2 class="text-center subhead tophead">Edit Appointment</h2>
+        </div>
 
 
         <nav role="navigation" class="navbar navbar-default">
@@ -43,7 +48,6 @@ $appointment = $q->fetch();
 
     </header>
     <div class="container-content">
-        <h2 class="text-center">Edit Appointment</h2>
         <form action="../../../app/controllers/appointmentController.php" method="POST">
             <input type="hidden" name="type" value="edit">
             <input type="hidden" name="appointment_id" value="<?= $appointment['id'] ?>">
@@ -63,7 +67,7 @@ $appointment = $q->fetch();
                     <div class="form-group">
                         <h3>Appointment</h3>
                         <label for="appointment_date">date:</label>
-                        <input type="text" name="appointment_date" value="<?= date('Y-m-d', $appointment['appointment_date']); ?>">
+                        <input type="date" name="appointment_date" value="<?= date('Y-m-d',$appointment['appointment_date'])?>">
                     </div>
 
 
@@ -75,12 +79,12 @@ $appointment = $q->fetch();
 
                     <div class="form-group">
                         <label for="created_at">Date of input:</label>
-                        <input type="date" name="created_at" value="<?= date('Y-m-d', $appointment['created_at']); ?>" readonly>
+                        <input type="date" name="created_at" value="<?= date('Y-m-d',$appointment['created_at'])?>" readonly>
                     </div>
 
                     <div class="form-group">
                         <label for="lastcontact">Last contact:</label>
-                        <input type="text" name="lastcontact" value="<?= $appointment['lastcontact'] ?>">
+                        <input type="date" name="lastcontact" value="<?= date('Y-m-d',$appointment['lastcontact'])?>">
                     </div>
 
 

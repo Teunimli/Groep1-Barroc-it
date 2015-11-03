@@ -13,19 +13,30 @@ $contact = $q->fetch();
 <div class="container">
     <header>
 
+        <div class="top-img">
+            <img src="../../assets/img/jumbotron_small.jpg" alt="barroc-it image" class="barroc-img">
+            <h1 class="barroc-title">BARROC IT. </h1>
+            <h2 class="text-center subhead tophead">Edit Customer</h2>
+        </div>
 
-        <nav role="navigation" class="navbar navbar-default">
-            <!-- Brand and toggle get grouped for better mobile display -->
+        <form action="../../../app/controllers/authController.php" method="POST">
+            <input type="hidden" name="type" value="logout">
+            <nav role="navigation" class="navbar navbar-default">
+                <!-- Brand and toggle get grouped for better mobile display -->
 
-            <!-- Collection of nav links and other content for toggling -->
-            <div id="navbarCollapse" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="../dashboard/dashboard.php">Home</a></li>
+                <!-- Collection of nav links and other content for toggling -->
+                <div id="navbarCollapse" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="../dashboard/dashboard.php">Home</a></li>
+                        <li class="active"><a href="../customers/customerinfo.php?id=<?= $contact['id'] ?>">customer info</a></li>
+                        <li><a href="../project/viewprojects.php?id=<?= $contact['id'] ?>">Projects</a></li>
+                        <li><a href="../sales/appointments.php?id=<?= $contact['id'] ?>">Appointments</a></li>
+                        <li><a><input type="submit" value="Logout"></a></li>
+                    </ul>
 
-                </ul>
-
-            </div>
-        </nav>
+                </div>
+            </nav>
+        </form>
 
     </header>
     <div class="container-content">
@@ -38,7 +49,6 @@ $contact = $q->fetch();
                 }
                 ?>
             </div>
-            <h2 class="text-center subhead">Edit customer</h2>
             <input type="hidden" name="type" value="edit">
             <input type="hidden" name="id" value="<?= $contact['id'] ?>" />
 
@@ -154,9 +164,10 @@ $contact = $q->fetch();
                 </div><!--end col-6--->
 
             </div><!--end grid--->
-            <input type="submit" value="Save">
+            <input class="btn btn-primary" type="submit" value="Save">
+            <a class="btn btn-primary" onclick="goBack()">Back</a>
         </form>
-        <a onclick="goBack()">Back</a>
+
 
     </div><!--end container-content-->
 </div><!--end container--->

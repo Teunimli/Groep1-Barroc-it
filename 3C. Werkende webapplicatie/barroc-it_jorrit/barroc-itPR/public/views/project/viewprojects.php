@@ -6,43 +6,52 @@ $sql = "SELECT * FROM tbl_projects WHERE tbl_projects.customer_id = :id";
 $q= $db->prepare($sql);
 $q->bindParam(':id', $id);
 $q->execute();
-
 $projects = $q->fetchAll(PDO::FETCH_ASSOC);
+
+$sql = "SELECT * FROM tbl_customer WHERE id = :id";
+$q= $db->prepare($sql);
+$q->bindParam(':id', $id);
+$q->execute();
+
+$customer = $q->fetch();
+
+
 
 ?>
 
 
-<div class="contaier">
+<div class="container">
     <header>
-
+        <div class="top-img">
+            <img src="../../assets/img/jumbotron_small.jpg" alt="barroc-it image" class="barroc-img">
+            <h1 class="barroc-title">BARROC IT. </h1>
+            <h2 class="text-center subhead tophead">Projects</h2>
+        </div>
 
         <nav role="navigation" class="navbar navbar-default">
             <!-- Brand and toggle get grouped for better mobile display -->
 
-            <!-- Collection of nav links and other content for toggling -->
-            <div id="navbarCollapse" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                </ul>
+            <form action="../../../app/controllers/authController.php" method="POST">
+                <input type="hidden" name="type" value="logout">
+                <nav role="navigation" class="navbar navbar-default">
+                    <!-- Brand and toggle get grouped for better mobile display -->
 
-                <div class="homesales">
-                    <form action="">
-                        <label for="search"></label>
-                        <input type="text" name="search" id="search">
-                        <input type="submit" name="search" value="Zoeken">
-                    </form>
-                </div><!--homesales-->
+                    <!-- Collection of nav links and other content for toggling -->
+                    <div id="navbarCollapse" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="../dashboard/dashboard.php">Home</a></li>
+                            <li><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">customer info</a></li>
+                            <li class="active"><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
+                            <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li>
+                            <li><a><input type="submit" value="Logout"></a></li>
+                        </ul>
 
-                <ul class="nav navbar-nav logout-button">
-                    <li><a href="">Logout</a></li>
-                </ul>
-
-            </div>
-        </nav>
+                    </div>
+                </nav>
+            </form>
 
     </header>
     <div class="container-content">
-        <h1>Projects</h1>
         <ul class="list-group">
             <li class="list-group-item">
                 <table class="table">

@@ -1,7 +1,11 @@
 <?php require_once '../../header.php';?>
 <div class="container">
     <header>
-
+        <div class="top-img">
+            <img src="../../assets/img/jumbotron_small.jpg" alt="barroc-it image" class="barroc-img">
+            <h1 class="barroc-title">BARROC IT. </h1>
+            <h2 class="text-center subhead tophead">Add Customer</h2>
+        </div>
 
         <nav role="navigation" class="navbar navbar-default">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -27,8 +31,6 @@
     <div class="container-content">
 
         <form action="../../../app/controllers/customercontroller.php" method="POST">
-
-            <h2 class="text-center subhead">Add customer</h2>
             <input type="hidden" name="type" value="add">
 
             <div class="grid">
@@ -117,9 +119,10 @@
                 </div><!--end col-6--->
 
             </div><!--end grid--->
-            <input type="submit" value="Create">
+            <input class="btn btn-primary" type="submit" value="Create">
+            <a class="btn btn-primary" onclick="goBack()">Back</a>
         </form>
-        <a onclick="goBack()">Back</a>
+
 
     </div><!--end container-content-->
 </div><!--end container--->

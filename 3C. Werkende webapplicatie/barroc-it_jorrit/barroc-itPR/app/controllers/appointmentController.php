@@ -23,11 +23,6 @@ switch( $_POST['type'] ) {
         break;
 }
 
-function alert($string)
-{
-    echo '<script type="text/javascript">alert("' . $string . '");</script>';
-    echo '<script type="text/javascript">history.go(-1);</script>';
-}
 
 function add($customer_id, $appointment_date, $description, $employee, $lastcontact, $db) {
     global $messageBag;

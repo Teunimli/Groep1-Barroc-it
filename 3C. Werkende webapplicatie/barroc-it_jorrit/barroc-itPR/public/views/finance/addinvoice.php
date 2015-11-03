@@ -21,20 +21,30 @@ $customer = $q->fetch();
 ?>
 <div class="container">
     <header>
+        <div class="top-img">
+            <img src="../../assets/img/jumbotron_small.jpg" alt="barroc-it image" class="barroc-img">
+            <h1 class="barroc-title">BARROC IT. </h1>
+            <h2 class="text-center subhead tophead">Add Invoice</h2>
+        </div>
 
+        <form action="../../../app/controllers/authController.php" method="POST">
+            <input type="hidden" name="type" value="logout">
+            <nav role="navigation" class="navbar navbar-default">
+                <!-- Brand and toggle get grouped for better mobile display -->
 
-        <nav role="navigation" class="navbar navbar-default">
-            <!-- Brand and toggle get grouped for better mobile display -->
+                <!-- Collection of nav links and other content for toggling -->
+                <div id="navbarCollapse" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="../dashboard/dashboard.php">Home</a></li>
+                        <li class="active"><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">customer info</a></li>
+                        <li><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
+                        <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li>
+                        <li><a><input type="submit" value="Logout"></a></li>
+                    </ul>
 
-            <!-- Collection of nav links and other content for toggling -->
-            <div id="navbarCollapse" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="../dashboard/dashboard.php">Home</a></li>
-
-                </ul>
-
-            </div>
-        </nav>
+                </div>
+            </nav>
+        </form>
 
     </header>
     <div class="container-content">
@@ -47,7 +57,6 @@ $customer = $q->fetch();
                 }
                 ?>
             </div>
-            <h2 class="text-center">Add invoice</h2>
             <input type="hidden" name="type" value="add">
             <input type="hidden" name="id" value="<?= $customer['id'] ?>" />
             <input type="hidden" name="id" value="<?= $project['id'] ?>" />

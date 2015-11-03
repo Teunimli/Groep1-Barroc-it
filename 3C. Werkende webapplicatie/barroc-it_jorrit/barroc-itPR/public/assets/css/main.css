@@ -8,6 +8,7 @@ body {
 
 }
 
+
 .jumbotron {
 	position: relative;
 	margin-top: 0px;
@@ -262,4 +263,32 @@ input[type="text"]{
 [class*='col-']:last-of-type{
 	padding-right: 0px;
 
+}
+/* Dashboard: */
+
+.st:hover {
+	text-decoration: none;
+	color: rgb(207,192,180);
+}
+.top-img {
+	position: relative;
+	width: 100%; /* for IE 6 */
+}
+
+.barroc-img {
+	width: 100%;
+}
+.barroc-title {
+	position: absolute;
+	top: 20%;
+	left: 42%;
+	text-shadow: 2px 2px 3px black;
+	color: gray;
+	line-height: 0.8em;
+}
+.tophead {
+	position: absolute;
+	top: 62%;
+	left: 0;
+	width: 100%;
 }
