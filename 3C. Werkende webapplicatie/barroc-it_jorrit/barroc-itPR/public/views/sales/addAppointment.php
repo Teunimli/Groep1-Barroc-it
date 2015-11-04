@@ -54,12 +54,12 @@ $customer = $q->fetch();
                 <div class="col-6">
                     <div class="form-group">
                         <label for="customer_id" class="col-4">Customer ID:</label>
-                        <input type="text" name="customer_id" value="<?= $customer['id'] ?>">
+                        <input type="text" name="customer_id" value="<?= $customer['id'] ?>" readonly>
                     </div>
 
                     <div class="form-group">
                         <label for="contact_name" class="col-4">Customer name:</label>
-                        <input type="text" name="contact_name" value="<?= $customer['contact_name'] . ' ' . $customer['contact_lastname'] ?>">
+                        <input type="text" name="contact_name" value="<?= $customer['contact_name'] . ' ' . $customer['contact_lastname'] ?>" readonly>
                     </div>
 
                     <div class="form-group">

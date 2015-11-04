@@ -249,7 +249,7 @@ function edit ($id, $contact_name, $contact_lastname,
     $q->bindParam(':updated_at',$updated_at);
     $q->bindParam(':id',$id);
     $q->execute();
-
+    $messageBag->add('s', 'customer is edited');
     return true;
 }
 
