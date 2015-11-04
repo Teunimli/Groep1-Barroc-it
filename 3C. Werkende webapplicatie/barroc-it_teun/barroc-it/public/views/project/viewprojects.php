@@ -101,9 +101,10 @@ $projects = $q->fetchAll(PDO::FETCH_ASSOC);
                             <td> <?= date('d.m.Y',$project['deadline']); ?> </td>
                             <td> <?if($project['active'] == 1){ echo'Yes';}else{echo'No';} ?> </td>
                             <td> <button> <a href="<?= '../project/editproject.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>Edit</button></td>
+                            <?if(in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])){?>
                             <td> <button> <a href="<?= '../finance/addinvoice.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>Add invoice</button></td>
                             <td> <button> <a href="<?= '../finance/invoiceinfo.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>View invoice</button></td>
-
+                            <?}?>
                         </tr>
                     <?php } ?>
                     </tbody>
