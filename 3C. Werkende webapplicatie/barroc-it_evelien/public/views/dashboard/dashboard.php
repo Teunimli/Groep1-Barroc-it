@@ -46,66 +46,67 @@ $customers = $q->fetchAll();
 if(in_array("Sales",$_SESSION['user']) || in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>
 <ul class="list-group">
     <? foreach($customers as $customer){
-        $arrears = 0;
-        $limit = 0;
-        $id = $customer['id'];
-        $sql = "SELECT *
-                FROM tbl_projects
-                WHERE customer_id = :id";
-        $q = $db->prepare($sql);
-        $q->BindParam(':id', $id);
-        $q->execute();
-        $projects = $q->fetchAll(PDO::FETCH_ASSOC);
+        if($customer['archived_at'] == null) {
+            $arrears = 0;
+            $limit = 0;
+            $id = $customer['id'];
+            $sql = "SELECT *
+                    FROM tbl_projects
+                    WHERE customer_id = :id";
+            $q = $db->prepare($sql);
+            $q->BindParam(':id', $id);
+            $q->execute();
+            $projects = $q->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-            foreach($projects as $project) {
-                $arrears = 0;
-                $limit = 0;
-                $projectid = $project['id'];
-                $sql = "SELECT *
-                FROM tbl_invoices
-                WHERE projects_id = :id";
-                $q = $db->prepare($sql);
-                $q->BindParam(':id', $projectid);
-                $q->execute();
-                $invoices = $q->fetchAll(PDO::FETCH_ASSOC);
-                $limit = $project['limiten'];
-                foreach($invoices as $invoice) {
+                foreach($projects as $project) {
+                    $arrears = 0;
+                    $limit = 0;
+                    $projectid = $project['id'];
+                    $sql = "SELECT *
+                    FROM tbl_invoices
+                    WHERE projects_id = :id";
+                    $q = $db->prepare($sql);
+                    $q->BindParam(':id', $projectid);
+                    $q->execute();
+                    $invoices = $q->fetchAll(PDO::FETCH_ASSOC);
+                    $limit = $project['limiten'];
+                    foreach($invoices as $invoice) {
 
-                    if($invoice['paid'] == 0) {
+                        if($invoice['paid'] == 0) {
 
-                        $arrears = $arrears + $invoice['total_price'];
+                            $arrears = $arrears + $invoice['total_price'];
 
+                        }
                     }
                 }
-            }
-    ?>
-    <li class="list-group-item">
-    <a href="<?php echo  '../customers/customerinfo.php?id=' . $customer['id']?>"
-       class="
-       <?php
-       if(!in_array("Finance",$_SESSION['user'])) {
-           if($arrears > $limit) {
-               echo 'limit';
-           } else {
-               echo 'nolimit';
-           } } else if(in_array("Finance",$_SESSION['user'])) {
-                if($customer['bkrcheck'] == 0) {
-                    echo 'nobkr';
-                }
-       } ?>"><?= $customer['companyname'] ?></a>
-    <a href="<?php echo  '../customers/editcustomer.php?id=' . $customer['id']?>">edit</a>
-        <form action="<?php echo  '../../../app/controllers/customercontroller.php'?>" method="post">
-            <input type="hidden" name="id" value="<?php echo $customer['id'] ?>">
-        </form>
-        <br />
-    </li>
-           <?php }
+        ?>
+        <li class="list-group-item">
+        <a href="<?php echo  '../customers/customerinfo.php?id=' . $customer['id']?>"
+           class="
+           <?php
+           if(!in_array("Finance",$_SESSION['user'])) {
+               if($arrears > $limit) {
+                   echo 'limit';
+               } else {
+                   echo 'nolimit';
+               } } else if(in_array("Finance",$_SESSION['user'])) {
+                    if($customer['bkrcheck'] == 0) {
+                        echo 'nobkr';
+                    }
+           } ?>"><?= $customer['companyname'] ?></a>
+        <a href="<?php echo  '../customers/editcustomer.php?id=' . $customer['id']?>">edit</a>
+            <form action="<?php echo  '../../../app/controllers/customercontroller.php'?>" method="post">
+                <input type="hidden" name="id" value="<?php echo $customer['id'] ?>">
+            </form>
+            <br />
+        </li>
+           <?php } }
             ?>
 
 
-            >
+
     <?
 
     } ?>

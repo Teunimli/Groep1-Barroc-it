@@ -1,16 +1,24 @@
 <?php require_once '../../header.php';?>
 <?php
-//
-//$id = $_GET['id'];
-//$sql = "";
-//$q = $db->prepare($sql);
-//$q->bindParam(':', $);
-//$q->execute();
-//
-//$customer = $q->fetch();
-//
+
+$customerid = $_GET['customerid'];
+$sql = "SELECT * FROM tbl_customer WHERE id = :id";
+$q = $db->prepare($sql);
+$q->bindParam(':id', $customerid);
+$q->execute();
+
+$customer = $q->fetch();
+
+$invoicesid = $_GET['id'];
+$sql = "SELECT * FROM tbl_invoices WHERE id = :id";
+$q = $db->prepare($sql);
+$q->bindParam(':id', $invoicesid);
+$q->execute();
+
+$invoice = $q->fetch();
+
 ?>
-<div class="container">
+
     <header>
 
 
@@ -28,9 +36,10 @@
         </nav>
 
     </header>
+<div class="container">
     <div class="container-content">
 
-        <form action="" method="POST">
+        <form action="<? echo '../../../app/controllers/invoiceController.php'?>"  method="POST">
             <div class="message">
                 <?php
                 if($messageBag->hasMsg()){
@@ -46,78 +55,74 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="contact_name" class="col-4">Contact firstname:</label>
-                        <input type="text" name="contact_name" value="<?= $customer['contact_name']?>">
+                        <input type="text" name="contact_name" value="<?= $customer['contact_name']?>" readonly>
                     </div>
 
                     <div class="form-group">
                         <label for="contact_lastname" class="col-4">Contact lastname:</label>
-                        <input type="text" name="contact_lastname" value="<?= $customer['contact_lastname']?>">
+                        <input type="text" name="contact_lastname" value="<?= $customer['contact_lastname']?>"readonly>
                     </div>
 
                     <div class="form-group">
                         <label for="companyname" class="col-4">Company name:</label>
-                        <input type="text" name="companyname" value="<?= $customer['companyname']?>">
+                        <input type="text" name="companyname" value="<?= $customer['companyname']?>"readonly>
                     </div>
 
                     <div class="form-group">
                         <label for="first_adress" class="col-4">address:</label>
-                        <input type="text" name="first_adress" value="<?= $customer['first_adress']?>">
+                        <input type="text" name="first_adress" value="<?= $customer['first_adress']?>"readonly>
                     </div>
 
                     <div class="form-group">
                         <label for="first_zipcode" class="col-4">Zipcode:</label>
-                        <input type="text" name="first_zipcode" value="<?= $customer['first_zipcode']?>">
+                        <input type="text" name="first_zipcode" value="<?= $customer['first_zipcode']?>"readonly>
                     </div>
 
                     <div class="form-group">
                         <label for="first_city" class="col-4">City*:</label>
-                        <input type="text" name="first_city" value="<?= $customer['first_city']?>">
+                        <input type="text" name="first_city" value="<?= $customer['first_city']?>"readonly>
                     </div>
 
                     <div class="form-group">
                         <label for="first_housenumber" class="col-4">housenumber:</label>
-                        <input type="text" name="first_housenumber" value="<?= $customer['first_housenumber']?>">
+                        <input type="text" name="first_housenumber" value="<?= $customer['first_housenumber']?>"readonly>
                     </div>
 
                     <div class="form-group">
                         <label for="first_telephonenumber" class="col-4">Tel 1:</label>
-                        <input type="text" name="first_telephonenumber" value="<?= $customer['first_telephonenumber']?>">
+                        <input type="text" name="first_telephonenumber" value="<?= $customer['first_telephonenumber']?>"readonly>
                     </div>
 
                     <div class="form-group">
                         <label for="second_telephonenumber" class="col-4">Tel 2:</label>
-                        <input type="text" name="second_telephonenumber" value="<?= $customer['second_telephonenumber']?>">
+                        <input type="text" name="second_telephonenumber" value="<?= $customer['second_telephonenumber']?>"readonly>
                     </div>
 
                     <div class="form-group">
                         <label for="email" class="col-4">Email:</label>
-                        <input type="email" name="email" value="<?= $customer['email']?>">
+                        <input type="email" name="email" value="<?= $customer['email']?>"readonly>
                     </div>
 
-                    <div class="form-group">
-                        <label for="ledgeraccountnumber" class="col-4">Ledger account number:</label>
-                        <input type="text" name="ledgeraccountnumber" value="<?= $customer['ledgeraccountnumber']?>">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="taxcode" class="col-4">Taxcode:</label>
-                        <input type="text" name="taxcode" value="<?= $customer['taxcode']?>">
-                    </div>
                 </div>
                 <div class="col-6">
                     <div class="form-group">
-                        <label for="todaydate" class="col-4">today date:</label>
-                        <input type="date" name="todaydate" value="<?= $customer['date_of_invoice']?>">
+                        <label for="date_of_invoice" class="col-4">today date:</label>
+                        <input type="date" name="date_of_invoice" value="<?= date('Y-m-d',$invoice['date_of_invoice'])?>">
                     </div>
 
                     <div class="form-group">
-                        <label for="expirationdate" class="col-4">Expiration date:</label>
-                        <input type="date" name="expirationdate" value="<?= $customer['end_date']?>">
+                        <label for="end_invoice_date" class="col-4">Expiration date:</label>
+                        <input type="date" name="end_invoice_date" value="<?= date('Y-m-d',$invoice['end_invoice_date'])?>">
                     </div>
 
                     <div class="form-group">
                         <label for="invoicenumber" class="col-4">Invoice number:</label>
-                        <input type="number" name="invoicenumber"> <!--value="..."-->
+                        <input type="number" name="invoicenumber" value="<?= $invoice['id']?>"readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="paid" class="col-4">Paid:</label>
+                        <input type="text" name="paid" value="<?if($invoice['paid'] == 1){ echo'Yes';}else{echo'No';}?>">
                     </div>
 
                 </div><!--end col-6--->
@@ -126,20 +131,21 @@
                 <div class="col-9">
                     <h2>Activities</h2>
                     <div class="form-group">
-                        <textarea name="activities"></textarea>
+                        <textarea name="activities"><?= $invoice['inv_description']?></textarea>
                     </div>
                 </div>
                 <div class="col-3">
                     <h2>Price</h2>
                     <div class="form-group">
-                        <input type="number" name="price">
+                        <input type="text" name="price" value="<?= $invoice['total_price']?>">
                     </div>
                 </div>
             </div><!--end grid--->
-            <input type="submit" value="Submit">
-        </form>
-        <a onclick="goBack()">Back</a>
-
+        <div class="buttons">
+            <input type="submit" value="Submit" class="btn btn-primary">
+            </form>
+            <a onclick="goBack()" class="btn btn-primary">Back</a>
+        </div>
     </div><!--end container-content-->
 </div><!--end container--->
 

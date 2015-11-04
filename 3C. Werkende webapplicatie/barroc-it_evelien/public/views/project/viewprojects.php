@@ -2,7 +2,7 @@
 
 <?php
 $id = $_GET['id'];
-$sql = "SELECT * FROM tbl_projects WHERE customer_id = :id";
+$sql = "SELECT * FROM tbl_projects WHERE tbl_projects.customer_id = :id";
 $q= $db->prepare($sql);
 $q->bindParam(':id', $id);
 $q->execute();
@@ -42,7 +42,7 @@ $projects = $q->fetchAll(PDO::FETCH_ASSOC);
 
     </header>
     <div class="container-content">
-        <h1 class="subhead">Projects</h1>
+        <h1>Projects</h1>
         <ul class="list-group">
             <li class="list-group-item">
                 <table class="table">
@@ -69,7 +69,6 @@ $projects = $q->fetchAll(PDO::FETCH_ASSOC);
 
                     <tbody> <?php foreach($projects as $project){ ?>
                         <tr>
-
                             <td> <?= $project['projectname']; ?> </td>
                             <td> <?= date('d.m.Y',$project['start_date']); ?> </td>
                             <td> <?= date('d.m.Y',$project['end_date']); ?> </td>
@@ -81,21 +80,41 @@ $projects = $q->fetchAll(PDO::FETCH_ASSOC);
                             <td> <?= $project['limiten']; ?> </td>
                             <td> <?= $project['maintenance_contract']; ?> </td>
                             <td> <?= $project['application']; ?> </td>
-                            <td> <?= $project['paid_invoices']; ?> </td>
-                            <td> <?= $project['remaining_invoices']; ?> </td>
+                            <?
+                            $id = $project['id'];
+                            $sql = "SELECT COUNT(paid) FROM tbl_invoices WHERE tbl_invoices.projects_id = :id AND paid = 1";
+                            $q= $db->prepare($sql);
+                            $q->bindParam(':id', $id);
+                            $q->execute();
+                            $in_paid = $q->fetch(); ?>
+                            <td> <?= $in_paid['COUNT(paid)']; ?> </td>
+
+                            <?
+                            $id = $project['id'];
+                            $sql = "SELECT COUNT(paid) FROM tbl_invoices WHERE tbl_invoices.projects_id = :id AND paid = 0";
+                            $q= $db->prepare($sql);
+                            $q->bindParam(':id', $id);
+                            $q->execute();
+                            $in_paid = $q->fetch(); ?>
+                            <td> <?= $in_paid['COUNT(paid)']; ?> </td>
+
                             <td> <?= date('d.m.Y',$project['deadline']); ?> </td>
                             <td> <?= $project['active']; ?> </td>
-                            <td> <button> <a href="<?= '../project/editproject.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>View</button></td>
+                            <td> <button> <a href="<?= '../project/editproject.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>Edit</button></td>
+                            <td> <button> <a href="<?= '../finance/addinvoice.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>Add invoice</button></td>
+                            <td> <button> <a href="<?= '../finance/invoiceinfo.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>View invoice</button></td>
 
                         </tr>
                     <?php } ?>
                     </tbody>
+
                 </table>
             </li>
         </ul>
 
-
-        <a onclick="goBack()">Back</a>
+        <div class="buttons">
+            <a onclick="goBack()" class="btn btn-primary">Back</a>
+        </div>
     </div><!--end container-content-->
 </div><!--end container--->
 

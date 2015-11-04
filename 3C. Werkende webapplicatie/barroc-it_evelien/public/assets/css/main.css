@@ -92,7 +92,7 @@ h5 {
 }
 
 form {
-	color: #CFC1B5;
+	/*color: #CFC1B5;*/
 	margin-bottom: 20px;
 }
 
@@ -146,7 +146,7 @@ input[type="text"]{
 }
 
 
-/*sales.php*/
+/*salesblablabla.php*/
 .container-content{
 	padding: 20px;
 }
@@ -173,7 +173,7 @@ input[type="text"]{
 
 }
 
-/*sales.php add customer*/
+/*salesblablabla.php add customer*/
 
 
 
@@ -195,6 +195,11 @@ input[type="text"]{
 	text-align: center;
 }
 
+.buttons  a, .buttons input{
+ 	background-color: #CFC1B5;
+	color: #FFFFFF;
+	/*border-radius: 10px;*/
+}
 /*grid*/
 *{
 	box-sizing: border-box;

@@ -2,7 +2,7 @@
 
 <?php
 $id = $_GET['id'];
-$sql = "SELECT * FROM tbl_invoices WHERE customer_id = :id";
+$sql = "SELECT * FROM tbl_invoices WHERE projects_id = :id";
 $q= $db->prepare($sql);
 $q->bindParam(':id', $id);
 $q->execute();
@@ -42,15 +42,16 @@ $invoices = $q->fetchAll(PDO::FETCH_ASSOC);
 
     </header>
     <div class="container-content">
-        <h1 class="subhead">Invoices</h1>
+        <h1>Invoices</h1>
         <ul class="list-group">
             <li class="list-group-item">
                 <table class="table">
                     <thead>
                     <tr>
                         <th>Invoice id</th>
-                        <th>Date</th>
-                       <th>paid</th>
+                        <th>Date of invoice</th>
+                        <th>End of invoice</th>
+                        <th>paid</th>
                     </tr>
                     </thead>
 
@@ -59,10 +60,10 @@ $invoices = $q->fetchAll(PDO::FETCH_ASSOC);
                         <tr>
 
                             <td> <?= $invoice['id']; ?> </td>
-                            <td> <?= $invoice['date_of_invoice']; ?> </td>
-                            <td> <?= $invoice['paid']; ?> </td>
-
-                            <td> <button> <a href="<?= '/editinvoice.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>View</button></td>
+                            <td> <?= date('d.m.Y',$invoice['date_of_invoice']); ?> </td>
+                            <td> <?= date('d.m.Y',$invoice['end_invoice_date']); ?> </td>
+                            <td> <?if($invoice['paid'] == 1){ echo'Yes';}else{echo'No';} ?> </td>
+                            <td> <button> <a href="<?= '../finance/editinvoice.php?id=' . $invoice['id'] . '&projectid='.$invoice['projects_id']. '&customerid=' . $_GET['customerid']?>"</a>Edit</button></td>
 
                         </tr>
                     <?php } ?>
@@ -72,7 +73,9 @@ $invoices = $q->fetchAll(PDO::FETCH_ASSOC);
         </ul>
 
 
-        <a onclick="goBack()">Back</a>
+        <div class="buttons">
+            <a onclick="goBack()" class="btn btn-primary">Back</a>
+        </div>
     </div><!--end container-content-->
 </div><!--end container--->
 

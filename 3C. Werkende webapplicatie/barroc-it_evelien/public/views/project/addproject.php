@@ -115,10 +115,11 @@ $customers = $q->fetchAll();
 
 
             </div><!--end grid--->
-            <input type="submit" value="Submit">
-        </form>
-        <a onclick="goBack()">Back</a>
-
+        <div class="buttons">
+            <input type="submit" value="Create" class="btn btn-primary">
+            </form>
+            <a onclick="goBack()" class="btn btn-primary">Back</a>
+        </div>
     </div><!--end container-content-->
 </div><!--end container--->
 

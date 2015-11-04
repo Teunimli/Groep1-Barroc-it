@@ -80,13 +80,15 @@ $customer = $q->fetch();
                         <input type="text" name="lastcontact">
                     </div>
 
+                    </div>
+                </div>
 
 
-
-
-                    <input type="submit" value="Submit">
+            <div class="buttons">
+                <input type="submit" value="Create" class="btn btn-primary">
         </form>
-        <a onclick="goBack()">Back</a>
+        <a onclick="goBack()" class="btn btn-primary">Back</a>
+    </div>
 
     </div><!--end container-content-->
 </div><!--end container--->

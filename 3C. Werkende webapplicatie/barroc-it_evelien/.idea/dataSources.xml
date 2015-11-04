@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1854320567">
-    <data-source source="LOCAL" name="MySQL - barroc_it@localhost" uuid="e7f9313e-2a20-4998-b537-4843747e0dda">
+  <component name="DataSourceManagerImpl" format="xml" hash="3121800107">
+    <data-source source="LOCAL" name="MySQL - barroc_it@localhost" uuid="1fee26d9-a37b-4cb3-aafa-4e4ef0f5e932">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>

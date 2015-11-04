@@ -35,13 +35,14 @@ if(! in_array("Sales",$_SESSION['user'])) {
 
 
     <tbody> <?php foreach($customers as $customer){ ?>
+        <?php if(time() <= $customer['appointment_date']) {?>
         <tr>
             <td> <?= date('m/d/Y', $customer['appointment_date']); ?></td>
             <td> <?= $customer['description']; ?> </td>
             <td>  <a href="editAppointment.php<?php echo '?customer_id=' . $customer['customer_id'] . '&id=' . $customer['id']?>"<button>Edit</button></a> </td>
 
         </tr>
-    <?php } ?>
+    <?php } } ?>
     </tbody>
     <a href="addAppointment.php<?php echo '?customer_id=' . $id ?>"><button>Add Appointment</button></a>
     <a onclick="goBack()">Back</a>

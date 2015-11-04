@@ -21,7 +21,7 @@
         <nav role="navigation" class="navbar navbar-default">
         <div id="navbarCollapse" class="collapse navbar-collapse center">
             <ul class="nav navbar-nav ">
-                <li class="active"><a href="../sales/sales.php">Sales</a></li>
+                <li class="active"><a href="../sales/salesblablabla.php">Sales</a></li>
                 <li class="active"><a href="../finance/finance.php">Finance</a></li>
                 <li class="active"><a href="../development/development.php">Development</a></li>
             </ul>

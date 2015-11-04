@@ -12,7 +12,7 @@ $customer = $q->fetch();
 ?>
 
 
-<div class="contaier">
+
     <header>
 
 
@@ -30,8 +30,9 @@ $customer = $q->fetch();
         </nav>
 
     </header>
+<div class="container">
     <div class="container-content">
-        <h2 class="text-center">Customer information</h2>
+        <h2 class="text-center subhead">Customer information</h2>
         <form action="">
             <div class="message">
                 <?php
@@ -159,28 +160,28 @@ $customer = $q->fetch();
         <div class="buttons">
             <?php
             if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>
-                 <a href="../sales/appointments.php<?php echo '?id=' . $customer['id']?>">Appointments</a>
+                 <a href="../sales/appointments.php<?php echo '?id=' . $customer['id']?>" class="btn btn-primary">Appointments</a>
                 <?php
             }
             ?>
             <?php if(in_array("Finance",$_SESSION['user'])) { ?>
-                <a href="<?php echo  '../invoice/viewInvoices.php?id=' . $customer['id']?>">Invoices</a>
+                <a href="<?php echo  '../invoice/viewInvoices.php?id=' . $customer['id']?>" class="btn btn-primary">Invoices</a>
 
             <?php }
             if(in_array("Sales",$_SESSION['user'])) { ?>
-                <a href="">Archive</a>
+                <a href="<?php echo  '../../../app/controllers/customercontroller.php?id=' . $customer['id']?>" class="btn btn-primary">Archive</a>
                 <?php
             }
             if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user']) || in_array("Development", $_SESSION['user'])) { ?>
-            <a href="<?php echo  '../project/viewprojects.php?id=' . $customer['id']?>">View project</a>
+            <a href="<?php echo  '../project/viewprojects.php?id=' . $customer['id']?>" class="btn btn-primary" >View project</a>
             <?php }
             if(in_array("Sales",$_SESSION['user'])) { ?>
-            <a href="<?php echo  '../project/addproject.php?id=' . $customer['id']?>">make project</a>
+            <a href="<?php echo  '../project/addproject.php?id=' . $customer['id']?>" class="btn btn-primary">make project</a>
             <?php } ?>
-            <a onclick="goBack()">Back</a>
+            <a onclick="goBack()" class="btn btn-primary">Back</a>
             <?php
             if(in_array("Sales",$_SESSION['user']) || in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>
-                <a href="../customers/editcustomer.php<?php echo '?id=' . $customer['id'] ?>">edit</a>
+                <a href="../customers/editcustomer.php<?php echo '?id=' . $customer['id'] ?>" class="btn btn-primary">edit</a>
                 <?php
             }
             ?>

@@ -10,7 +10,7 @@ $q->execute();
 $contact = $q->fetch();
 
 ?>
-<div class="container">
+
     <header>
 
 
@@ -28,6 +28,7 @@ $contact = $q->fetch();
         </nav>
 
     </header>
+<div class="container">
     <div class="container-content">
 
         <form action="../../../app/controllers/customercontroller.php" method="POST">
@@ -154,9 +155,11 @@ $contact = $q->fetch();
                 </div><!--end col-6--->
 
             </div><!--end grid--->
-            <input type="submit" value="Save">
-        </form>
-        <a onclick="goBack()">Back</a>
+        <div class="buttons">
+            <input type="submit" value="Save" class="btn btn-primary">
+            </form>
+            <a onclick="goBack()" class="btn btn-primary">Back</a>
+        </div>
 
     </div><!--end container-content-->
 </div><!--end container--->

@@ -1,5 +1,5 @@
 <?php require_once '../../header.php';?>
-<div class="container">
+
     <header>
 
 
@@ -24,6 +24,7 @@
         </nav>
 
     </header>
+<div class="container">
     <div class="container-content">
 
         <form action="../../../app/controllers/customercontroller.php" method="POST">
@@ -117,9 +118,11 @@
                 </div><!--end col-6--->
 
             </div><!--end grid--->
-            <input type="submit" value="Create">
-        </form>
-        <a onclick="goBack()">Back</a>
+        <div class="buttons">
+            <input type="submit" value="Create" class="btn btn-primary">
+            </form>
+            <a onclick="goBack()" class="btn btn-primary">Back</a>
+        </div>
 
     </div><!--end container-content-->
 </div><!--end container--->
