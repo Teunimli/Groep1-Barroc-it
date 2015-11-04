@@ -59,13 +59,12 @@ switch( $_POST['type'] ) {
         $id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
         archive($db, $_POST['id']);
         break;
+    case 'dearchive':
+        $id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
+        dearchive($db, $_POST['id']);
+        break;
 }
 
-function alert($string)
-{
-    echo '<script type="text/javascript">alert("' . $string . '");</script>';
-    echo '<script type="text/javascript">history.go(-1);</script>';
-}
 
 function add($contact_name, $contact_lastname,
              $companyname,$first_adress,
@@ -111,18 +110,19 @@ function add($contact_name, $contact_lastname,
 
     if($controle == 2) {
 
+        $archive = 0;
 
         $sql = "INSERT INTO tbl_customer (contact_name, contact_lastname, companyname,
                                       first_adress, first_zipcode, first_city,
                                       first_housenumber, second_adress, second_zipcode,
                                       second_city, second_housenumber, initials,
                                       first_telephonenumber, second_telephonenumber, fax, email,
-                                      created_at )
+                                      created_at,archived_at )
                     VALUES (:contact_name, :contact_lastname, :companyname, :first_adress,
                             :first_zipcode, :first_city, :first_housenumber, :second_adress,
                             :second_zipcode, :second_city, :second_housenumber,
                             :initials, :first_telephonenumber, :second_telephonenumber, :fax, :email,
-                            :created_at )";
+                            :created_at,:archived_at )";
 
 
         $q = $db->prepare($sql);
@@ -143,6 +143,7 @@ function add($contact_name, $contact_lastname,
         $q->bindParam(':fax', $fax);
         $q->bindParam(':email', $email);
         $q->bindParam(':created_at', $created_at);
+        $q->bindParam(':archived_at', $archive);
         $q->execute();
         $messageBag->add('s', 'customer is succesfully created');
         return true;
@@ -196,7 +197,7 @@ function edit ($id, $contact_name, $contact_lastname,
 
     if($open_project == 'Yes' || $open_project == 'yes') {
         $openprojectstatus = 1;
-    } else if($creditworthy == 'No' || $creditworthy == 'no') {
+    } else if($open_project == 'No' || $open_project == 'no') {
         $openprojectstatus = 0;
     } else {
         $messageBag->add('w', 'Wrong input at "open project"');
@@ -254,11 +255,13 @@ function edit ($id, $contact_name, $contact_lastname,
     $q->bindParam(':updated_at',$updated_at);
     $q->bindParam(':id',$id);
     $q->execute();
-
+    $messageBag->add('s', 'customer is edited');
     return true;
 }
 
 function archive($db, $id){
+
+    global $messageBag;
 
     $now = time();
 
@@ -268,29 +271,20 @@ function archive($db, $id){
     $q->bindParam(':id', $id);
     $q->execute();
 
-    $result = $q->fetch(PDO::FETCH_ASSOC);
+    if($q->rowCount() == 1){
 
-    if(count($result == 1)){
-
-        $sql = "SELECT tbl_customer.archived_at, tbl_projects.archived_at, tbl_invoices.paid
+        $sql = "SELECT  tbl_projects.archived_at, tbl_invoices.paid
                 FROM tbl_projects
                 INNER JOIN tbl_invoices ON tbl_projects.id = tbl_invoices.projects_id
-                INNER JOIN tbl_customer ON tbl_projects.id = tbl_customer.id
-                WHERE tbl_projects.archived_at = 0 OR tbl_invoices.paid = 0 OR tbl_customer.id = :id";
+                WHERE tbl_projects.customer_id = :id";
 
         $q = $db->prepare($sql);
         $q->bindParam(':id', $id);
         $q->execute();
 
-        if($q->rowCount() > 0 ) {
+        $resulten = $q->fetchAll(PDO::FETCH_ASSOC);
 
-            $results = $q->fetchall();
-
-            echo "Niet alles van deze customer is gearchiveerd of betaald";
-
-
-        }else{
-
+        if($q->rowCount() == 0){
             $sql = "UPDATE tbl_customer SET archived_at = :time WHERE id = :id";
 
             $q = $db->prepare($sql);
@@ -298,12 +292,49 @@ function archive($db, $id){
             $q->bindParam('time', $now);
             $q->execute();
 
-            header('location:' . HTTP . '/public/index.php');
+            header('location: ../../public/views/dashboard/dashboard.php');
 
+        }else{
+            foreach($resulten as $resul){
+                if($resul['archived_at'] == 0 || $resul['paid'] == 0){
+                    $messageBag->add('w', 'Not all projects are done or not all invoices are paid');
+                }else{
+
+                    $sql = "UPDATE tbl_customer SET archived_at = :time WHERE id = :id";
+
+                    $q = $db->prepare($sql);
+                    $q->bindParam(':id', $id);
+                    $q->bindParam('time', $now);
+                    $q->execute();
+
+                    header('location: ../../public/views/dashboard/dashboard.php');
+
+                }
+
+            }
         }
+        header('location: ../../public/views/dashboard/dashboard.php');
+
+
+
 
     }else{
-        header('location:' . HTTP . '/public/index.php');
+        header('location: ../../public/dashboard/dashboard.php');
     }
+
+}
+
+function dearchive($db,$id){
+
+    $now = 0;
+
+    $sql = "UPDATE tbl_customer SET archived_at = :time WHERE id = :id";
+
+    $q = $db->prepare($sql);
+    $q->bindParam(':id', $id);
+    $q->bindParam('time', $now);
+    $q->execute();
+
+    header('location: ../../public/views/dashboard/dashboard.php');
 
 }

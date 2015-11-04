@@ -20,12 +20,6 @@ switch( $_POST['type'] ) {
 
 }
 
-function alert($string)
-{
-    echo '<script type="text/javascript">alert("' . $string . '");</script>';
-    echo '<script type="text/javascript">history.go(-1);</script>';
-}
-
 function login($username, $password, $db) {
     global $messageBag;
     if(empty($username) ||

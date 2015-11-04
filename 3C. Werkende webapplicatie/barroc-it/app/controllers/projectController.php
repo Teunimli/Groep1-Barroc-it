@@ -36,6 +36,7 @@ switch( $_POST['type'] ) {
             $_POST['application'],
             $_POST['deadline'],
             $_POST['active'],
+            $_POST['customer_id'],
             $db
         );
         break;
@@ -77,26 +78,26 @@ function add($customer_id, $projectname, $start_date, $end_date,
                 $q->execute();
 
 
-                    if ($q->rowCount() == 1) {
-                        $active = 'There is already a project active';
-                        alert($active);
-                        $controle = 1;
-                    }else if (
-                        empty($_POST['projectname']) ||
-                        empty($_POST['start_date']) ||
-                        empty($_POST['status']) ||
-                        empty($_POST['description']) ||
-                        empty($_POST['limiten']) ||
-                        !isset($_POST['maintenance_contract']) ||
-                        empty($_POST['deadline']) ||
-                        !isset($_POST['active'])) {
+                if ($q->rowCount() == 1) {
+                    $active = 'There is already a project active';
+                    alert($active);
+                    $controle = 1;
+                }else if (
+                    empty($_POST['projectname']) ||
+                    empty($_POST['start_date']) ||
+                    empty($_POST['status']) ||
+                    empty($_POST['description']) ||
+                    empty($_POST['limiten']) ||
+                    !isset($_POST['maintenance_contract']) ||
+                    empty($_POST['deadline']) ||
+                    !isset($_POST['active'])) {
 
-                        $notFilled = 'data is incomplete';
-                        alert($notFilled);
-                        $controle = 1;
-                    } else {
-                        $controle = 2;
-                    }
+                    $notFilled = 'data is incomplete';
+                    alert($notFilled);
+                    $controle = 1;
+                } else {
+                    $controle = 2;
+                }
             } else {
                 $controle = 1;
             }
@@ -105,16 +106,29 @@ function add($customer_id, $projectname, $start_date, $end_date,
 
     if($controle == 2){
 
+        if($_POST['maintenance_contract'] == 'yes' || $_POST['maintenance_contract'] == 'Yes'){
+            $maintenance_contract = 1;
+        }else if($_POST['maintenance_contract'] == 'no' || $_POST['maintenance_contract'] == 'No'){
+            $maintenance_contract = 0;
+        }
+
+        if($_POST['active'] == 'yes' || $_POST['active'] == 'Yes'){
+            $active = 1;
+        }else if($_POST['active'] == 'no' || $_POST['active'] == 'No'){
+            $active = 0;
+        }
+
         $start_timestamp = strtotime($start_date);
         $end_timestamp = strtotime($end_date);
         $deadline_timestamp = strtotime($deadline);
+        $archive = 0;
 
         $sql = "INSERT INTO tbl_projects(customer_id, projectname, start_date, end_date, software, hardware,
                                          operating_system, status, description, limiten, maintenance_contract,
-                                         application, deadline, active, created_at)
+                                         application, deadline, active, created_at, archived_at)
                                   VALUES(:customer_id, :projectname, :start_date, :end_date, :software, :hardware,
                                          :operating_system, :status, :description, :limiten, :maintenance_contract,
-                                         :application, :deadline, :active, :created_at)";
+                                         :application, :deadline, :active, :created_at, :archived_at)";
 
 
         $q = $db->prepare($sql);
@@ -133,16 +147,17 @@ function add($customer_id, $projectname, $start_date, $end_date,
         $q->bindParam(':deadline', $deadline_timestamp);
         $q->bindParam(':active', $active);
         $q->bindParam(':created_at', $created_at);
+        $q->bindParam(':archived_at', $archive);
         $q->execute();
 
-            header('location: ../../public/views/dashboard/dashboard.php');
+        header('location: ../../public/views/project/viewprojects.php?id=' . $_POST['customer_id']);
     }
 
 }
 
 function edit($id, $projectname, $start_date, $end_date,
               $hardware, $software, $operating_system, $status,
-              $description, $limiten, $maintenance_contract, $application, $deadline, $active, $db){
+              $description, $limiten, $maintenance_contract, $application, $deadline, $active,$customerid, $db){
 
     $updated_at = time();
 
@@ -152,25 +167,46 @@ function edit($id, $projectname, $start_date, $end_date,
     $end_timestamp = strtotime($end_date);
     $deadline_timestamp = strtotime($deadline);
 
-
     if (empty($_POST['projectname']) ||
-            empty($_POST['start_date']) ||
-            empty($_POST['status']) ||
-            empty($_POST['description']) ||
-            empty($_POST['limiten']) ||
-            !isset($_POST['maintenance_contract']) ||
-            empty($_POST['deadline']) ||
-            !isset($_POST['active'])
-        ){
-            $notFilled = 'data is incomplete';
-            alert($notFilled);
-            $controle = 1;
+        empty($_POST['start_date']) ||
+        empty($_POST['status']) ||
+        empty($_POST['description']) ||
+        empty($_POST['limiten']) ||
+        !isset($_POST['maintenance_contract']) ||
+        empty($_POST['deadline']) ||
+        !isset($_POST['active'])
+    ){
+        $notFilled = 'data is incomplete';
+        alert($notFilled);
+        $controle = 1;
 
+    }else{
+        $sql= "SELECT * FROM tbl_projects WHERE customer_id = :id AND active = 1";
+        $q = $db->prepare($sql);
+        $q->bindParam(':id', $customerid);
+        $q->execute();
+
+        if($q->rowCount() >= 1){
+            $controle = 1;
+            header('location: ../../public/views/project/viewprojects.php?id=' . $_POST['customer_id']);
         }else{
             $controle = 2;
         }
+    }
 
     if($controle == 2){
+
+        if($_POST['maintenance_contract'] == 'yes' || $_POST['maintenance_contract'] == 'Yes'){
+            $maintenance_contract = 1;
+        }else if($_POST['maintenance_contract'] == 'no' || $_POST['maintenance_contract'] == 'No'){
+            $maintenance_contract = 0;
+        }
+
+        if($_POST['active'] == 'yes' || $_POST['active'] == 'Yes'){
+            $active = 1;
+        }else if($_POST['active'] == 'no' || $_POST['active'] == 'No'){
+            $active = 0;
+        }
 
         $sql = "UPDATE tbl_projects SET projectname = :projectname,
                                         start_date = :start_date,

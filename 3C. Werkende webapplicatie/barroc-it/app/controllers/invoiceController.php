@@ -13,6 +13,7 @@ switch( $_POST['type'] ) {
             $db);
         break;
     case 'edit':
+
         edit($_POST['invoicenumber'],
             $_POST['date_of_invoice'],
             $_POST['end_invoice_date'],
@@ -41,9 +42,9 @@ function edit($id,$date_of_invoice, $end_invoice_date, $activities, $price, $pai
 
     if($controle == 2){
 
-        if($_POST['paid'] == 'yes'){
+        if($_POST['paid'] == 'yes' || $_POST['paid'] == 'Yes'){
             $paid = 1;
-        }else{
+        }else if($_POST['paid'] == 'no' || $_POST['paid'] == 'No'){
             $paid = 0;
         }
 
@@ -65,6 +66,8 @@ function edit($id,$date_of_invoice, $end_invoice_date, $activities, $price, $pai
         $q->bindParam(':paid', $paid);
         $q->bindParam(':id', $id);
         $q->execute();
+
+        header('location: ../../public/views/finance/invoiceinfo.php?id=' . $_POST['id']. '&customerid=' .$_POST['customerid']);
     }
 
 }
@@ -76,10 +79,10 @@ function add($id, $date_of_invoice, $end_invoice_date, $invoicenumber, $activiti
     $controle = 2;
 
     if(empty($_POST['date_of_invoie']) ||
-       empty($_POST['end_invoice_date']) ||
-       empty($_POST['invoicenumber']) ||
-       empty($_POST['activities']) ||
-       empty($_POST['price'])){
+        empty($_POST['end_invoice_date']) ||
+        empty($_POST['invoicenumber']) ||
+        empty($_POST['activities']) ||
+        empty($_POST['price'])){
 
         $controle = 1;
         $messageBag->add('w','Not all fields are filled in');
@@ -98,6 +101,7 @@ function add($id, $date_of_invoice, $end_invoice_date, $invoicenumber, $activiti
         }
     }
 
+
     if($controle == 2){
 
         $dateofinvoice = strtotime($date_of_invoice);
@@ -115,8 +119,12 @@ function add($id, $date_of_invoice, $end_invoice_date, $invoicenumber, $activiti
         $q->bindParam(':date_of_invoice', $dateofinvoice);
         $q->execute();
 
-        //header('location: /../public/views/dashboard/dashboard.php');
+        header('location: ../../public/views/finance/invoiceinfo.php?id=' . $_POST['id']. '&customerid=' .$_POST['customerid']);
 
+    }else{
+        $messageBag->add('w','Something went wrong');
+
+        header('location: ../../public/views/finance/invoiceinfo.php?id=' . $_POST['id']. '&customerid=' .$_POST['customerid']);
     }
 
 }

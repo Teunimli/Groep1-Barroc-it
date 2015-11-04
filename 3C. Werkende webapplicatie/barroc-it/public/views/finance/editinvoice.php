@@ -17,6 +17,14 @@ $q->execute();
 
 $invoice = $q->fetch();
 
+$project = $_GET['projectid'];
+$sql = "SELECT * FROM tbl_projects WHERE id = :id";
+$q = $db->prepare($sql);
+$q->bindParam(':id', $project);
+$q->execute();
+
+$project = $q->fetch();
+
 ?>
 <div class="container">
     <header>
@@ -48,7 +56,9 @@ $invoice = $q->fetch();
             </div>
             <h2 class="text-center">Edit invoice</h2>
             <input type="hidden" name="type" value="edit">
-            <input type="hidden" name="id" value="<?= $customer['id'] ?>" />
+            <input type="hidden" name="customerid" value="<?= $customer['id'] ?>" />
+            <input type="hidden" name="id" value="<?= $invoice['projects_id'] ?>" />
+
 
             <div class="grid">
                 <div class="col-6">
@@ -103,24 +113,43 @@ $invoice = $q->fetch();
                     </div>
 
                 </div>
+
                 <div class="col-6">
                     <div class="form-group">
-                        <label for="date_of_invoice" class="col-4">today date:</label>
+                        <label for="projectname" class="col-4">Projectname:</label>
+                        <input type="text" name="projectname" value="<?= $project['projectname']?>" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="project_start_date" class="col-4">Project start date:</label>
+                        <input type="date" name="project_start_date" value="<?= date('Y-m-d',$project['start_date'])?>" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="project_end_date" class="col-4">Project end date:</label>
+                        <input type="date" name="project_end_date" value="<?= date('Y-m-d',$project['end_date'])?>"readonly>
+                    </div>
+
+                </div><!--end col-6--->
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="date_of_invoice" class="col-4">today date:*</label>
                         <input type="date" name="date_of_invoice" value="<?= date('Y-m-d',$invoice['date_of_invoice'])?>">
                     </div>
 
                     <div class="form-group">
-                        <label for="end_invoice_date" class="col-4">Expiration date:</label>
+                        <label for="end_invoice_date" class="col-4">Expiration date:*</label>
                         <input type="date" name="end_invoice_date" value="<?= date('Y-m-d',$invoice['end_invoice_date'])?>">
                     </div>
 
                     <div class="form-group">
-                        <label for="invoicenumber" class="col-4">Invoice number:</label>
+                        <label for="invoicenumber" class="col-4">Invoice number:*</label>
                         <input type="number" name="invoicenumber" value="<?= $invoice['id']?>"readonly>
                     </div>
 
                     <div class="form-group">
-                        <label for="paid" class="col-4">Paid:</label>
+                        <label for="paid" class="col-4">Paid:*</label>
                         <input type="text" name="paid" value="<?if($invoice['paid'] == 1){ echo'Yes';}else{echo'No';}?>">
                     </div>
 
@@ -128,17 +157,18 @@ $invoice = $q->fetch();
             </div><!--end grid--->
             <div class="grid">
                 <div class="col-9">
-                    <h2>Activities</h2>
+                    <h2>Activities*</h2>
                     <div class="form-group">
                         <textarea name="activities"><?= $invoice['inv_description']?></textarea>
                     </div>
                 </div>
                 <div class="col-3">
-                    <h2>Price</h2>
+                    <h2>Price*</h2>
                     <div class="form-group">
                         <input type="text" name="price" value="<?= $invoice['total_price']?>">
                     </div>
                 </div>
+                <p>* You must fill these fields in</p>
             </div><!--end grid--->
             <input type="submit" value="Submit">
         </form>

@@ -9,8 +9,10 @@ $q->execute();
 
 $invoices = $q->fetchAll(PDO::FETCH_ASSOC);
 
+if($messageBag->hasMsg()){
+    echo $messageBag->show();
+}
 ?>
-
 
 <div class="contaier">
     <header>

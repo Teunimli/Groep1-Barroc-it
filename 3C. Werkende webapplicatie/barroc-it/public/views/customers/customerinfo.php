@@ -12,27 +12,34 @@ $customer = $q->fetch();
 ?>
 
 
-<div class="contaier">
+<div class="container">
     <header>
+        <div class="top-img">
+            <img src="../../assets/img/jumbotron_small.jpg" alt="barroc-it image" class="barroc-img">
+            <h1 class="barroc-title">BARROC IT. </h1>
+            <h2 class="text-center subhead tophead">Customer Info</h2>
+        </div>
+        <form action="../../../app/controllers/authController.php" method="POST">
+            <input type="hidden" name="type" value="logout">
+            <nav role="navigation" class="navbar navbar-default">
+                <!-- Brand and toggle get grouped for better mobile display -->
 
+                <!-- Collection of nav links and other content for toggling -->
+                <div id="navbarCollapse" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="../dashboard/dashboard.php">Home</a></li>
+                        <li class="active"><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li>
+                        <li><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
+                        <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li>
+                        <li><a><input type="submit" value="Logout"></a></li>
+                    </ul>
 
-        <nav role="navigation" class="navbar navbar-default">
-            <!-- Brand and toggle get grouped for better mobile display -->
-
-            <!-- Collection of nav links and other content for toggling -->
-            <div id="navbarCollapse" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="../dashboard/dashboard.php">Home</a></li>
-
-                </ul>
-
-            </div>
-        </nav>
+                </div>
+            </nav>
+        </form>
 
     </header>
     <div class="container-content">
-        <h2 class="text-center">Customer information</h2>
-        <form action="">
             <div class="message">
                 <?php
                 if($messageBag->hasMsg()){
@@ -123,24 +130,30 @@ $customer = $q->fetch();
                         <input type="email" name="email" value="<?= $customer['email'] ?>" readonly>
                     </div>
 
-                    <div class="form-group">
-                        <label for="email" class="col-4">Potential customer:</label>
-                        <input type="email" name="email" value="<?= $customer['email'] ?>" readonly>
-                    </div>
 
                     <div class="form-group">
                         <label for="creditworthy" class="col-4">Creditworthy:</label>
                         <input type="email" name="creditworthy" value="<?php if($customer['creditworthy']) { echo 'Yes'; } else {echo 'No';}?>" readonly>
                     </div>
+                    <?php if(in_array("Finance",$_SESSION['user'])) { ?>
+                        <div class="form-group">
+                            <label for="ledgeraccountnumber" class="col-4">Ledger account number:</label>
+                            <input type="text" name="ledgeraccountnumber" value="<?= $customer['ledgeraccountnumber']?>">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="email" class="col-4">Appointment date:</label>
-                        <input type="email" name="email" value="<?= $customer['email'] ?>" readonly>
-                    </div>
+                        <div class="form-group">
+                            <label for="taxcode" class="col-4">Taxcode:</label>
+                            <input type="text" name="taxcode" value="<?= $customer['taxcode']?>">
+                        </div>
 
+                        <div class="form-group">
+                            <label for="bkrcheck" class="col-4">BKR-check:</label>
+                            <input type="text" name="bkrcheck" value="<?php if($customer['bkrcheck']) { echo 'Yes'; } else {echo 'No';}?>">
+                        </div>
+                    <?php } ?>
                     <div class="form-group">
-                        <label for="email" class="col-4">Discription:</label>
-                        <input type="email" name="email" value="<?= $customer['email'] ?>" readonly>
+                        <label for="open_project" class="col-4">Open project:</label>
+                        <input type="text" name="open_project" value="<?php if($customer['open_project']) { echo 'Yes'; } else {echo 'No';}?>">
                     </div>
 
                     <div class="form-group">
@@ -155,32 +168,35 @@ $customer = $q->fetch();
                 </div><!--end col-6--->
 
             </div><!--end grid--->
-        </form>
         <div class="buttons">
             <?php
             if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>
-                 <a href="../sales/appointments.php<?php echo '?id=' . $customer['id']?>">Appointments</a>
+                 <a class="btn btn-primary" href="../sales/appointments.php<?php echo '?id=' . $customer['id']?>">Appointments</a>
                 <?php
             }
             ?>
             <?php if(in_array("Finance",$_SESSION['user'])) { ?>
-                <a href="<?php echo  '../invoice/viewInvoices.php?id=' . $customer['id']?>">Invoices</a>
+                <a class="btn btn-primary" href="<?php echo  '../project/viewprojects.php?id=' . $customer['id']?>">Project</a>
 
             <?php }
             if(in_array("Sales",$_SESSION['user'])) { ?>
-                <a href="<?php echo  '../../../app/controllers/customercontroller.php?id=' . $customer['id']?>">Archive</a>
+                <form action="<?php echo '../../../app/controllers/customercontroller.php'?>" METHOD="POST">
+                    <input type="hidden" name="type" value="archive">
+                    <input type="hidden" name="id" value="<?= $customer['id'] ?>"/>
+                    <input type="submit" value="Archive">
+                </form>
                 <?php
             }
             if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user']) || in_array("Development", $_SESSION['user'])) { ?>
-            <a href="<?php echo  '../project/viewprojects.php?id=' . $customer['id']?>">View project</a>
+            <a class="btn btn-primary" href="<?php echo  '../project/viewprojects.php?id=' . $customer['id']?>">View project</a>
             <?php }
             if(in_array("Sales",$_SESSION['user'])) { ?>
-            <a href="<?php echo  '../project/addproject.php?id=' . $customer['id']?>">make project</a>
+            <a class="btn btn-primary" href="<?php echo  '../project/addproject.php?id=' . $customer['id']?>">make project</a>
             <?php } ?>
-            <a onclick="goBack()">Back</a>
+            <a class="btn btn-primary" onclick="goBack()">Back</a>
             <?php
             if(in_array("Sales",$_SESSION['user']) || in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>
-                <a href="../customers/editcustomer.php<?php echo '?id=' . $customer['id'] ?>">edit</a>
+                <a class="btn btn-primary" href="../customers/editcustomer.php<?php echo '?id=' . $customer['id'] ?>">edit</a>
                 <?php
             }
             ?>

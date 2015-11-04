@@ -12,33 +12,31 @@ $projects = $q->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 
-<div class="contaier">
+<div class="container">
     <header>
+        <div class="top-img">
+            <img src="../../assets/img/jumbotron_small.jpg" alt="barroc-it image" class="barroc-img">
+            <h1 class="barroc-title">BARROC IT. </h1>
+            <h2 class="text-center subhead tophead">Projects</h2>
+        </div>
+        <form action="../../../app/controllers/authController.php" method="POST">
+            <input type="hidden" name="type" value="logout">
+            <nav role="navigation" class="navbar navbar-default">
+                <!-- Brand and toggle get grouped for better mobile display -->
 
+                <!-- Collection of nav links and other content for toggling -->
+                <div id="navbarCollapse" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="../dashboard/dashboard.php">Home</a></li>
+                        <li ><a href="../customers/customerinfo.php?id=<?= $id?>">customer info</a></li>
+                        <li class="active"><a href="../project/viewprojects.php?id=<?= $id?>">Projects</a></li>
+                        <li><a href="../sales/appointments.php?id=<?= $id?>">Appointments</a></li>
+                        <li><a><input type="submit" value="Logout"></a></li>
+                    </ul>
 
-        <nav role="navigation" class="navbar navbar-default">
-            <!-- Brand and toggle get grouped for better mobile display -->
-
-            <!-- Collection of nav links and other content for toggling -->
-            <div id="navbarCollapse" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                </ul>
-
-                <div class="homesales">
-                    <form action="">
-                        <label for="search"></label>
-                        <input type="text" name="search" id="search">
-                        <input type="submit" name="search" value="Zoeken">
-                    </form>
-                </div><!--homesales-->
-
-                <ul class="nav navbar-nav logout-button">
-                    <li><a href="">Logout</a></li>
-                </ul>
-
-            </div>
-        </nav>
+                </div>
+            </nav>
+        </form>
 
     </header>
     <div class="container-content">
@@ -48,7 +46,7 @@ $projects = $q->fetchAll(PDO::FETCH_ASSOC);
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>Projectname</th>
+                        <th>Project name</th>
                         <th>start date</th>
                         <th>end date</th>
                         <th>hardware</th>
@@ -57,7 +55,7 @@ $projects = $q->fetchAll(PDO::FETCH_ASSOC);
                         <th>status</th>
                         <th>desription</th>
                         <th>limit</th>
-                        <th>maintenance_contract</th>
+                        <th>maintenance contract</th>
                         <th>application</th>
                         <th>paid invoices</th>
                         <th>remaining invoices</th>
@@ -78,7 +76,7 @@ $projects = $q->fetchAll(PDO::FETCH_ASSOC);
                             <td> <?= $project['status']; ?> </td>
                             <td> <?= $project['description']; ?> </td>
                             <td> <?= $project['limiten']; ?> </td>
-                            <td> <?= $project['maintenance_contract']; ?> </td>
+                            <td> <?if($project['maintenance_contract'] == 1){ echo'Yes';}else{echo'No';} ?> </td>
                             <td> <?= $project['application']; ?> </td>
                             <?
                             $id = $project['id'];
@@ -99,10 +97,10 @@ $projects = $q->fetchAll(PDO::FETCH_ASSOC);
                             <td> <?= $in_paid['COUNT(paid)']; ?> </td>
 
                             <td> <?= date('d.m.Y',$project['deadline']); ?> </td>
-                            <td> <?= $project['active']; ?> </td>
+                            <td> <?if($project['active'] == 1){ echo'Yes';}else{echo'No';} ?> </td>
                             <td> <button> <a href="<?= '../project/editproject.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>Edit</button></td>
-                            <td> <button> <a href="<?= '../finance/addinvoice.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>Add invoice</button></td>
-                            <td> <button> <a href="<?= '../finance/invoiceinfo.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>View invoice</button></td>
+                            <?php if(in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?><td> <button> <a href="<?= '../finance/addinvoice.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>Add invoice</button></td>
+                            <td> <button> <a href="<?= '../finance/invoiceinfo.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>View invoice</button></td> <?php } ?>
 
                         </tr>
                     <?php } ?>
