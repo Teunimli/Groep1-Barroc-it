@@ -164,8 +164,11 @@ $customer = $q->fetch();
             }
             ?>
 
-
-                <a href="">Archive</a>
+            <form action="<?php echo '../../../app/controllers/customercontroller.php'?>" METHOD="POST">
+                <input type="hidden" name="type" value="archive">
+                <input type="hidden" name="id" value="<?= $customer['id'] ?>"/>
+                <input type="submit" value="Archiveer">
+            </form>
             <a href="<?php echo  '../project/viewprojects.php?id=' . $customer['id']?>">View project</a>
             <a href="<?php echo  '../project/addproject.php?id=' . $customer['id']?>">make project</a>
             <a onclick="goBack()">Back</a>

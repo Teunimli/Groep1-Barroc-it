@@ -121,13 +121,14 @@ function add($customer_id, $projectname, $start_date, $end_date,
         $start_timestamp = strtotime($start_date);
         $end_timestamp = strtotime($end_date);
         $deadline_timestamp = strtotime($deadline);
+        $archive = 0;
 
         $sql = "INSERT INTO tbl_projects(customer_id, projectname, start_date, end_date, software, hardware,
                                          operating_system, status, description, limiten, maintenance_contract,
-                                         application, deadline, active, created_at)
+                                         application, deadline, active, created_at, archived_at)
                                   VALUES(:customer_id, :projectname, :start_date, :end_date, :software, :hardware,
                                          :operating_system, :status, :description, :limiten, :maintenance_contract,
-                                         :application, :deadline, :active, :created_at)";
+                                         :application, :deadline, :active, :created_at, :archived_at)";
 
 
         $q = $db->prepare($sql);
@@ -146,6 +147,7 @@ function add($customer_id, $projectname, $start_date, $end_date,
         $q->bindParam(':deadline', $deadline_timestamp);
         $q->bindParam(':active', $active);
         $q->bindParam(':created_at', $created_at);
+        $q->bindParam(':archived_at', $archive);
         $q->execute();
 
         header('location: ../../public/views/project/viewprojects.php?id=' . $_POST['customer_id']);
@@ -191,8 +193,6 @@ function edit($id, $projectname, $start_date, $end_date,
             $controle = 2;
         }
     }
-
-
 
     if($controle == 2){
 

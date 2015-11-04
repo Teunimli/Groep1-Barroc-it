@@ -5,7 +5,7 @@ require_once '../../header.php';
 <?php
 
 // de query die gedaan moet worden
-$sql = "SELECT * FROM tbl_customer WHERE archived_at = 0";
+$sql = "SELECT * FROM tbl_customer WHERE archived_at != 0";
 
 // de query wordt opgeslagen
 $q = $db->query($sql);
@@ -26,7 +26,7 @@ $customers = $q->fetchAll();
     <a href="../customers/addcustomer.php" class="btn btn-primary">Add Customer</a>
     <input type="hidden" name="type" value="logout">
     <input type="submit" value="Logout" class="btn btn-primary" style="float: right;">
-    
+
 </form>
 
 
@@ -44,10 +44,13 @@ $customers = $q->fetchAll();
             <form action="<?php echo  '../../../app/controllers/customercontroller.php'?>" method="post">
                 <input type="hidden" name="id" value="<?php echo $customer['id'] ?>">
             </form>
+
+            <form action="<?php echo '../../../app/controllers/customercontroller.php'?>" METHOD="POST">
+                <input type="hidden" name="type" value="dearchive">
+                <input type="hidden" name="id" value="<?= $customer['id'] ?>"/>
+                <input type="submit" value="Dearchive">
+            </form>
             <br />
         </li>
     <?php endforeach; ?>
 </ul>
-
-<a href=" ../customers/archivedcustomer.php">archived</a>
-
