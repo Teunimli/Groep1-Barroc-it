@@ -28,20 +28,27 @@ $project = $q->fetch();
 ?>
 <div class="container">
     <header>
+        <div class="top-img">
+            <img src="../../assets/img/jumbotron_small.jpg" alt="barroc-it image" class="barroc-img">
+            <h1 class="barroc-title">BARROC IT. </h1>
+            <h2 class="text-center subhead tophead">Edit Invoice</h2>
+        </div>
+        <form action="../../../app/controllers/authController.php" method="POST">
+            <input type="hidden" name="type" value="logout">
+            <nav role="navigation" class="navbar navbar-default">
 
-
-        <nav role="navigation" class="navbar navbar-default">
-            <!-- Brand and toggle get grouped for better mobile display -->
-
-            <!-- Collection of nav links and other content for toggling -->
-            <div id="navbarCollapse" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="../dashboard/dashboard.php">Home</a></li>
-
+                    <li><a href="../dashboard/dashboard.php">Home</a></li>
+                    <li><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li>
+                    <li class="active"><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
+                    <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><input type="submit" value="LOGOUT" class="logout"></a></li>
                 </ul>
 
-            </div>
-        </nav>
+            </nav>
+        </form>
 
     </header>
     <div class="container-content">

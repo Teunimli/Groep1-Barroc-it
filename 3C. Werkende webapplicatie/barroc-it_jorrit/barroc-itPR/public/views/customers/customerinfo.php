@@ -22,25 +22,22 @@ $customer = $q->fetch();
         <form action="../../../app/controllers/authController.php" method="POST">
             <input type="hidden" name="type" value="logout">
             <nav role="navigation" class="navbar navbar-default">
-                <!-- Brand and toggle get grouped for better mobile display -->
 
-                <!-- Collection of nav links and other content for toggling -->
-                <div id="navbarCollapse" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="../dashboard/dashboard.php">Home</a></li>
-                        <li class="active"><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">customer info</a></li>
+                        <li class="active"><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li>
                         <li><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
                         <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li>
-                        <li><a><input type="submit" value="Logout"></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a><input type="submit" value="LOGOUT" class="logout"></a></li>
                     </ul>
 
-                </div>
             </nav>
         </form>
 
     </header>
     <div class="container-content">
-        <form action="">
             <div class="message">
                 <?php
                 if($messageBag->hasMsg()){
@@ -131,10 +128,6 @@ $customer = $q->fetch();
                         <input type="email" name="email" value="<?= $customer['email'] ?>" readonly>
                     </div>
 
-                    <div class="form-group">
-                        <label for="email" class="col-4">Potential customer:</label>
-                        <input type="email" name="email" value="<?= $customer['email'] ?>" readonly>
-                    </div>
 
                     <div class="form-group">
                         <label for="creditworthy" class="col-4">Creditworthy:</label>
@@ -173,35 +166,39 @@ $customer = $q->fetch();
                 </div><!--end col-6--->
 
             </div><!--end grid--->
-        </form>
         <div class="buttons">
-            <?php
-            if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>
-                 <a class="btn btn-primary" href="../sales/appointments.php<?php echo '?id=' . $customer['id']?>">Appointments</a>
-                <?php
-            }
-            ?>
-            <?php if(in_array("Finance",$_SESSION['user'])) { ?>
-                <a class="btn btn-primary" href="<?php echo  '../invoice/viewInvoices.php?id=' . $customer['id']?>">Invoices</a>
 
-            <?php }
-            if(in_array("Sales",$_SESSION['user'])) { ?>
-                <a class="btn btn-primary" href="<?php echo  '../../../app/controllers/customercontroller.php?id=' . $customer['id']?>">Archive</a>
-                <?php
-            }
-            if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user']) || in_array("Development", $_SESSION['user'])) { ?>
-            <a class="btn btn-primary" href="<?php echo  '../project/viewprojects.php?id=' . $customer['id']?>">View project</a>
-            <?php }
-            if(in_array("Sales",$_SESSION['user'])) { ?>
-            <a class="btn btn-primary" href="<?php echo  '../project/addproject.php?id=' . $customer['id']?>">make project</a>
-            <?php } ?>
-            <a class="btn btn-primary" onclick="goBack()">Back</a>
-            <?php
-            if(in_array("Sales",$_SESSION['user']) || in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>
-                <a class="btn btn-primary" href="../customers/editcustomer.php<?php echo '?id=' . $customer['id'] ?>">edit</a>
-                <?php
-            }
-            ?>
+                <form action="<?php echo '../../../app/controllers/customercontroller.php'?>" METHOD="POST">
+                    <input type="hidden" name="type" value="archive">
+                    <input type="hidden" name="id" value="<?= $customer['id'] ?>"/>
+                    <?php
+                    if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>
+                        <a class="btn btn-primary" href="../sales/appointments.php<?php echo '?id=' . $customer['id']?>">Appointments</a>
+                        <?php
+                    }
+                    if(in_array("Finance",$_SESSION['user'])) { ?>
+                        <a class="btn btn-primary" href="<?php echo  '../project/viewprojects.php?id=' . $customer['id']?>">Project</a>
+
+                    <?php }
+
+                    if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user']) || in_array("Development", $_SESSION['user'])) { ?>
+                        <a class="btn btn-primary" href="<?php echo  '../project/viewprojects.php?id=' . $customer['id']?>">View project</a>
+                    <?php }
+                    if(in_array("Sales",$_SESSION['user'])) { ?>
+                        <a class="btn btn-primary" href="<?php echo  '../project/addproject.php?id=' . $customer['id']?>">make project</a>
+                    <?php } ?>
+                    <a style="float: right; margin-left: 5px;" class="btn btn-primary" onclick="goBack()">Back</a>
+                    <?php
+                    if(in_array("Sales",$_SESSION['user']) || in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>
+                        <a style="float: right; margin-left: 5px;" class="btn btn-primary" href="../customers/editcustomer.php<?php echo '?id=' . $customer['id'] ?>">edit</a>
+                        <?php
+                    }
+                    if(in_array("Sales",$_SESSION['user'])) {  ?>
+                    <input style="float: right; margin-left: 5px;" class="btn btn-primary" type="submit" value="Archive">
+                    <?php } ?>
+
+                </form>
+
 
 
 

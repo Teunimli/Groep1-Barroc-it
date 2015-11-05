@@ -4,28 +4,22 @@
         <div class="top-img">
             <img src="../../assets/img/jumbotron_small.jpg" alt="barroc-it image" class="barroc-img">
             <h1 class="barroc-title">BARROC IT. </h1>
-            <h2 class="text-center subhead tophead">Add Customer</h2>
+            <h2 class="text-center subhead tophead">Customer Info</h2>
         </div>
+        <form action="../../../app/controllers/authController.php" method="POST">
+            <input type="hidden" name="type" value="logout">
+            <nav role="navigation" class="navbar navbar-default">
 
-        <nav role="navigation" class="navbar navbar-default">
-            <!-- Brand and toggle get grouped for better mobile display -->
-
-            <!-- Collection of nav links and other content for toggling -->
-            <div id="navbarCollapse" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <div class="message">
-                        <?php
-                        if($messageBag->hasMsg()){
-                            echo $messageBag->show();
-                        }
-                        ?>
-                    </div>
-                    <li class="active"><a href="../dashboard/dashboard.php">Home</a></li>
+                    <li><a href="../dashboard/dashboard.php">Home</a></li>
 
                 </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><input type="submit" value="LOGOUT" class="logout"style=""></a></li>
+                </ul>
 
-            </div>
-        </nav>
+            </nav>
+        </form>
 
     </header>
     <div class="container-content">
@@ -119,8 +113,10 @@
                 </div><!--end col-6--->
 
             </div><!--end grid--->
-            <input class="btn btn-primary" type="submit" value="Create">
-            <a class="btn btn-primary" onclick="goBack()">Back</a>
+            <div class="buttons">
+                <input class="btn btn-primary" type="submit" value="Create">
+                <a class="btn btn-primary" onclick="goBack()">Back</a>
+            </div>
         </form>
 
 

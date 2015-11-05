@@ -185,10 +185,10 @@ function edit ($id, $contact_name, $contact_lastname,
         $messageBag->add('w', 'Wrong input at "creditworthy"');
         return false;
     }
-
+    if(in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user']))
     if($bkrcheck == 'Yes' || $bkrcheck == 'yes') {
         $bkrstatus = 1;
-    } else if($creditworthy == 'No' || $creditworthy == 'no') {
+    } else if($bkrcheck == 'No' || $bkrcheck == 'no') {
         $bkrstatus = 0;
     } else {
         $messageBag->add('w', 'Wrong input at "bkrcheck"');

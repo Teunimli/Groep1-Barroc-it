@@ -18,23 +18,22 @@ $customers = $q->fetchAll();
             <h1 class="barroc-title">BARROC IT. </h1>
             <h2 class="text-center subhead tophead">Add Project</h2>
         </div>
-
         <form action="../../../app/controllers/authController.php" method="POST">
             <input type="hidden" name="type" value="logout">
             <nav role="navigation" class="navbar navbar-default">
-                <!-- Brand and toggle get grouped for better mobile display -->
 
-                <!-- Collection of nav links and other content for toggling -->
-                <div id="navbarCollapse" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="../dashboard/dashboard.php">Home</a></li>
-                        <li class="active"><a href="../customers/customerinfo.php?id=<?= $customers['id'] ?>">customer info</a></li>
-                        <li><a href="../project/viewprojects.php?id=<?= $customers['id'] ?>">Projects</a></li>
-                        <li><a href="../sales/appointments.php?id=<?= $customers['id'] ?>">Appointments</a></li>
-                        <li><a><input type="submit" value="Logout"></a></li>
-                    </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="../dashboard/dashboard.php">Home</a></li>
+                    <li><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li>
+                    <li class="active"><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
+                    <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li>
 
-                </div>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><input type="submit" value="LOGOUT" class="logout"></a></li>
+                </ul>
+
+
             </nav>
         </form>
 
@@ -105,10 +104,6 @@ $customers = $q->fetchAll();
                         <input type="text" name="maintenance_contract">
                     </div>
 
-                    <div class="form-group">
-                        <label for="application" class="col-4">Application:</label>
-                        <input type="text" name="application">
-                    </div>
 
                     <div class="form-group">
                         <label for="deadline" class="col-4">Deadline:</label>
@@ -124,9 +119,12 @@ $customers = $q->fetchAll();
 
 
             </div><!--end grid--->
-            <input type="submit" value="Submit">
+            <div class="buttons">
+                <input class="btn btn-primary" type="submit" value="Submit">
+                <a style="float: right" class="btn btn-primary" onclick="goBack()">Back</a>
+            </div>
         </form>
-        <a onclick="goBack()">Back</a>
+
 
     </div><!--end container-content-->
 </div><!--end container--->

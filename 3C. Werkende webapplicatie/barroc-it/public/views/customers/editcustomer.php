@@ -12,29 +12,25 @@ $customer = $q->fetch();
 ?>
 <div class="container">
     <header>
-
         <div class="top-img">
             <img src="../../assets/img/jumbotron_small.jpg" alt="barroc-it image" class="barroc-img">
             <h1 class="barroc-title">BARROC IT. </h1>
             <h2 class="text-center subhead tophead">Edit Customer</h2>
         </div>
-
         <form action="../../../app/controllers/authController.php" method="POST">
             <input type="hidden" name="type" value="logout">
             <nav role="navigation" class="navbar navbar-default">
-                <!-- Brand and toggle get grouped for better mobile display -->
 
-                <!-- Collection of nav links and other content for toggling -->
-                <div id="navbarCollapse" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="../dashboard/dashboard.php">Home</a></li>
-                        <li class="active"><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">customer info</a></li>
-                        <li><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
-                        <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li>
-                        <li><a><input type="submit" value="Logout"></a></li>
-                    </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="../dashboard/dashboard.php">Home</a></li>
+                    <li class="active"><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li>
+                    <li><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
+                    <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><input type="submit" value="LOGOUT" class="logout"></a></li>
+                </ul>
 
-                </div>
             </nav>
         </form>
 
@@ -138,7 +134,7 @@ $customer = $q->fetch();
 
                     <div class="form-group">
                         <label for="creditworthy" class="col-4">Credit Worthy:</label>
-                        <input type="text" name="creditworthy" value="<?php if($customer['creditworthy']) { echo 'Yes'; } else {echo 'No';}?>" readonly>
+                        <input type="text" name="creditworthy" value="<?php if($customer['creditworthy']) { echo 'Yes'; } else {echo 'No';}?>" <?php if(!in_array("Finance",$_SESSION['user'])) { ?> readonly <?php } ?>>
                     </div>
                     <?php if(in_array("Finance",$_SESSION['user'])) { ?>
                     <div class="form-group">
@@ -165,8 +161,10 @@ $customer = $q->fetch();
                 </div><!--end col-6--->
 
             </div><!--end grid--->
-            <input class="btn btn-primary" type="submit" value="Save">
-            <a class="btn btn-primary" onclick="goBack()">Back</a>
+            <div class="buttons">
+                <input class="btn btn-primary" type="submit" value="Save">
+                <a style="float: right" class="btn btn-primary" onclick="goBack()">Back</a>
+            </div>
         </form>
 
 

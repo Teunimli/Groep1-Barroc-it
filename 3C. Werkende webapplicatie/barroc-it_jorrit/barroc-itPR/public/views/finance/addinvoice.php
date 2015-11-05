@@ -26,23 +26,22 @@ $customer = $q->fetch();
             <h1 class="barroc-title">BARROC IT. </h1>
             <h2 class="text-center subhead tophead">Add Invoice</h2>
         </div>
-
         <form action="../../../app/controllers/authController.php" method="POST">
             <input type="hidden" name="type" value="logout">
             <nav role="navigation" class="navbar navbar-default">
-                <!-- Brand and toggle get grouped for better mobile display -->
 
-                <!-- Collection of nav links and other content for toggling -->
-                <div id="navbarCollapse" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="../dashboard/dashboard.php">Home</a></li>
-                        <li class="active"><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">customer info</a></li>
-                        <li><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
-                        <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li>
-                        <li><a><input type="submit" value="Logout"></a></li>
+                <ul class="nav navbar-nav">
+                    <li><a href="../dashboard/dashboard.php">Home</a></li>
+                    <li><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li>
+                    <li class="active"><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
+                    <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><input type="submit" value="LOGOUT" class="logout"></a></li>
                     </ul>
 
-                </div>
+
             </nav>
         </form>
 
@@ -57,8 +56,9 @@ $customer = $q->fetch();
                 }
                 ?>
             </div>
+            <h2 class="text-center">Add invoice</h2>
             <input type="hidden" name="type" value="add">
-            <input type="hidden" name="id" value="<?= $customer['id'] ?>" />
+            <input type="hidden" name="customerid" value="<?= $customer['id'] ?>" />
             <input type="hidden" name="id" value="<?= $project['id'] ?>" />
 
             <div class="grid">
@@ -114,43 +114,66 @@ $customer = $q->fetch();
                     </div>
 
                 </div>
+
                 <div class="col-6">
                     <div class="form-group">
-                        <label for="date_of_invoie" class="col-4">today date:</label>
+                        <label for="projectname" class="col-4">Projectname:</label>
+                        <input type="text" name="projectname" value="<?= $project['projectname']?>" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="project_start_date" class="col-4">Project start date:</label>
+                        <input type="date" name="project_start_date" value="<?= date('Y-m-d',$project['start_date'])?>" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="project_end_date" class="col-4">Project end date:</label>
+                        <input type="date" name="project_end_date" value="<?= date('Y-m-d',$project['end_date'])?>"readonly>
+                    </div>
+
+                </div><!--end col-6--->
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="date_of_invoie" class="col-4">today date:*</label>
                         <input type="date" name="date_of_invoie">
                     </div>
 
                     <div class="form-group">
-                        <label for="end_invoice_date" class="col-4">Expiration date:</label>
+                        <label for="end_invoice_date" class="col-4">Expiration date*:</label>
                         <input type="date" name="end_invoice_date">
                     </div>
 
                     <div class="form-group">
-                        <label for="invoicenumber" class="col-4">Invoice number:</label>
-                        <input type="number" name="invoicenumber">
+                        <label for="invoicenumber" class="col-4">Invoice number:*</label>
+                        <input type="text" name="invoicenumber">
                     </div>
 
                 </div><!--end col-6--->
             </div><!--end grid--->
             <div class="grid">
                 <div class="col-9">
-                   <h2>Activities</h2>
+                    <h2>Activities*</h2>
                     <div class="form-group">
                         <textarea name="activities"></textarea>
                     </div>
                 </div>
                 <div class="col-3">
-                    <h2>Price</h2>
+                    <h2>Price*</h2>
                     <div class="form-group">
                         <input type="text" name="price">
                     </div>
                 </div>
+                <p>* You must fill these fields in</p>
             </div><!--end grid--->
-<input type="submit" value="Submit">
-</form>
-<a onclick="goBack()">Back</a>
+            <div class="buttons">
+                <input class="btn btn-primary" type="submit" value="Submit">
+                <a style="float: right" class="btn btn-primary" onclick="goBack()">Back</a>
+            </div>
+        </form>
 
-</div><!--end container-content-->
+
+    </div><!--end container-content-->
 </div><!--end container--->
 
 

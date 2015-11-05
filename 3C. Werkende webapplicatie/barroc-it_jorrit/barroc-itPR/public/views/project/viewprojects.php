@@ -6,16 +6,8 @@ $sql = "SELECT * FROM tbl_projects WHERE tbl_projects.customer_id = :id";
 $q= $db->prepare($sql);
 $q->bindParam(':id', $id);
 $q->execute();
+
 $projects = $q->fetchAll(PDO::FETCH_ASSOC);
-
-$sql = "SELECT * FROM tbl_customer WHERE id = :id";
-$q= $db->prepare($sql);
-$q->bindParam(':id', $id);
-$q->execute();
-
-$customer = $q->fetch();
-
-
 
 ?>
 
@@ -27,37 +19,34 @@ $customer = $q->fetch();
             <h1 class="barroc-title">BARROC IT. </h1>
             <h2 class="text-center subhead tophead">Projects</h2>
         </div>
+        <form action="../../../app/controllers/authController.php" method="POST">
+            <input type="hidden" name="type" value="logout">
+            <nav role="navigation" class="navbar navbar-default">
 
-        <nav role="navigation" class="navbar navbar-default">
-            <!-- Brand and toggle get grouped for better mobile display -->
+                <ul class="nav navbar-nav">
+                    <li><a href="../dashboard/dashboard.php">Home</a></li>
+                    <li><a href="../customers/customerinfo.php?id=<?= $id ?>">Customer Info</a></li>
+                    <li class="active"><a href="../project/viewprojects.php?id=<?= $id ?>">Projects</a></li>
+                    <li><a href="../sales/appointments.php?id=<?= $id ?>">Appointments</a></li>
 
-            <form action="../../../app/controllers/authController.php" method="POST">
-                <input type="hidden" name="type" value="logout">
-                <nav role="navigation" class="navbar navbar-default">
-                    <!-- Brand and toggle get grouped for better mobile display -->
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><input type="submit" value="LOGOUT" class="logout"></a></li>
+                </ul>
 
-                    <!-- Collection of nav links and other content for toggling -->
-                    <div id="navbarCollapse" class="collapse navbar-collapse">
-                        <ul class="nav navbar-nav">
-                            <li><a href="../dashboard/dashboard.php">Home</a></li>
-                            <li><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">customer info</a></li>
-                            <li class="active"><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
-                            <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li>
-                            <li><a><input type="submit" value="Logout"></a></li>
-                        </ul>
 
-                    </div>
-                </nav>
-            </form>
+            </nav>
+        </form>
 
     </header>
     <div class="container-content">
+        <h1>Projects</h1>
         <ul class="list-group">
             <li class="list-group-item">
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>Projectname</th>
+                        <th>Project name</th>
                         <th>start date</th>
                         <th>end date</th>
                         <th>hardware</th>
@@ -66,8 +55,7 @@ $customer = $q->fetch();
                         <th>status</th>
                         <th>desription</th>
                         <th>limit</th>
-                        <th>maintenance_contract</th>
-                        <th>application</th>
+                        <th>maintenance contract</th>
                         <th>paid invoices</th>
                         <th>remaining invoices</th>
                         <th>deadline</th>
@@ -87,8 +75,7 @@ $customer = $q->fetch();
                             <td> <?= $project['status']; ?> </td>
                             <td> <?= $project['description']; ?> </td>
                             <td> <?= $project['limiten']; ?> </td>
-                            <td> <?= $project['maintenance_contract']; ?> </td>
-                            <td> <?= $project['application']; ?> </td>
+                            <td> <?if($project['maintenance_contract'] == 1){ echo'Yes';}else{echo'No';} ?> </td>
                             <?
                             $id = $project['id'];
                             $sql = "SELECT COUNT(paid) FROM tbl_invoices WHERE tbl_invoices.projects_id = :id AND paid = 1";
@@ -108,21 +95,24 @@ $customer = $q->fetch();
                             <td> <?= $in_paid['COUNT(paid)']; ?> </td>
 
                             <td> <?= date('d.m.Y',$project['deadline']); ?> </td>
-                            <td> <?= $project['active']; ?> </td>
-                            <td> <button> <a href="<?= '../project/editproject.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>Edit</button></td>
-                            <td> <button> <a href="<?= '../finance/addinvoice.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>Add invoice</button></td>
-                            <td> <button> <a href="<?= '../finance/invoiceinfo.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>View invoice</button></td>
+                            <td> <?if($project['active'] == 1){ echo'Yes';}else{echo'No';} ?> </td>
 
                         </tr>
-                    <?php } ?>
+
                     </tbody>
 
                 </table>
             </li>
         </ul>
-
-
-        <a onclick="goBack()">Back</a>
+        <div class="buttons">
+            <a class="btn btn-primary" href="<?= '../project/editproject.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>">Edit</a>
+            <?php if(in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?><a class="btn btn-primary" href="<?= '../finance/addinvoice.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>">Add invoice</a>
+            <a class="btn btn-primary" href="<?= '../finance/invoiceinfo.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>">View invoice</a><?php } ?>
+        </div>
+        <?php } ?>
+        <div class="buttons">
+            <a style="float: right;" class="btn btn-primary" onclick="goBack()">Back</a>
+        </div>
     </div><!--end container-content-->
 </div><!--end container--->
 

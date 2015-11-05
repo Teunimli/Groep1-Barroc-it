@@ -45,7 +45,7 @@
       <column name="open_project" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
       <column name="created_at" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="updated_at" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="archived_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="archived_at" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
       <exported-key name="fk_appointment_customer1" table="tbl_appointment" schema="" catalog="barroc_it" columns="customer_id"/>
       <exported-key name="fk_projects_customer1" table="tbl_projects" schema="" catalog="barroc_it" columns="customer_id"/>

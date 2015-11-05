@@ -9,8 +9,10 @@ $q->execute();
 
 $invoices = $q->fetchAll(PDO::FETCH_ASSOC);
 
+if($messageBag->hasMsg()){
+    echo $messageBag->show();
+}
 ?>
-
 
 <div class="container">
     <header>
@@ -19,30 +21,24 @@ $invoices = $q->fetchAll(PDO::FETCH_ASSOC);
             <h1 class="barroc-title">BARROC IT. </h1>
             <h2 class="text-center subhead tophead">Invoice Info</h2>
         </div>
+        <form action="../../../app/controllers/authController.php" method="POST">
+            <input type="hidden" name="type" value="logout">
+            <nav role="navigation" class="navbar navbar-default">
 
-        <nav role="navigation" class="navbar navbar-default">
-            <!-- Brand and toggle get grouped for better mobile display -->
-
-            <!-- Collection of nav links and other content for toggling -->
-            <div id="navbarCollapse" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="../dashboard/dashboard.php">Home</a></li>
+             <!--       <li class="active"><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li>
+                    <li><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
+                    <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li>
+-->
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><input type="submit" value="LOGOUT" class="logout"></a></li>
                 </ul>
 
-                <div class="homesales">
-                    <form action="">
-                        <label for="search"></label>
-                        <input type="text" name="search" id="search">
-                        <input type="submit" name="search" value="Zoeken">
-                    </form>
-                </div><!--homesales-->
 
-                <ul class="nav navbar-nav logout-button">
-                    <li><a href="">Logout</a></li>
-                </ul>
-
-            </div>
-        </nav>
+            </nav>
+        </form>
 
     </header>
     <div class="container-content">
@@ -61,13 +57,13 @@ $invoices = $q->fetchAll(PDO::FETCH_ASSOC);
 
 
                     <tbody> <?php foreach($invoices as $invoice){ ?>
-                        <tr>
+                        <tr class="buttons">
 
                             <td> <?= $invoice['id']; ?> </td>
                             <td> <?= date('d.m.Y',$invoice['date_of_invoice']); ?> </td>
                             <td> <?= date('d.m.Y',$invoice['end_invoice_date']); ?> </td>
                             <td> <?if($invoice['paid'] == 1){ echo'Yes';}else{echo'No';} ?> </td>
-                            <td> <button> <a href="<?= '../finance/editinvoice.php?id=' . $invoice['id'] . '&projectid='.$invoice['projects_id']. '&customerid=' . $_GET['customerid']?>"</a>Edit</button></td>
+                            <td> <a class="btn btn-primary" href="<?= '../finance/editinvoice.php?id=' . $invoice['id'] . '&projectid='.$invoice['projects_id']. '&customerid=' . $_GET['customerid']?>">Edit</a></td>
 
                         </tr>
                     <?php } ?>
@@ -76,8 +72,9 @@ $invoices = $q->fetchAll(PDO::FETCH_ASSOC);
             </li>
         </ul>
 
-
-        <a onclick="goBack()">Back</a>
+        <div class="buttons">
+            <a style="float: right" class="btn btn-primary" onclick="goBack()">Back</a>
+        </div>
     </div><!--end container-content-->
 </div><!--end container--->
 

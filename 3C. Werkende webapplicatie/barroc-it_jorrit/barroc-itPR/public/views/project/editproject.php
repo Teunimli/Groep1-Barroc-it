@@ -25,29 +25,28 @@ $project = $q->fetch();
             <h1 class="barroc-title">BARROC IT. </h1>
             <h2 class="text-center subhead tophead">Edit Project</h2>
         </div>
-
         <form action="../../../app/controllers/authController.php" method="POST">
             <input type="hidden" name="type" value="logout">
             <nav role="navigation" class="navbar navbar-default">
-                <!-- Brand and toggle get grouped for better mobile display -->
 
-                <!-- Collection of nav links and other content for toggling -->
-                <div id="navbarCollapse" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="../dashboard/dashboard.php">Home</a></li>
-                        <li class="active"><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">customer info</a></li>
-                        <li><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
-                        <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li>
-                        <li><a><input type="submit" value="Logout"></a></li>
-                    </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="../dashboard/dashboard.php">Home</a></li>
+                    <li><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li>
+                    <li class="active"><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
+                    <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li>
 
-                </div>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><input type="submit" value="LOGOUT" class="logout"></a></li>
+                </ul>
+
+
             </nav>
         </form>
 
     </header>
     <div class="container-content">
-
+        <h2 class="text-center">Project information</h2>
         <form action="../../../app/controllers/projectController.php" method="POST"">
         <div class="grid">
             <div class="col-6">
@@ -57,12 +56,12 @@ $project = $q->fetch();
 
                     <input type="hidden" name="id" value="<?= $project['id'] ?>"/>
 
-                    <label for="customerfirstname" class="col-4">Customer firstname:</label>
+                    <label for="customerfirstname">Customer firstname:</label>
                     <input type="text" name="customerfirstname" value="<?= $customer['contact_name']?>" readonly>
                 </div>
 
                 <div class="form-group">
-                    <label for="customerlastname" class="col-4">Customer lastname:</label>
+                    <label for="customerlastname">Customer lastname:</label>
                     <input type="text" name="customerlastname" value="<?= $customer['contact_lastname']?>" readonly>
                 </div>
 
@@ -70,76 +69,75 @@ $project = $q->fetch();
 
             <div class="col-6">
                 <div class="form-group">
-                    <label for="projectname" class="col-4">Project name:</label>
+                    <label for="projectname">Project name:</label>
                     <input type="text" name="projectname" value="<?= $project['projectname']?>">
                 </div>
 
                 <div class="form-group">
-                    <label for="start_date" class="col-4">Start date:</label>
+                    <label for="start_date">Start date:</label>
                     <input type="date" name="start_date"value="<?= date('Y-m-d',$project['start_date'])?>">
                 </div>
 
                 <div class="form-group">
-                    <label for="end_date" class="col-4">End date:</label>
+                    <label for="end_date">End date:</label>
                     <input type="date" name="end_date" value="<?= date('Y-m-d',$project['end_date'])?>">
                 </div>
 
                 <div class="form-group">
-                    <label for="hardware" class="col-4">Hardware:</label>
+                    <label for="hardware">Hardware:</label>
                     <input type="textarea" name="hardware" value="<?= $project['hardware']?>">
                 </div>
 
                 <div class="form-group">
-                    <label for="software" class="col-4">Software:</label>
+                    <label for="software">Software:</label>
                     <input type="textarea" name="software" value="<?= $project['software']?>">
                 </div>
 
                 <div class="form-group">
-                    <label for="operating_system" class="col-4">Operating system:</label>
+                    <label for="operating_system">Operating system:</label>
                     <input type="textarea" name="operating_system" value="<?= $project['operating_system']?>">
                 </div>
 
                 <div class="form-group">
-                    <label for="status" class="col-4">Status:</label>
+                    <label for="status">Status:</label>
                     <input type="text" name="status" value="<?= $project['status']?>">
                 </div>
 
                 <div class="form-group">
-                    <label for="description" class="col-4">Description:</label>
+                    <label for="description">Description:</label>
                     <input type="textarea" name="description" value="<?= $project['description']?>">
                 </div>
 
                 <div class="form-group">
-                    <label for="limiten" class="col-4">limit:</label>
+                    <label for="limiten">limit:</label>
                     <input type="text" name="limiten" value="<?= $project['limiten']?>">
                 </div>
 
                 <div class="form-group">
-                    <label for="maintenance_contract" class="col-4">Maintenance contract:</label>
-                    <input type="text" name="maintenance_contract" value="<?= $project['maintenance_contract']?>">
+                    <label for="maintenance_contract">Maintenance contract:</label>
+                    <input type="text" name="maintenance_contract" value="<?if($project['maintenance_contract'] == 1){ echo'Yes';}else{echo'No';}?>">
                 </div>
 
-                <div class="form-group">
-                    <label for="application" class="col-4">Application:</label>
-                    <input type="text" name="application" value="<?= $project['application']?>">
-                </div>
 
                 <div class="form-group">
-                    <label for="deadline" class="col-4">Deadline:</label>
+                    <label for="deadline">Deadline:</label>
                     <input type="date" name="deadline" value="<?= date('Y-m-d',$project['deadline'])?>">
                 </div>
 
                 <div class="form-group">
-                    <label for="active" class="col-4">Active:</label>
-                    <input type="text" name="active" value="<?= $project['active']?>">
+                    <label for="active">Active:</label>
+                    <input type="text" name="active" value="<?if($project['active'] == 1){ echo'Yes';}else{echo'No';}?>">
                 </div>
 
             </div><!--end col-6--->
 
         </div><!--end grid--->
-            <input type="submit" value="Submit">
+        <div class="buttons">
+            <input class="btn btn-primary" type="submit" value="Submit">
+            <a style="float: right" class="btn btn-primary" onclick="goBack()">Back</a>
+        </div>
         </form>
-        <a onclick="goBack()">Back</a>
+
 
     </div><!--end container-content-->
 </div><!--end container--->

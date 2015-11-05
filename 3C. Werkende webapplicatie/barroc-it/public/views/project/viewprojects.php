@@ -22,19 +22,19 @@ $projects = $q->fetchAll(PDO::FETCH_ASSOC);
         <form action="../../../app/controllers/authController.php" method="POST">
             <input type="hidden" name="type" value="logout">
             <nav role="navigation" class="navbar navbar-default">
-                <!-- Brand and toggle get grouped for better mobile display -->
 
-                <!-- Collection of nav links and other content for toggling -->
-                <div id="navbarCollapse" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="../dashboard/dashboard.php">Home</a></li>
-                        <li ><a href="../customers/customerinfo.php?id=<?= $id?>">customer info</a></li>
-                        <li class="active"><a href="../project/viewprojects.php?id=<?= $id?>">Projects</a></li>
-                        <li><a href="../sales/appointments.php?id=<?= $id?>">Appointments</a></li>
-                        <li><a><input type="submit" value="Logout"></a></li>
-                    </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="../dashboard/dashboard.php">Home</a></li>
+                    <li><a href="../customers/customerinfo.php?id=<?= $id ?>">Customer Info</a></li>
+                    <li class="active"><a href="../project/viewprojects.php?id=<?= $id ?>">Projects</a></li>
+                    <li><a href="../sales/appointments.php?id=<?= $id ?>">Appointments</a></li>
 
-                </div>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><input type="submit" value="LOGOUT" class="logout"></a></li>
+                </ul>
+
+
             </nav>
         </form>
 
@@ -56,7 +56,6 @@ $projects = $q->fetchAll(PDO::FETCH_ASSOC);
                         <th>desription</th>
                         <th>limit</th>
                         <th>maintenance contract</th>
-                        <th>application</th>
                         <th>paid invoices</th>
                         <th>remaining invoices</th>
                         <th>deadline</th>
@@ -77,7 +76,6 @@ $projects = $q->fetchAll(PDO::FETCH_ASSOC);
                             <td> <?= $project['description']; ?> </td>
                             <td> <?= $project['limiten']; ?> </td>
                             <td> <?if($project['maintenance_contract'] == 1){ echo'Yes';}else{echo'No';} ?> </td>
-                            <td> <?= $project['application']; ?> </td>
                             <?
                             $id = $project['id'];
                             $sql = "SELECT COUNT(paid) FROM tbl_invoices WHERE tbl_invoices.projects_id = :id AND paid = 1";
@@ -98,20 +96,23 @@ $projects = $q->fetchAll(PDO::FETCH_ASSOC);
 
                             <td> <?= date('d.m.Y',$project['deadline']); ?> </td>
                             <td> <?if($project['active'] == 1){ echo'Yes';}else{echo'No';} ?> </td>
-                            <td> <button> <a href="<?= '../project/editproject.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>Edit</button></td>
-                            <?php if(in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?><td> <button> <a href="<?= '../finance/addinvoice.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>Add invoice</button></td>
-                            <td> <button> <a href="<?= '../finance/invoiceinfo.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>"</a>View invoice</button></td> <?php } ?>
 
                         </tr>
-                    <?php } ?>
+
                     </tbody>
 
                 </table>
             </li>
         </ul>
-
-
-        <a onclick="goBack()">Back</a>
+        <div class="buttons">
+            <a class="btn btn-primary" href="<?= '../project/editproject.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>">Edit</a>
+            <?php if(in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?><a class="btn btn-primary" href="<?= '../finance/addinvoice.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>">Add invoice</a>
+            <a class="btn btn-primary" href="<?= '../finance/invoiceinfo.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>">View invoice</a><?php } ?>
+        </div>
+        <?php } ?>
+        <div class="buttons">
+            <a style="float: right;" class="btn btn-primary" onclick="goBack()">Back</a>
+        </div>
     </div><!--end container-content-->
 </div><!--end container--->
 
