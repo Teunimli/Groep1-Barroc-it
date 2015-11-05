@@ -70,7 +70,7 @@ if($messageBag->hasMsg()){
                             <td> <?= date('d.m.Y',$invoice['end_invoice_date']); ?> </td>
                             <td> <?if($invoice['paid'] == 1){ echo'Yes';}else{echo'No';} ?> </td>
                             <td> <a class="btn btn-primary" href="<?= '../finance/editinvoice.php?id=' . $invoice['id'] . '&projectid='.$invoice['projects_id']. '&customerid=' . $_GET['customerid']?>">Edit</a></td>
-
+                            <td> <a class="btn btn-primary" href="showinvoice.php?id=<?= $invoice['id']. '&customerid=' . $project['customer_id'] . '&projectid=' . $project['id']  ?>">Details</a></td>
                         </tr>
                     <?php } ?>
                     </tbody>

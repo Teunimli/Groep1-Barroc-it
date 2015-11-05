@@ -315,7 +315,7 @@ input[type="text"]{
 	cursor: pointer;
 	margin-right: 10px;
 }
-.buttons  a, .buttons input{
+.buttons  a, .buttons input, .buttons button{
 	background-color: #CFC1B5;
 	color: #FFFFFF;
 	/*border-radius: 10px;*/

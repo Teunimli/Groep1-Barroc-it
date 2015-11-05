@@ -27,7 +27,7 @@ $projects = $q->fetchAll(PDO::FETCH_ASSOC);
                     <li><a href="../dashboard/dashboard.php">Home</a></li>
                     <li><a href="../customers/customerinfo.php?id=<?= $id ?>">Customer Info</a></li>
                     <li class="active"><a href="../project/viewprojects.php?id=<?= $id ?>">Projects</a></li>
-                    <li><a href="../sales/appointments.php?id=<?= $id ?>">Appointments</a></li>
+                    <?php if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>  <li><a href="../sales/appointments.php?id=<?= $id ?>">Appointments</a></li> <?php } ?>
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -98,18 +98,20 @@ $projects = $q->fetchAll(PDO::FETCH_ASSOC);
                             <td> <?if($project['active'] == 1){ echo'Yes';}else{echo'No';} ?> </td>
 
                         </tr>
-
+                        <tr class="buttons">
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><?php if(!in_array("Finance",$_SESSION['user'])) { echo "<td></td><td></td>"; }  ?>
+                            <?php if(in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?><td><a class="btn btn-primary" href="<?= '../finance/addinvoice.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>">Add <br /> invoice</a></td>
+                            <td><a class="btn btn-primary" href="<?= '../finance/invoiceinfo.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>">View<br /> invoice</a><?php } ?></td>
+                            <td><a class="btn btn-primary" href="<?= '../project/editproject.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>">Edit</a></td>
+                        </tr>
+                    <?php } ?>
                     </tbody>
 
                 </table>
             </li>
+
         </ul>
-        <div class="buttons">
-            <a class="btn btn-primary" href="<?= '../project/editproject.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>">Edit</a>
-            <?php if(in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?><a class="btn btn-primary" href="<?= '../finance/addinvoice.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>">Add invoice</a>
-            <a class="btn btn-primary" href="<?= '../finance/invoiceinfo.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>">View invoice</a><?php } ?>
-        </div>
-        <?php } ?>
+
         <div class="buttons">
             <a style="float: right;" class="btn btn-primary" onclick="goBack()">Back</a>
         </div>

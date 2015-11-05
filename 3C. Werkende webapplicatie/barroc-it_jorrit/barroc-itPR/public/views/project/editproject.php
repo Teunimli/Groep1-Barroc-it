@@ -33,7 +33,7 @@ $project = $q->fetch();
                     <li><a href="../dashboard/dashboard.php">Home</a></li>
                     <li><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li>
                     <li class="active"><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
-                    <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li>
+                    <?php if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>  <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li> <?php } ?>
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

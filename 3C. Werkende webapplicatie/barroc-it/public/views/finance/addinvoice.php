@@ -136,7 +136,7 @@ $customer = $q->fetch();
                 <div class="col-6">
                     <div class="form-group">
                         <label for="date_of_invoie" class="col-4">today date:*</label>
-                        <input type="date" name="date_of_invoie">
+                        <input type="date" name="date_of_invoice">
                     </div>
 
                     <div class="form-group">
@@ -151,25 +151,93 @@ $customer = $q->fetch();
 
                 </div><!--end col-6--->
             </div><!--end grid--->
-            <div class="grid">
-                <div class="col-9">
-                    <h2>Activities*</h2>
-                    <div class="form-group">
-                        <textarea name="activities"></textarea>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <h2>Price*</h2>
-                    <div class="form-group">
-                        <input type="text" name="price">
-                    </div>
-                </div>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>
+                        <h4>Item / activity</h4>
+                    </th>
+                    <th>
+                        <h4>Description</h4>
+                    </th>
+                    <th>
+                        <h4>Amount</h4>
+                    </th>
+                    <th>
+                        <h4>Price</h4>
+                    </th>
+                </tr>
+                </thead>
+                <tbody id="test">
+                <tr>
+                    <td><input placeholder="Item / activity name" type="text" name="item1"></td>
+                    <td><textarea  name="description1" placeholder="description of item / activity" > </textarea></td>
+                    <td class="text-right"><input placeholder="amount of items / hours" type="text" name="amount1"></td>
+                    <td class="text-right"><input placeholder="price of the item / activity" type="text" name="price1"></td>
+                </tr>
+                <tr>
+                    <td><input placeholder="Item / activity name" type="text" name="item2"></td>
+                    <td><textarea  name="description2" placeholder="description of item / activity" > </textarea></td>
+                    <td class="text-right"><input placeholder="amount of items / hours" type="text" name="amount2"></td>
+                    <td class="text-right"><input placeholder="price of the item / activity" type="text" name="price2"></td>
+                </tr>
+                <tr>
+                    <td><input placeholder="Item / activity name" type="text" name="item3"></td>
+                    <td><textarea  name="description3" placeholder="description of item / activity" > </textarea></td>
+                    <td class="text-right"><input placeholder="amount of items / hours" type="text" name="amount3"></td>
+                    <td class="text-right"><input placeholder="price of the item / activity" type="text" name="price3"></td>
+                </tr>
+                <tr>
+                    <td><input placeholder="Item / activity name" type="text" name="item4"></td>
+                    <td><textarea  name="description4" placeholder="description of item / activity" > </textarea></td>
+                    <td class="text-right"><input placeholder="amount of items / hours" type="text" name="amount4"></td>
+                    <td class="text-right"><input placeholder="price of the item / activity" type="text" name="price4"></td>
+                </tr>
+                <tr>
+                    <td><input placeholder="Item / activity name" type="text" name="item5"></td>
+                    <td><textarea  name="description5" placeholder="description of item / activity" > </textarea></td>
+                    <td class="text-right"><input placeholder="amount of items / hours" type="text" name="amount5"></td>
+                    <td class="text-right"><input placeholder="price of the item / activity" type="text" name="price5"></td>
+                </tr>
+                <tr>
+                    <td><input placeholder="Item / activity name" type="text" name="item6"></td>
+                    <td><textarea  name="description6" placeholder="description of item / activity" > </textarea></td>
+                    <td class="text-right"><input placeholder="amount of items / hours" type="text" name="amount6"></td>
+                    <td class="text-right"><input placeholder="price of the item / activity" type="text" name="price6"></td>
+                </tr>
+                <tr>
+                    <td><input placeholder="Item / activity name" type="text" name="item7"></td>
+                    <td><textarea  name="description7" placeholder="description of item / activity" > </textarea></td>
+                    <td class="text-right"><input placeholder="amount of items / hours" type="text" name="amount7"></td>
+                    <td class="text-right"><input placeholder="price of the item / activity" type="text" name="price7"></td>
+                </tr>
+                <tr>
+                    <td><input placeholder="Item / activity name" type="text" name="item8"></td>
+                    <td><textarea  name="description8" placeholder="description of item / activity" > </textarea></td>
+                    <td class="text-right"><input placeholder="amount of items / hours" type="text" name="amount8"></td>
+                    <td class="text-right"><input placeholder="price of the item / activity" type="text" name="price8"></td>
+                </tr>
+                <tr>
+                    <td><input placeholder="Item / activity name" type="text" name="item9"></td>
+                    <td><textarea  name="description9" placeholder="description of item / activity" > </textarea></td>
+                    <td class="text-right"><input placeholder="amount of items / hours" type="text" name="amount9"></td>
+                    <td class="text-right"><input placeholder="price of the item / activity" type="text" name="price9"></td>
+                </tr>
+                <tr>
+                    <td><input placeholder="Item / activity name" type="text" name="item10"></td>
+                    <td><textarea  name="description10" placeholder="description of item / activity" > </textarea></td>
+                    <td class="text-right"><input placeholder="amount of items / hours" type="text" name="amount10"></td>
+                    <td class="text-right"><input placeholder="price of the item / activity" type="text" name="price10"></td>
+                </tr>
+                </tbody>
+                </table>
                 <p>* You must fill these fields in</p>
             </div><!--end grid--->
             <div class="buttons">
                 <input class="btn btn-primary" type="submit" value="Submit">
                 <a style="float: right" class="btn btn-primary" onclick="goBack()">Back</a>
             </div>
+
         </form>
 
 
