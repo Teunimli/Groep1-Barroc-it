@@ -15,7 +15,6 @@ switch( $_POST['type'] ) {
             $_POST['description'],
             $_POST['limiten'],
             $_POST['maintenance_contract'],
-            $_POST['application'],
             $_POST['deadline'],
             $_POST['active'],
             $db
@@ -33,7 +32,6 @@ switch( $_POST['type'] ) {
             $_POST['description'],
             $_POST['limiten'],
             $_POST['maintenance_contract'],
-            $_POST['application'],
             $_POST['deadline'],
             $_POST['active'],
             $_POST['customer_id'],
@@ -54,7 +52,7 @@ function alert($string)
 
 function add($customer_id, $projectname, $start_date, $end_date,
              $hardware, $software, $operating_system, $status,
-             $description, $limiten, $maintenance_contract, $application, $deadline, $active, $db){
+             $description, $limiten, $maintenance_contract, $deadline, $active, $db){
 
     $created_at = time();
 
@@ -125,10 +123,10 @@ function add($customer_id, $projectname, $start_date, $end_date,
 
         $sql = "INSERT INTO tbl_projects(customer_id, projectname, start_date, end_date, software, hardware,
                                          operating_system, status, description, limiten, maintenance_contract,
-                                         application, deadline, active, created_at, archived_at)
+                                         deadline, active, created_at, archived_at)
                                   VALUES(:customer_id, :projectname, :start_date, :end_date, :software, :hardware,
                                          :operating_system, :status, :description, :limiten, :maintenance_contract,
-                                         :application, :deadline, :active, :created_at, :archived_at)";
+                                         :deadline, :active, :created_at, :archived_at)";
 
 
         $q = $db->prepare($sql);
@@ -143,7 +141,6 @@ function add($customer_id, $projectname, $start_date, $end_date,
         $q->bindParam(':description', $description);
         $q->bindParam(':limiten', $limiten);
         $q->bindParam(':maintenance_contract', $maintenance_contract);
-        $q->bindParam(':application', $application);
         $q->bindParam(':deadline', $deadline_timestamp);
         $q->bindParam(':active', $active);
         $q->bindParam(':created_at', $created_at);
@@ -157,7 +154,7 @@ function add($customer_id, $projectname, $start_date, $end_date,
 
 function edit($id, $projectname, $start_date, $end_date,
               $hardware, $software, $operating_system, $status,
-              $description, $limiten, $maintenance_contract, $application, $deadline, $active,$customerid, $db){
+              $description, $limiten, $maintenance_contract, $deadline, $active,$customerid, $db){
 
     $updated_at = time();
 
@@ -218,7 +215,6 @@ function edit($id, $projectname, $start_date, $end_date,
                                         description = :description,
                                         limiten = :limiten,
                                         maintenance_contract = :maintenance_contract,
-                                        application = :application,
                                         deadline = :deadline,
                                         active = :active,
                                         updated_at = :updated_at
@@ -237,7 +233,6 @@ function edit($id, $projectname, $start_date, $end_date,
         $q->bindParam(':description', $description);
         $q->bindParam(':limiten', $limiten);
         $q->bindParam(':maintenance_contract', $maintenance_contract);
-        $q->bindParam(':application', $application);
         $q->bindParam(':deadline', $deadline_timestamp);
         $q->bindParam(':active', $active);
         $q->bindParam(':updated_at', $updated_at);
