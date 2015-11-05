@@ -1,5 +1,5 @@
 <?php require_once  '../../header.php'; ?>
-<link rel="stylesheet" href="../../assets/css/main.css"/>
+<link rel="stylesheet" href="/../../assets/css/main.css"/>
  <div class="jumbotron jumbo-login">
       <div class="container">
 
