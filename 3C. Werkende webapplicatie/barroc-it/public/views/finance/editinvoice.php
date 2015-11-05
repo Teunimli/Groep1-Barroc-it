@@ -41,7 +41,7 @@ $project = $q->fetch();
                     <li><a href="../dashboard/dashboard.php">Home</a></li>
                     <li><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li>
                     <li class="active"><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
-                    <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li>
+                    <?php if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>  <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li> <?php } ?>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a><input type="submit" value="LOGOUT" class="logout"></a></li>
@@ -177,9 +177,14 @@ $project = $q->fetch();
                 </div>
                 <p>* You must fill these fields in</p>
             </div><!--end grid--->
-            <input type="submit" value="Submit">
+            <div class="buttons">
+                <input class="btn btn-primary" type="submit" value="Submit">
+                <a class="btn btn-primary" onclick="goBack()">Back</a>
+                <a class="btn btn-primary" href="javascript:window.print()">Print Invoice</a>
+            </div>
         </form>
-        <a onclick="goBack()">Back</a>
+
+
 
     </div><!--end container-content-->
 </div><!--end container--->

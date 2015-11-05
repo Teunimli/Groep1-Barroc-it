@@ -141,64 +141,11 @@
       <file leaf-file-name="addinvoice.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/views/finance/addinvoice.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.423077">
-              <caret line="35" column="38" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
+            <state vertical-scroll-proportion="-14.384615">
+              <caret line="34" column="98" selection-start-line="34" selection-start-column="90" selection-end-line="34" selection-end-column="98" />
               <folding>
-                <element signature="n#style#0;n#a#0;n#div#3;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <marker date="1446671959132" expanded="true" signature="75:116" placeholder="SELECT * FRO..tbl_projects..." />
-                <marker date="1446671959132" expanded="true" signature="256:297" placeholder="SELECT * FRO..tbl_customer..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="invoiceinfo.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/views/finance/invoiceinfo.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.769231">
-              <caret line="65" column="58" selection-start-line="65" selection-start-column="58" selection-end-line="65" selection-end-column="58" />
-              <folding>
-                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <marker date="1446672095728" expanded="true" signature="75:125" placeholder="SELECT * FRO..tbl_invoices..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="editcustomer.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/views/customers/editcustomer.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.692307">
-              <caret line="137" column="26" selection-start-line="137" selection-start-column="26" selection-end-line="137" selection-end-column="26" />
-              <folding>
-                <element signature="n#style#0;n#a#0;n#div#2;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <marker date="1446710993845" expanded="true" signature="75:116" placeholder="SELECT * FRO..tbl_customer..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.8846154">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="projectController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/projectController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.9454546">
-              <caret line="188" column="14" selection-start-line="188" selection-start-column="14" selection-end-line="188" selection-end-column="14" />
-              <folding>
-                <marker date="1446711339277" expanded="true" signature="1580:1621" placeholder="SELECT * FRO..tbl_customer..." />
-                <marker date="1446711339277" expanded="true" signature="1926:1991" placeholder="SELECT * FRO..tbl_projects..." />
-                <marker date="1446711339277" expanded="true" signature="3885:4491" placeholder="INSERT INTO ..." />
-                <marker date="1446711339277" expanded="true" signature="6343:6408" placeholder="SELECT * FRO..tbl_projects..." />
-                <marker date="1446711339277" expanded="true" signature="7355:8248" placeholder="UPDATE tbl_p..." />
+                <marker date="1446713669119" expanded="true" signature="75:116" placeholder="SELECT * FRO..tbl_projects..." />
+                <marker date="1446713669119" expanded="true" signature="256:297" placeholder="SELECT * FRO..tbl_customer..." />
               </folding>
             </state>
           </provider>
@@ -207,12 +154,25 @@
       <file leaf-file-name="viewprojects.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/views/project/viewprojects.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.7894737">
-              <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.2556391">
+              <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
               <folding>
-                <marker date="1446671778223" expanded="true" signature="75:138" placeholder="SELECT * FRO..tbl_projects..." />
-                <marker date="1446671778223" expanded="true" signature="3328:3414" placeholder="SELECT COUNT..tbl_invoices..." />
-                <marker date="1446671778223" expanded="true" signature="3811:3897" placeholder="SELECT COUNT..tbl_invoices..." />
+                <marker date="1446718255143" expanded="true" signature="75:138" placeholder="SELECT * FRO..tbl_projects..." />
+                <marker date="1446718255143" expanded="true" signature="3430:3516" placeholder="SELECT COUNT..tbl_invoices..." />
+                <marker date="1446718255143" expanded="true" signature="3913:3999" placeholder="SELECT COUNT..tbl_invoices..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="addappointment.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/views/sales/addappointment.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.730769">
+              <caret line="36" column="209" selection-start-line="36" selection-start-column="209" selection-end-line="36" selection-end-column="209" />
+              <folding>
+                <marker date="1446714113310" expanded="true" signature="84:146" placeholder="SELECT * FRO..tbl_appointment..." />
+                <marker date="1446714113310" expanded="true" signature="263:304" placeholder="SELECT * FRO..tbl_customer..." />
               </folding>
             </state>
           </provider>
@@ -221,24 +181,12 @@
       <file leaf-file-name="editinvoice.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/views/finance/editinvoice.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.615385">
-              <caret line="42" column="38" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
+            <state vertical-scroll-proportion="-15.038462">
+              <caret line="182" column="69" selection-start-line="182" selection-start-column="69" selection-end-line="182" selection-end-column="69" />
               <folding>
-                <marker date="1446671959156" expanded="true" signature="91:132" placeholder="SELECT * FRO..tbl_customer..." />
-                <marker date="1446671959156" expanded="true" signature="272:313" placeholder="SELECT * FRO..tbl_invoices..." />
-                <marker date="1446671959156" expanded="true" signature="456:497" placeholder="SELECT * FRO..tbl_projects..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="finance.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/views/finance/finance.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.65384614">
-              <caret line="19" column="63" selection-start-line="19" selection-start-column="63" selection-end-line="19" selection-end-column="63" />
-              <folding>
-                <marker date="1446548348749" expanded="true" signature="77:125" placeholder="SELECT * FRO..tbl_customer..." />
+                <marker date="1446717843790" expanded="true" signature="91:132" placeholder="SELECT * FRO..tbl_customer..." />
+                <marker date="1446717843790" expanded="true" signature="272:313" placeholder="SELECT * FRO..tbl_invoices..." />
+                <marker date="1446717843790" expanded="true" signature="456:497" placeholder="SELECT * FRO..tbl_projects..." />
               </folding>
             </state>
           </provider>
@@ -247,28 +195,73 @@
       <file leaf-file-name="appointments.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/views/sales/appointments.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.65384614">
-              <caret line="48" column="38" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
+            <state vertical-scroll-proportion="-14.384615">
+              <caret line="48" column="209" selection-start-line="48" selection-start-column="209" selection-end-line="48" selection-end-column="209" />
               <folding>
-                <marker date="1446671831918" expanded="true" signature="113:175" placeholder="SELECT * FRO..tbl_appointment..." />
-                <marker date="1446671831918" expanded="true" signature="351:392" placeholder="SELECT * FRO..tbl_customer..." />
+                <marker date="1446714113304" expanded="true" signature="113:175" placeholder="SELECT * FRO..tbl_appointment..." />
+                <marker date="1446714113304" expanded="true" signature="351:392" placeholder="SELECT * FRO..tbl_customer..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dashboard.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/views/dashboard/dashboard.php">
+      <file leaf-file-name="editappointment.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/views/sales/editappointment.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.884615">
-              <caret line="193" column="13" selection-start-line="193" selection-start-column="13" selection-end-line="193" selection-end-column="13" />
+            <state vertical-scroll-proportion="-7.8461537">
+              <caret line="70" column="30" selection-start-line="70" selection-start-column="30" selection-end-line="70" selection-end-column="30" />
               <folding>
-                <element signature="n#style#0;n#a#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#!!top" expanded="true" />
-                <marker date="1446710785697" expanded="true" signature="188:236" placeholder="SELECT * FRO..tbl_customer..." />
-                <marker date="1446710785697" expanded="true" signature="2249:2347" placeholder="SELECT * FRO..tbl_projects..." />
-                <marker date="1446710785697" expanded="true" signature="2720:2818" placeholder="SELECT * FRO..tbl_invoices..." />
-                <marker date="1446710785697" expanded="true" signature="5399:5497" placeholder="SELECT * FRO..tbl_projects..." />
-                <marker date="1446710785697" expanded="true" signature="5870:5968" placeholder="SELECT * FRO..tbl_invoices..." />
+                <marker date="1446714113339" expanded="true" signature="85:126" placeholder="SELECT * FRO..tbl_customer..." />
+                <marker date="1446714113339" expanded="true" signature="263:319" placeholder="SELECT * FRO..tbl_appointment..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="finance.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/views/finance/finance.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.423077">
+              <caret line="19" column="63" selection-start-line="19" selection-start-column="63" selection-end-line="19" selection-end-column="63" />
+              <folding>
+                <marker date="1446548348749" expanded="true" signature="77:125" placeholder="SELECT * FRO..tbl_customer..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="invoiceinfo.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/views/finance/invoiceinfo.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-20.923077">
+              <caret line="68" column="88" selection-start-line="68" selection-start-column="88" selection-end-line="68" selection-end-column="88" />
+              <folding>
+                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="addproject.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/views/project/addproject.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-18.307692">
+              <caret line="28" column="160" selection-start-line="28" selection-start-column="160" selection-end-line="28" selection-end-column="160" />
+              <folding>
+                <marker date="1446718064913" expanded="true" signature="75:116" placeholder="SELECT * FRO..tbl_customer..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="editproject.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/views/project/editproject.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.5384617">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="16" selection-end-column="23" />
+              <folding>
+                <marker date="1446713751475" expanded="true" signature="82:123" placeholder="SELECT * FRO..tbl_customer..." />
+                <marker date="1446713751475" expanded="true" signature="246:287" placeholder="SELECT * FRO..tbl_projects..." />
               </folding>
             </state>
           </provider>
@@ -308,20 +301,20 @@
         <option value="$PROJECT_DIR$/public/assets/css/main.css" />
         <option value="$PROJECT_DIR$/public/views/customers/archivedcustomer.php" />
         <option value="$PROJECT_DIR$/app/controllers/customercontroller.php" />
-        <option value="$PROJECT_DIR$/public/views/customers/customerinfo.php" />
-        <option value="$PROJECT_DIR$/public/views/project/viewprojects.php" />
-        <option value="$PROJECT_DIR$/public/views/sales/appointments.php" />
-        <option value="$PROJECT_DIR$/public/views/sales/addappointment.php" />
-        <option value="$PROJECT_DIR$/public/views/sales/editappointment.php" />
-        <option value="$PROJECT_DIR$/public/views/project/editproject.php" />
-        <option value="$PROJECT_DIR$/public/views/project/addproject.php" />
-        <option value="$PROJECT_DIR$/public/views/finance/addinvoice.php" />
-        <option value="$PROJECT_DIR$/public/views/finance/editinvoice.php" />
-        <option value="$PROJECT_DIR$/public/views/finance/invoiceinfo.php" />
         <option value="$PROJECT_DIR$/public/index.php" />
         <option value="$PROJECT_DIR$/app/controllers/projectController.php" />
         <option value="$PROJECT_DIR$/public/views/dashboard/dashboard.php" />
+        <option value="$PROJECT_DIR$/public/views/customers/customerinfo.php" />
         <option value="$PROJECT_DIR$/public/views/customers/editcustomer.php" />
+        <option value="$PROJECT_DIR$/public/views/finance/addinvoice.php" />
+        <option value="$PROJECT_DIR$/public/views/project/editproject.php" />
+        <option value="$PROJECT_DIR$/public/views/sales/addappointment.php" />
+        <option value="$PROJECT_DIR$/public/views/sales/appointments.php" />
+        <option value="$PROJECT_DIR$/public/views/sales/editappointment.php" />
+        <option value="$PROJECT_DIR$/public/views/finance/invoiceinfo.php" />
+        <option value="$PROJECT_DIR$/public/views/finance/editinvoice.php" />
+        <option value="$PROJECT_DIR$/public/views/project/addproject.php" />
+        <option value="$PROJECT_DIR$/public/views/project/viewprojects.php" />
       </list>
     </option>
   </component>
@@ -1097,14 +1090,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/customers/addcustomer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.115385">
-          <caret line="17" column="84" selection-start-line="17" selection-start-column="84" selection-end-line="17" selection-end-column="84" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1143,107 +1128,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/customers/customerinfo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.2692308">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="38" selection-end-column="13" />
-          <folding>
-            <element signature="n#style#0;n#input#2;n#form#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1446670822401" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tbl_customer..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/sales/addappointment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.461538">
-          <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#div#4;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1446671831943" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tbl_appointment..." />
-            <marker date="1446671831943" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tbl_customer..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/sales/editappointment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.653846">
-          <caret line="41" column="38" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
-          <folding>
-            <marker date="1446671831950" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tbl_customer..." />
-            <marker date="1446671831950" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tbl_appointment..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/project/editproject.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.269231">
-          <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1446671906003" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tbl_customer..." />
-            <marker date="1446671906003" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tbl_projects..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/project/addproject.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.115385">
-          <caret line="27" column="38" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1446671906030" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tbl_customer..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/finance/addinvoice.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.423077">
-          <caret line="35" column="38" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#div#3;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1446671959132" expanded="true" signature="75:116" placeholder="SELECT * FRO..tbl_projects..." />
-            <marker date="1446671959132" expanded="true" signature="256:297" placeholder="SELECT * FRO..tbl_customer..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/finance/finance.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614">
-          <caret line="19" column="63" selection-start-line="19" selection-start-column="63" selection-end-line="19" selection-end-column="63" />
-          <folding>
-            <marker date="1446548348749" expanded="true" signature="77:125" placeholder="SELECT * FRO..tbl_customer..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/finance/invoiceinfo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.769231">
-          <caret line="65" column="58" selection-start-line="65" selection-start-column="58" selection-end-line="65" selection-end-column="58" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1446672095728" expanded="true" signature="75:125" placeholder="SELECT * FRO..tbl_invoices..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/sales/appointments.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614">
-          <caret line="48" column="38" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
-          <folding>
-            <marker date="1446671831918" expanded="true" signature="113:175" placeholder="SELECT * FRO..tbl_appointment..." />
-            <marker date="1446671831918" expanded="true" signature="351:392" placeholder="SELECT * FRO..tbl_customer..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.8846154">
@@ -1258,34 +1142,11 @@
           <caret line="193" column="13" selection-start-line="193" selection-start-column="13" selection-end-line="193" selection-end-column="13" />
           <folding>
             <element signature="n#style#0;n#a#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1446710785697" expanded="true" signature="188:236" placeholder="SELECT * FRO..tbl_customer..." />
-            <marker date="1446710785697" expanded="true" signature="2249:2347" placeholder="SELECT * FRO..tbl_projects..." />
-            <marker date="1446710785697" expanded="true" signature="2720:2818" placeholder="SELECT * FRO..tbl_invoices..." />
-            <marker date="1446710785697" expanded="true" signature="5399:5497" placeholder="SELECT * FRO..tbl_projects..." />
-            <marker date="1446710785697" expanded="true" signature="5870:5968" placeholder="SELECT * FRO..tbl_invoices..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/finance/editinvoice.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.615385">
-          <caret line="42" column="38" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
-          <folding>
-            <marker date="1446671959156" expanded="true" signature="91:132" placeholder="SELECT * FRO..tbl_customer..." />
-            <marker date="1446671959156" expanded="true" signature="272:313" placeholder="SELECT * FRO..tbl_invoices..." />
-            <marker date="1446671959156" expanded="true" signature="456:497" placeholder="SELECT * FRO..tbl_projects..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/customers/editcustomer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.692307">
-          <caret line="137" column="26" selection-start-line="137" selection-start-column="26" selection-end-line="137" selection-end-column="26" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#div#2;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1446710993845" expanded="true" signature="75:116" placeholder="SELECT * FRO..tbl_customer..." />
+            <marker date="1446710785697" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tbl_customer..." />
+            <marker date="1446710785697" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tbl_projects..." />
+            <marker date="1446710785697" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tbl_invoices..." />
+            <marker date="1446710785697" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tbl_projects..." />
+            <marker date="1446710785697" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tbl_invoices..." />
           </folding>
         </state>
       </provider>
@@ -1295,23 +1156,151 @@
         <state vertical-scroll-proportion="-6.9454546">
           <caret line="188" column="14" selection-start-line="188" selection-start-column="14" selection-end-line="188" selection-end-column="14" />
           <folding>
-            <marker date="1446711339277" expanded="true" signature="1580:1621" placeholder="SELECT * FRO..tbl_customer..." />
-            <marker date="1446711339277" expanded="true" signature="1926:1991" placeholder="SELECT * FRO..tbl_projects..." />
-            <marker date="1446711339277" expanded="true" signature="3885:4491" placeholder="INSERT INTO ..." />
-            <marker date="1446711339277" expanded="true" signature="6343:6408" placeholder="SELECT * FRO..tbl_projects..." />
-            <marker date="1446711339277" expanded="true" signature="7355:8248" placeholder="UPDATE tbl_p..." />
+            <marker date="1446711339277" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tbl_customer..." />
+            <marker date="1446711339277" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tbl_projects..." />
+            <marker date="1446711339277" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1446711339277" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tbl_projects..." />
+            <marker date="1446711339277" expanded="true" signature="-1:-1" placeholder="UPDATE tbl_p..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/customers/addcustomer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.115385">
+          <caret line="17" column="84" selection-start-line="17" selection-start-column="84" selection-end-line="17" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/customers/customerinfo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.115385">
+          <caret line="29" column="22" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="113" />
+          <folding>
+            <element signature="n#style#0;n#a#5;n#form#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#2;n#form#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <marker date="1446713415712" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tbl_customer..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/customers/editcustomer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.269231">
+          <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="209" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#2;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <marker date="1446713669110" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tbl_customer..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/finance/finance.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.423077">
+          <caret line="19" column="63" selection-start-line="19" selection-start-column="63" selection-end-line="19" selection-end-column="63" />
+          <folding>
+            <marker date="1446548348749" expanded="true" signature="77:125" placeholder="SELECT * FRO..tbl_customer..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/sales/addappointment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.730769">
+          <caret line="36" column="209" selection-start-line="36" selection-start-column="209" selection-end-line="36" selection-end-column="209" />
+          <folding>
+            <marker date="1446714113310" expanded="true" signature="84:146" placeholder="SELECT * FRO..tbl_appointment..." />
+            <marker date="1446714113310" expanded="true" signature="263:304" placeholder="SELECT * FRO..tbl_customer..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/sales/appointments.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.384615">
+          <caret line="48" column="209" selection-start-line="48" selection-start-column="209" selection-end-line="48" selection-end-column="209" />
+          <folding>
+            <marker date="1446714113304" expanded="true" signature="113:175" placeholder="SELECT * FRO..tbl_appointment..." />
+            <marker date="1446714113304" expanded="true" signature="351:392" placeholder="SELECT * FRO..tbl_customer..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/sales/editappointment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.8461537">
+          <caret line="70" column="30" selection-start-line="70" selection-start-column="30" selection-end-line="70" selection-end-column="30" />
+          <folding>
+            <marker date="1446714113339" expanded="true" signature="85:126" placeholder="SELECT * FRO..tbl_customer..." />
+            <marker date="1446714113339" expanded="true" signature="263:319" placeholder="SELECT * FRO..tbl_appointment..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/project/editproject.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.5384617">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="16" selection-end-column="23" />
+          <folding>
+            <marker date="1446713751475" expanded="true" signature="82:123" placeholder="SELECT * FRO..tbl_customer..." />
+            <marker date="1446713751475" expanded="true" signature="246:287" placeholder="SELECT * FRO..tbl_projects..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/finance/addinvoice.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.384615">
+          <caret line="34" column="98" selection-start-line="34" selection-start-column="90" selection-end-line="34" selection-end-column="98" />
+          <folding>
+            <marker date="1446713669119" expanded="true" signature="75:116" placeholder="SELECT * FRO..tbl_projects..." />
+            <marker date="1446713669119" expanded="true" signature="256:297" placeholder="SELECT * FRO..tbl_customer..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/finance/invoiceinfo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.923077">
+          <caret line="68" column="88" selection-start-line="68" selection-start-column="88" selection-end-line="68" selection-end-column="88" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/finance/editinvoice.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.038462">
+          <caret line="182" column="69" selection-start-line="182" selection-start-column="69" selection-end-line="182" selection-end-column="69" />
+          <folding>
+            <marker date="1446717843790" expanded="true" signature="91:132" placeholder="SELECT * FRO..tbl_customer..." />
+            <marker date="1446717843790" expanded="true" signature="272:313" placeholder="SELECT * FRO..tbl_invoices..." />
+            <marker date="1446717843790" expanded="true" signature="456:497" placeholder="SELECT * FRO..tbl_projects..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/project/addproject.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.307692">
+          <caret line="28" column="160" selection-start-line="28" selection-start-column="160" selection-end-line="28" selection-end-column="160" />
+          <folding>
+            <marker date="1446718064913" expanded="true" signature="75:116" placeholder="SELECT * FRO..tbl_customer..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/views/project/viewprojects.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.7894737">
-          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.2556391">
+          <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
           <folding>
-            <marker date="1446671778223" expanded="true" signature="75:138" placeholder="SELECT * FRO..tbl_projects..." />
-            <marker date="1446671778223" expanded="true" signature="3328:3414" placeholder="SELECT COUNT..tbl_invoices..." />
-            <marker date="1446671778223" expanded="true" signature="3811:3897" placeholder="SELECT COUNT..tbl_invoices..." />
+            <marker date="1446718255143" expanded="true" signature="75:138" placeholder="SELECT * FRO..tbl_projects..." />
+            <marker date="1446718255143" expanded="true" signature="3430:3516" placeholder="SELECT COUNT..tbl_invoices..." />
+            <marker date="1446718255143" expanded="true" signature="3913:3999" placeholder="SELECT COUNT..tbl_invoices..." />
           </folding>
         </state>
       </provider>

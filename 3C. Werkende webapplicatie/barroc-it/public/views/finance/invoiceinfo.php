@@ -9,6 +9,14 @@ $q->execute();
 
 $invoices = $q->fetchAll(PDO::FETCH_ASSOC);
 
+$id = $_GET['id'];
+$sql = "SELECT * FROM tbl_projects WHERE id = :id";
+$q= $db->prepare($sql);
+$q->bindParam(':id', $id);
+$q->execute();
+
+$project = $q->fetch();
+
 if($messageBag->hasMsg()){
     echo $messageBag->show();
 }
@@ -19,7 +27,7 @@ if($messageBag->hasMsg()){
         <div class="top-img">
             <img src="../../assets/img/jumbotron_small.jpg" alt="barroc-it image" class="barroc-img">
             <h1 class="barroc-title">BARROC IT. </h1>
-            <h2 class="text-center subhead tophead">Invoice Info</h2>
+            <h2 class="text-center subhead tophead">Invoices</h2>
         </div>
         <form action="../../../app/controllers/authController.php" method="POST">
             <input type="hidden" name="type" value="logout">
@@ -27,15 +35,13 @@ if($messageBag->hasMsg()){
 
                 <ul class="nav navbar-nav">
                     <li><a href="../dashboard/dashboard.php">Home</a></li>
-             <!--       <li class="active"><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li>
-                    <li><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
-                    <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li>
--->
+                    <li><a href="../customers/customerinfo.php?id=<?= $project['customer_id'] ?>">Customer Info</a></li>
+                    <li class="active"><a href="../project/viewprojects.php?id=<?= $project['customer_id'] ?>">Projects</a></li>
+                    <?php if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>  <li><a href="../sales/appointments.php?id=<?= $project['customer_id'] ?>">Appointments</a></li> <?php } ?>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a><input type="submit" value="LOGOUT" class="logout"></a></li>
                 </ul>
-
 
             </nav>
         </form>
