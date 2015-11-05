@@ -9,6 +9,13 @@ $q->execute();
 
 $customer = $q->fetch();
 
+$id = $_GET['id'];
+$sql = "SELECT * FROM tbl_projects WHERE active = 1 AND customer_id = :id";
+$qu= $db->prepare($sql);
+$qu->bindParam(':id', $id);
+$qu->execute();
+
+
 ?>
 
 
@@ -133,6 +140,11 @@ $customer = $q->fetch();
                         <label for="creditworthy" class="col-4">Creditworthy:</label>
                         <input type="email" name="creditworthy" value="<?php if($customer['creditworthy']) { echo 'Yes'; } else {echo 'No';}?>" readonly>
                     </div>
+                    <div class="form-group">
+                        <label for="bkrcheck" class="col-4">BKR-check:</label>
+                        <input type="text" name="bkrcheck" value="<?php if($customer['bkrcheck']) { echo 'Yes'; } else {echo 'No';}?>"readonly>
+                    </div>
+
                     <?php if(in_array("Finance",$_SESSION['user'])) { ?>
                         <div class="form-group">
                             <label for="ledgeraccountnumber" class="col-4">Ledger account number:</label>
@@ -143,15 +155,10 @@ $customer = $q->fetch();
                             <label for="taxcode" class="col-4">Taxcode:</label>
                             <input type="text" name="taxcode" value="<?= $customer['taxcode']?>">
                         </div>
-
-                        <div class="form-group">
-                            <label for="bkrcheck" class="col-4">BKR-check:</label>
-                            <input type="text" name="bkrcheck" value="<?php if($customer['bkrcheck']) { echo 'Yes'; } else {echo 'No';}?>">
-                        </div>
                     <?php } ?>
                     <div class="form-group">
                         <label for="open_project" class="col-4">Open project:</label>
-                        <input type="text" name="open_project" value="<?php if($customer['open_project']) { echo 'Yes'; } else {echo 'No';}?>">
+                        <input type="text" name="open_project" value="<?php if($qu->rowCount() == 1) { echo 'Yes'; } else {echo 'No';}?>"readonly>
                     </div>
 
                     <div class="form-group">
