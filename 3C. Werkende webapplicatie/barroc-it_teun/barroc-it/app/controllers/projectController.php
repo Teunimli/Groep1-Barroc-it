@@ -78,7 +78,7 @@ function add($customer_id, $projectname, $start_date, $end_date,
                 $q->execute();
 
 
-                    if ($q->rowCount() == 1 && $_POST['active'] == 'Yes' || $_POST['active'] == 'yes') {
+                    if ($q->rowCount() == 1 && $_POST['active'] == 'Yes' || $q->rowCount() >= 1 && $_POST['active'] == 'yes') {
                         $active = 'There is already a project active';
                         alert($active);
                         $controle = 1;
@@ -186,7 +186,7 @@ function edit($id, $projectname, $start_date, $end_date,
             $q->bindParam(':id', $customerid);
             $q->execute();
 
-        if($q->rowCount() >= 1 && $_POST['active'] == 'Yes' || $_POST['active'] == 'yes'){
+        if($q->rowCount() >= 1 && $_POST['active'] == 'Yes' || $q->rowCount() >= 1 && $_POST['active'] == 'yes'){
             $controle = 1;
             header('location: ../../public/views/project/viewprojects.php?id=' . $_POST['customer_id']);
         }else{
