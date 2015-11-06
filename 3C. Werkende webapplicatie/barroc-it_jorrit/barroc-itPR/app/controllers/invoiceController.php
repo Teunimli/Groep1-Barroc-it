@@ -103,215 +103,397 @@ function edit($id, $date_of_invoice, $end_invoice_date, $paid, $item1, $item2, $
               $item4, $item5, $item6, $item7, $item8, $item9, $item10, $description1, $description2,
               $description3, $description4, $description5, $description6, $description7, $description8,
               $description9, $description10, $amount1, $amount2, $amount3, $amount4, $amount5, $amount6,
-              $amount7, $amount8, $amount9, $amount9, $amount10, $price1, $price2, $price3, $price4, $price5,
-              $price6, $price7, $price8, $price9, $price10){
+              $amount7, $amount8, $amount9, $amount10, $price1, $price2, $price3, $price4, $price5,
+              $price6, $price7, $price8, $price9, $price10)
+{
     global $db;
     global $messageBag;
     $controle = 2;
 
-    if(empty($_POST['date_of_invoice']) ||
+    if (empty($_POST['date_of_invoice']) ||
         empty($_POST['end_invoice_date']) ||
-        !isset($_POST['paid'])){
+        !isset($_POST['paid'])
+    ) {
 
         $controle = 1;
-        $messageBag->add('w','Not all fields are filled in');
+        $messageBag->add('w', 'Not all fields are filled in');
     }
-    if(!empty($item1)) {
-        if(empty($description1) || empty($amount1) || empty($price1)){
-            $messageBag->add('w','Not all fields are filled in');
+    if (!empty($item1)) {
+        if (empty($description1) || empty($amount1) || empty($price1)) {
+            $messageBag->add('w', 'Not all fields are filled in');
         }
-    } else {
-        $sql = "UPDATE tbl_invoice_items SET item = :item,
+
+        $sql ="SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 1";
+        $q = $db->prepare($sql);
+        $q->bindParam(':id', $id);
+        $q->execute();
+        if($q->rowCount() == 1){
+            $sql = "UPDATE tbl_invoice_items SET item = :item,
                                         description = :description,
                                         amount = :amount,
                                         price = :price
-                                        WHERE id = 1";
+                                        WHERE id = 1 AND :invoice_id";
 
-        $q = $db->prepare($sql);
-        $q->bindParam(':invoice_id', $id);
-        $q->bindParam(':item', $item1);
-        $q->bindParam(':description', $description1);
-        $q->bindParam(':amount', $amount1);
-        $q->bindParam(':price', $price1);
-        $q->execute();
-    }
-    if(!empty($item2)) {
-        if(empty($description2) || empty($amount2) || empty($price2)){
-            $messageBag->add('w','Not all fields are filled in');
+            $q = $db->prepare($sql);
+            $q->bindParam(':invoice_id', $id);
+            $q->bindParam(':item', $item1);
+            $q->bindParam(':description', $description1);
+            $q->bindParam(':amount', $amount1);
+            $q->bindParam(':price', $price1);
+            $q->execute();
+        } else {
+            $sql = "INSERT INTO tbl_invoice_items(id, invoice_id, item, description, amount, price)
+                                  VALUES(1, :invoice_id, :item, :description, :amount, :price)";
+
+            $q = $db->prepare($sql);
+            $q->bindParam(':invoice_id', $id);
+            $q->bindParam(':item', $item1);
+            $q->bindParam(':description', $description1);
+            $q->bindParam(':amount', $amount1);
+            $q->bindParam(':price', $price1);
+            $q->execute();
         }
-    }else {
-        $sql = "UPDATE tbl_invoice_items SET item = :item,
+
+    }
+    if (!empty($item2)) {
+        if (empty($description2) || empty($amount2) || empty($price2)) {
+            $messageBag->add('w', 'Not all fields are filled in');
+        }
+        $sql ="SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 2";
+        $q = $db->prepare($sql);
+        $q->bindParam(':id', $id);
+        $q->execute();
+
+
+        if($q->rowCount() == 1){
+            $sql = "UPDATE tbl_invoice_items SET item = :item,
                                         description = :description,
                                         amount = :amount,
                                         price = :price
-                                        WHERE id = 2";
+                                        WHERE id = 2 AND :invoice_id";
 
-        $q = $db->prepare($sql);
-        $q->bindParam(':invoice_id', $id);
-        $q->bindParam(':item', $item2);
-        $q->bindParam(':description', $description2);
-        $q->bindParam(':amount', $amount2);
-        $q->bindParam(':price', $price2);
-        $q->execute();
-    }
-    if(!empty($item3)) {
-        if(empty($description3) || empty($amount3) || empty($price3)){
-            $messageBag->add('w','Not all fields are filled in');
+            $q = $db->prepare($sql);
+            $q->bindParam(':invoice_id', $id);
+            $q->bindParam(':item', $item2);
+            $q->bindParam(':description', $description2);
+            $q->bindParam(':amount', $amount2);
+            $q->bindParam(':price', $price2);
+            $q->execute();
+        } else {
+            $sql = "INSERT INTO tbl_invoice_items(id, invoice_id, item, description, amount, price)
+                                  VALUES(2, :invoice_id, :item, :description, :amount, :price)";
+
+            $q = $db->prepare($sql);
+            $q->bindParam(':invoice_id', $id);
+            $q->bindParam(':item', $item2);
+            $q->bindParam(':description', $description2);
+            $q->bindParam(':amount', $amount2);
+            $q->bindParam(':price', $price2);
+            $q->execute();
         }
-    }else {
-        $sql = "UPDATE tbl_invoice_items SET item = :item,
+    }
+    if (!empty($item3)) {
+        if (empty($description3) || empty($amount3) || empty($price3)) {
+            $messageBag->add('w', 'Not all fields are filled in');
+        }
+        $sql ="SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 3";
+        $q = $db->prepare($sql);
+        $q->bindParam(':id', $id);
+        $q->execute();
+
+
+        if($q->rowCount() == 1){
+            $sql = "UPDATE tbl_invoice_items SET item = :item,
                                         description = :description,
                                         amount = :amount,
                                         price = :price
-                                        WHERE id = 3";
+                                        WHERE id = 3 AND :invoice_id";
 
-        $q = $db->prepare($sql);
-        $q->bindParam(':invoice_id', $id);
-        $q->bindParam(':item', $item3);
-        $q->bindParam(':description', $description3);
-        $q->bindParam(':amount', $amount3);
-        $q->bindParam(':price', $price3);
-        $q->execute();
-    }
-    if(!empty($item4)) {
-        if(empty($description4) || empty($amount4) || empty($price4)){
-            $messageBag->add('w','Not all fields are filled in');
+            $q = $db->prepare($sql);
+            $q->bindParam(':invoice_id', $id);
+            $q->bindParam(':item', $item3);
+            $q->bindParam(':description', $description3);
+            $q->bindParam(':amount', $amount3);
+            $q->bindParam(':price', $price3);
+            $q->execute();
+        } else {
+            $sql = "INSERT INTO tbl_invoice_items(id, invoice_id, item, description, amount, price)
+                                  VALUES(3, :invoice_id, :item, :description, :amount, :price)";
+
+            $q = $db->prepare($sql);
+            $q->bindParam(':invoice_id', $id);
+            $q->bindParam(':item', $item3);
+            $q->bindParam(':description', $description3);
+            $q->bindParam(':amount', $amount3);
+            $q->bindParam(':price', $price3);
+            $q->execute();
         }
     }
-    else {
-        $sql = "UPDATE tbl_invoice_items SET item = :item,
+    if (!empty($item4)) {
+        if (empty($description4) || empty($amount4) || empty($price4)) {
+            $messageBag->add('w', 'Not all fields are filled in');
+        }
+
+        $sql ="SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 4";
+        $q = $db->prepare($sql);
+        $q->bindParam(':id', $id);
+        $q->execute();
+
+
+        if($q->rowCount() == 1){
+            $sql = "UPDATE tbl_invoice_items SET item = :item,
                                         description = :description,
                                         amount = :amount,
                                         price = :price
-                                        WHERE id = 4";
+                                        WHERE id = 4 AND :invoice_id";
 
-        $q = $db->prepare($sql);
-        $q->bindParam(':invoice_id', $id);
-        $q->bindParam(':item', $item4);
-        $q->bindParam(':description', $description4);
-        $q->bindParam(':amount', $amount4);
-        $q->bindParam(':price', $price4);
-        $q->execute();
-    }
-    if(!empty($item5)) {
-        if(empty($description5) || empty($amount5) || empty($price5)){
-            $messageBag->add('w','Not all fields are filled in');
+            $q = $db->prepare($sql);
+            $q->bindParam(':invoice_id', $id);
+            $q->bindParam(':item', $item4);
+            $q->bindParam(':description', $description4);
+            $q->bindParam(':amount', $amount4);
+            $q->bindParam(':price', $price4);
+            $q->execute();
+        } else {
+            $sql = "INSERT INTO tbl_invoice_items(id, invoice_id, item, description, amount, price)
+                                  VALUES(4, :invoice_id, :item, :description, :amount, :price)";
+
+            $q = $db->prepare($sql);
+            $q->bindParam(':invoice_id', $id);
+            $q->bindParam(':item', $item4);
+            $q->bindParam(':description', $description4);
+            $q->bindParam(':amount', $amount4);
+            $q->bindParam(':price', $price4);
+            $q->execute();
         }
-    }else {
-        $sql = "UPDATE tbl_invoice_items SET item = :item,
+    }
+    if (!empty($item5)) {
+        if (empty($description5) || empty($amount5) || empty($price5)) {
+            $messageBag->add('w', 'Not all fields are filled in');
+        }
+        $sql ="SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 5";
+        $q = $db->prepare($sql);
+        $q->bindParam(':id', $id);
+        $q->execute();
+
+
+        if($q->rowCount() == 1){
+            $sql = "UPDATE tbl_invoice_items SET item = :item,
                                         description = :description,
                                         amount = :amount,
                                         price = :price
-                                        WHERE id = 5";
+                                        WHERE id = 5 AND :invoice_id";
 
-        $q = $db->prepare($sql);
-        $q->bindParam(':invoice_id', $id);
-        $q->bindParam(':item', $item5);
-        $q->bindParam(':description', $description5);
-        $q->bindParam(':amount', $amount5);
-        $q->bindParam(':price', $price5);
-        $q->execute();
-    }
-    if(!empty($item6)) {
-        if(empty($description6) || empty($amount6) || empty($price6)){
-            $messageBag->add('w','Not all fields are filled in');
+            $q = $db->prepare($sql);
+            $q->bindParam(':invoice_id', $id);
+            $q->bindParam(':item', $item5);
+            $q->bindParam(':description', $description5);
+            $q->bindParam(':amount', $amount5);
+            $q->bindParam(':price', $price5);
+            $q->execute();
+        } else {
+            $sql = "INSERT INTO tbl_invoice_items(id, invoice_id, item, description, amount, price)
+                                  VALUES(5, :invoice_id, :item, :description, :amount, :price)";
+
+            $q = $db->prepare($sql);
+            $q->bindParam(':invoice_id', $id);
+            $q->bindParam(':item', $item5);
+            $q->bindParam(':description', $description5);
+            $q->bindParam(':amount', $amount5);
+            $q->bindParam(':price', $price5);
+            $q->execute();
         }
-    }else {
-        $sql = "UPDATE tbl_invoice_items SET item = :item,
+    }
+    if (!empty($item6)) {
+        if (empty($description6) || empty($amount6) || empty($price6)) {
+            $messageBag->add('w', 'Not all fields are filled in');
+        }
+        $sql ="SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 6";
+        $q = $db->prepare($sql);
+        $q->bindParam(':id', $id);
+        $q->execute();
+
+
+        if($q->rowCount() == 1){
+            $sql = "UPDATE tbl_invoice_items SET item = :item,
                                         description = :description,
                                         amount = :amount,
                                         price = :price
-                                        WHERE id = 6";
+                                        WHERE id = 6 AND :invoice_id";
 
-        $q = $db->prepare($sql);
-        $q->bindParam(':invoice_id', $id);
-        $q->bindParam(':item', $item6);
-        $q->bindParam(':description', $description6);
-        $q->bindParam(':amount', $amount6);
-        $q->bindParam(':price', $price6);
-        $q->execute();
-    }
-    if(!empty($item7)) {
-        if(empty($description7) || empty($amount7) || empty($price7)){
-            $messageBag->add('w','Not all fields are filled in');
+            $q = $db->prepare($sql);
+            $q->bindParam(':invoice_id', $id);
+            $q->bindParam(':item', $item6);
+            $q->bindParam(':description', $description6);
+            $q->bindParam(':amount', $amount6);
+            $q->bindParam(':price', $price6);
+            $q->execute();
+        } else {
+            $sql = "INSERT INTO tbl_invoice_items(id, invoice_id, item, description, amount, price)
+                                  VALUES(6, :invoice_id, :item, :description, :amount, :price)";
+
+            $q = $db->prepare($sql);
+            $q->bindParam(':invoice_id', $id);
+            $q->bindParam(':item', $item6);
+            $q->bindParam(':description', $description6);
+            $q->bindParam(':amount', $amount6);
+            $q->bindParam(':price', $price6);
+            $q->execute();
         }
-    }else {
-        $sql = "UPDATE tbl_invoice_items SET item = :item,
+    }
+    if (!empty($item7)) {
+        if (empty($description7) || empty($amount7) || empty($price7)) {
+            $messageBag->add('w', 'Not all fields are filled in');
+        }
+        $sql ="SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 7";
+        $q = $db->prepare($sql);
+        $q->bindParam(':id', $id);
+        $q->execute();
+
+
+        if($q->rowCount() == 1){
+            $sql = "UPDATE tbl_invoice_items SET item = :item,
                                         description = :description,
                                         amount = :amount,
                                         price = :price
-                                        WHERE id = 7";
+                                        WHERE id = 7 AND :invoice_id";
 
-        $q = $db->prepare($sql);
-        $q->bindParam(':invoice_id', $id);
-        $q->bindParam(':item', $item7);
-        $q->bindParam(':description', $description7);
-        $q->bindParam(':amount', $amount7);
-        $q->bindParam(':price', $price7);
-        $q->execute();
-    }
-    if(!empty($item8)) {
-        if(empty($description8) || empty($amount8) || empty($price8)){
-            $messageBag->add('w','Not all fields are filled in');
+            $q = $db->prepare($sql);
+            $q->bindParam(':invoice_id', $id);
+            $q->bindParam(':item', $item7);
+            $q->bindParam(':description', $description7);
+            $q->bindParam(':amount', $amount7);
+            $q->bindParam(':price', $price7);
+            $q->execute();
+        } else {
+            $sql = "INSERT INTO tbl_invoice_items(id, invoice_id, item, description, amount, price)
+                                  VALUES(7, :invoice_id, :item, :description, :amount, :price)";
+
+            $q = $db->prepare($sql);
+            $q->bindParam(':invoice_id', $id);
+            $q->bindParam(':item', $item7);
+            $q->bindParam(':description', $description7);
+            $q->bindParam(':amount', $amount7);
+            $q->bindParam(':price', $price7);
+            $q->execute();
         }
-    }else {
-        $sql = "UPDATE tbl_invoice_items SET item = :item,
+    }
+    if (!empty($item8)) {
+        if (empty($description8) || empty($amount8) || empty($price8)) {
+            $messageBag->add('w', 'Not all fields are filled in');
+        }
+        $sql ="SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 8";
+        $q = $db->prepare($sql);
+        $q->bindParam(':id', $id);
+        $q->execute();
+
+
+        if($q->rowCount() == 1){
+            $sql = "UPDATE tbl_invoice_items SET item = :item,
                                         description = :description,
                                         amount = :amount,
                                         price = :price
-                                        WHERE id = 8";
+                                        WHERE id = 8 AND :invoice_id";
 
-        $q = $db->prepare($sql);
-        $q->bindParam(':invoice_id', $id);
-        $q->bindParam(':item', $item8);
-        $q->bindParam(':description', $description8);
-        $q->bindParam(':amount', $amount8);
-        $q->bindParam(':price', $price8);
-        $q->execute();
-    }
-    if(!empty($item9)) {
-        if(empty($description9) || empty($amount9) || empty($price9)){
-            $messageBag->add('w','Not all fields are filled in');
+            $q = $db->prepare($sql);
+            $q->bindParam(':invoice_id', $id);
+            $q->bindParam(':item', $item8);
+            $q->bindParam(':description', $description8);
+            $q->bindParam(':amount', $amount8);
+            $q->bindParam(':price', $price8);
+            $q->execute();
+        } else {
+            $sql = "INSERT INTO tbl_invoice_items(id, invoice_id, item, description, amount, price)
+                                  VALUES(8, :invoice_id, :item, :description, :amount, :price)";
+
+            $q = $db->prepare($sql);
+            $q->bindParam(':invoice_id', $id);
+            $q->bindParam(':item', $item8);
+            $q->bindParam(':description', $description8);
+            $q->bindParam(':amount', $amount8);
+            $q->bindParam(':price', $price8);
+            $q->execute();
         }
-    }else {
-        $sql = "UPDATE tbl_invoice_items SET item = :item,
+    }
+    if (!empty($item9)) {
+        if (empty($description9) || empty($amount9) || empty($price9)) {
+            $messageBag->add('w', 'Not all fields are filled in');
+        }
+        $sql ="SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 9";
+        $q = $db->prepare($sql);
+        $q->bindParam(':id', $id);
+        $q->execute();
+
+
+        if($q->rowCount() == 1){
+            $sql = "UPDATE tbl_invoice_items SET item = :item,
                                         description = :description,
                                         amount = :amount,
                                         price = :price
-                                        WHERE id = 9";
+                                        WHERE id = 9 AND :invoice_id";
 
-        $q = $db->prepare($sql);
-        $q->bindParam(':invoice_id', $id);
-        $q->bindParam(':item', $item9);
-        $q->bindParam(':description', $description9);
-        $q->bindParam(':amount', $amount9);
-        $q->bindParam(':price', $price9);
-        $q->execute();
-    }
-    if(!empty($item10)) {
-        if(empty($description10) || empty($amount10) || empty($price10)){
-            $messageBag->add('w','Not all fields are filled in');
+            $q = $db->prepare($sql);
+            $q->bindParam(':invoice_id', $id);
+            $q->bindParam(':item', $item9);
+            $q->bindParam(':description', $description9);
+            $q->bindParam(':amount', $amount9);
+            $q->bindParam(':price', $price9);
+            $q->execute();
+        } else {
+            $sql = "INSERT INTO tbl_invoice_items(id, invoice_id, item, description, amount, price)
+                                  VALUES(9, :invoice_id, :item, :description, :amount, :price)";
+
+            $q = $db->prepare($sql);
+            $q->bindParam(':invoice_id', $id);
+            $q->bindParam(':item', $item9);
+            $q->bindParam(':description', $description9);
+            $q->bindParam(':amount', $amount9);
+            $q->bindParam(':price', $price9);
+            $q->execute();
         }
-    }else {
-        $sql = "UPDATE tbl_invoice_items SET item = :item,
+    }
+    if (!empty($item10)) {
+        if (empty($description10) || empty($amount10) || empty($price10)) {
+            $messageBag->add('w', 'Not all fields are filled in');
+        }
+        $sql ="SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 10";
+        $q = $db->prepare($sql);
+        $q->bindParam(':id', $id);
+        $q->execute();
+
+
+        if($q->rowCount() == 1){
+            $sql = "UPDATE tbl_invoice_items SET item = :item,
                                         description = :description,
                                         amount = :amount,
                                         price = :price
-                                        WHERE id = 10";
+                                        WHERE id = 10 AND :invoice_id";
 
-        $q = $db->prepare($sql);
-        $q->bindParam(':invoice_id', $id);
-        $q->bindParam(':item', $item10);
-        $q->bindParam(':description', $description10);
-        $q->bindParam(':amount', $amount10);
-        $q->bindParam(':price', $price10);
-        $q->execute();
+            $q = $db->prepare($sql);
+            $q->bindParam(':invoice_id', $id);
+            $q->bindParam(':item', $item10);
+            $q->bindParam(':description', $description10);
+            $q->bindParam(':amount', $amount10);
+            $q->bindParam(':price', $price10);
+            $q->execute();
+        } else {
+            $sql = "INSERT INTO tbl_invoice_items(id, invoice_id, item, description, amount, price)
+                                  VALUES(10, :invoice_id, :item, :description, :amount, :price)";
+
+            $q = $db->prepare($sql);
+            $q->bindParam(':invoice_id', $id);
+            $q->bindParam(':item', $item10);
+            $q->bindParam(':description', $description10);
+            $q->bindParam(':amount', $amount10);
+            $q->bindParam(':price', $price10);
+            $q->execute();
+        }
     }
-    if($controle == 2){
+    if ($controle == 2) {
 
-        if($_POST['paid'] == 'yes' || $_POST['paid'] == 'Yes'){
+        if ($_POST['paid'] == 'yes' || $_POST['paid'] == 'Yes') {
             $paid = 1;
-        }else if($_POST['paid'] == 'no' || $_POST['paid'] == 'No'){
+        } else if ($_POST['paid'] == 'no' || $_POST['paid'] == 'No') {
             $paid = 0;
         }
 
@@ -322,7 +504,7 @@ function edit($id, $date_of_invoice, $end_invoice_date, $paid, $item1, $item2, $
         $sql = "UPDATE tbl_invoices SET date_of_invoice = :date_of_invoice,
                                         end_invoice_date = :end_invoice_date,
                                         paid = :paid
-                                        WHERE id = :id";
+                                        WHERE id = :id AND :invoice_id";
 
         $q = $db->prepare($sql);
         $q->bindParam(':end_invoice_date', $endinvoicedate);
@@ -331,17 +513,17 @@ function edit($id, $date_of_invoice, $end_invoice_date, $paid, $item1, $item2, $
         $q->bindParam(':id', $id);
         $q->execute();
 
-        header('location: ../../public/views/finance/invoiceinfo.php?id=' . $_POST['id']. '&customerid=' .$_POST['customerid']);
+        header('location: ../../public/views/finance/invoiceinfo.php?id=' . $_POST['id'] . '&customerid=' . $_POST['customerid']);
     }
-
 }
+
 
 
 function add($id, $date_of_invoice, $end_invoice_date, $invoicenumber, $item1, $item2, $item3,
              $item4, $item5, $item6, $item7, $item8, $item9, $item10, $description1, $description2,
              $description3, $description4, $description5, $description6, $description7, $description8,
              $description9, $description10, $amount1, $amount2, $amount3, $amount4, $amount5, $amount6,
-             $amount7, $amount8, $amount9, $amount9, $amount10, $price1, $price2, $price3, $price4, $price5,
+             $amount7, $amount8, $amount9, $amount10, $price1, $price2, $price3, $price4, $price5,
              $price6, $price7, $price8, $price9, $price10){
 
 
@@ -350,12 +532,9 @@ function add($id, $date_of_invoice, $end_invoice_date, $invoicenumber, $item1, $
     $controle = 2;
 
 
-    if(empty($_POST['date_of_invoie']) ||
+    if(empty($_POST['date_of_invoice']) ||
         empty($_POST['end_invoice_date']) ||
-        empty($_POST['invoicenumber']) ||
-        empty($_POST['activities']) ||
-        empty($_POST['price'])){
-
+        empty($_POST['invoicenumber'])){
         $controle = 1;
         $messageBag->add('w','Not all fields are filled in');
 

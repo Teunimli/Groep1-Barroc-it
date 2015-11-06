@@ -159,8 +159,8 @@
       <file leaf-file-name="addinvoice.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/views/finance/addinvoice.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="46.423077">
-              <caret line="138" column="63" selection-start-line="138" selection-start-column="63" selection-end-line="138" selection-end-column="63" />
+            <state vertical-scroll-proportion="-15.730769">
+              <caret line="147" column="49" selection-start-line="147" selection-start-column="36" selection-end-line="147" selection-end-column="49" />
               <folding>
                 <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <marker date="1446734469581" expanded="true" signature="75:116" placeholder="SELECT * FRO..tbl_projects..." />
@@ -173,53 +173,56 @@
       <file leaf-file-name="invoiceController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/invoiceController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46616542">
-              <caret line="193" column="22" selection-start-line="193" selection-start-column="22" selection-end-line="193" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.58458644">
+              <caret line="487" column="44" selection-start-line="487" selection-start-column="44" selection-end-line="487" selection-end-column="44" />
               <folding>
-                <marker date="1446753673241" expanded="true" signature="3990:4265" placeholder="UPDATE tbl_i..." />
-                <marker date="1446753673241" expanded="true" signature="3990:4266" placeholder="UPDATE tbl_i..." />
-                <marker date="1446753673241" expanded="true" signature="4755:5030" placeholder="INSERT INTO ..." />
-                <marker date="1446753673241" expanded="true" signature="4755:5031" placeholder="UPDATE tbl_i..." />
-                <marker date="1446753673241" expanded="true" signature="5520:5795" placeholder="INSERT INTO ..." />
-                <marker date="1446753673241" expanded="true" signature="5520:5796" placeholder="UPDATE tbl_i..." />
-                <marker date="1446753673241" expanded="true" signature="6290:6565" placeholder="INSERT INTO ..." />
-                <marker date="1446753673241" expanded="true" signature="6290:6566" placeholder="UPDATE tbl_i..." />
-                <marker date="1446753673241" expanded="true" signature="7055:7330" placeholder="INSERT INTO ..." />
-                <marker date="1446753673241" expanded="true" signature="7055:7331" placeholder="UPDATE tbl_i..." />
-                <marker date="1446753673241" expanded="true" signature="7820:8095" placeholder="INSERT INTO ..." />
-                <marker date="1446753673241" expanded="true" signature="7820:8096" placeholder="UPDATE tbl_i..." />
-                <marker date="1446753673241" expanded="true" signature="8585:8860" placeholder="INSERT INTO ..." />
-                <marker date="1446753673241" expanded="true" signature="8585:8861" placeholder="UPDATE tbl_i..." />
-                <marker date="1446753673241" expanded="true" signature="9350:9625" placeholder="INSERT INTO ..." />
-                <marker date="1446753673241" expanded="true" signature="9350:9626" placeholder="UPDATE tbl_i..." />
-                <marker date="1446753673241" expanded="true" signature="10115:10390" placeholder="INSERT INTO ..." />
-                <marker date="1446753673241" expanded="true" signature="10115:10391" placeholder="UPDATE tbl_i..." />
-                <marker date="1446753673241" expanded="true" signature="10884:11159" placeholder="INSERT INTO ..." />
-                <marker date="1446753673241" expanded="true" signature="10884:11161" placeholder="UPDATE tbl_i..." />
-                <marker date="1446753673241" expanded="true" signature="11796:12041" placeholder="UPDATE tbl_i..." />
-                <marker date="1446753673241" expanded="true" signature="13385:13426" placeholder="SELECT * FRO..tbl_invoices..." />
-                <marker date="1446753673241" expanded="true" signature="13849:14023" placeholder="INSERT INTO ..." />
-                <marker date="1446753673241" expanded="true" signature="14559:14733" placeholder="INSERT INTO ..." />
-                <marker date="1446753673241" expanded="true" signature="15269:15443" placeholder="INSERT INTO ..." />
-                <marker date="1446753673241" expanded="true" signature="15976:16150" placeholder="INSERT INTO ..." />
-                <marker date="1446753673241" expanded="true" signature="16687:16861" placeholder="INSERT INTO ..." />
-                <marker date="1446753673241" expanded="true" signature="17397:17571" placeholder="INSERT INTO ..." />
-                <marker date="1446753673241" expanded="true" signature="18107:18281" placeholder="INSERT INTO ..." />
-                <marker date="1446753673241" expanded="true" signature="18817:18991" placeholder="INSERT INTO ..." />
-                <marker date="1446753673241" expanded="true" signature="19527:19701" placeholder="INSERT INTO ..." />
-                <marker date="1446753673241" expanded="true" signature="20241:20416" placeholder="INSERT INTO ..." />
-                <marker date="1446753673241" expanded="true" signature="20910:21083" placeholder="INSERT INTO ..." />
+                <marker date="1446766513057" expanded="true" signature="3980:4034" placeholder="SELECT * FRO..tbl_invoices..." />
+                <marker date="1446766513057" expanded="true" signature="3980:4045" placeholder="SELECT * FRO..tbl_invoice_items..." />
+                <marker date="1446766513057" expanded="true" signature="4192:4484" placeholder="UPDATE tbl_i..." />
+                <marker date="1446766513057" expanded="true" signature="4832:5006" placeholder="INSERT INTO ..." />
+                <marker date="1446766513057" expanded="true" signature="5525:5579" placeholder="SELECT * FRO..tbl_invoice_items..." />
+                <marker date="1446766513057" expanded="true" signature="5525:5590" placeholder="SELECT * FRO..tbl_invoice_items..." />
+                <marker date="1446766513057" expanded="true" signature="5739:6031" placeholder="UPDATE tbl_i..." />
+                <marker date="1446766513057" expanded="true" signature="6379:6553" placeholder="INSERT INTO ..." />
+                <marker date="1446766513057" expanded="true" signature="7071:7136" placeholder="SELECT * FRO..tbl_invoice_items..." />
+                <marker date="1446766513057" expanded="true" signature="7285:7577" placeholder="UPDATE tbl_i..." />
+                <marker date="1446766513057" expanded="true" signature="7925:8099" placeholder="INSERT INTO ..." />
+                <marker date="1446766513057" expanded="true" signature="8618:8683" placeholder="SELECT * FRO..tbl_invoice_items..." />
+                <marker date="1446766513057" expanded="true" signature="8832:9124" placeholder="UPDATE tbl_i..." />
+                <marker date="1446766513057" expanded="true" signature="9472:9646" placeholder="INSERT INTO ..." />
+                <marker date="1446766513057" expanded="true" signature="10164:10229" placeholder="SELECT * FRO..tbl_invoice_items..." />
+                <marker date="1446766513057" expanded="true" signature="10378:10670" placeholder="UPDATE tbl_i..." />
+                <marker date="1446766513057" expanded="true" signature="11018:11192" placeholder="INSERT INTO ..." />
+                <marker date="1446766513057" expanded="true" signature="11710:11775" placeholder="SELECT * FRO..tbl_invoice_items..." />
+                <marker date="1446766513057" expanded="true" signature="11924:12216" placeholder="UPDATE tbl_i..." />
+                <marker date="1446766513057" expanded="true" signature="12564:12738" placeholder="INSERT INTO ..." />
+                <marker date="1446766513057" expanded="true" signature="13256:13321" placeholder="SELECT * FRO..tbl_invoice_items..." />
+                <marker date="1446766513057" expanded="true" signature="13470:13762" placeholder="UPDATE tbl_i..." />
+                <marker date="1446766513057" expanded="true" signature="14110:14284" placeholder="INSERT INTO ..." />
+                <marker date="1446766513057" expanded="true" signature="14802:14867" placeholder="SELECT * FRO..tbl_invoice_items..." />
+                <marker date="1446766513057" expanded="true" signature="15016:15308" placeholder="UPDATE tbl_i..." />
+                <marker date="1446766513057" expanded="true" signature="15656:15830" placeholder="INSERT INTO ..." />
+                <marker date="1446766513057" expanded="true" signature="16348:16413" placeholder="SELECT * FRO..tbl_invoice_items..." />
+                <marker date="1446766513057" expanded="true" signature="16562:16854" placeholder="UPDATE tbl_i..." />
+                <marker date="1446766513057" expanded="true" signature="17202:17376" placeholder="INSERT INTO ..." />
+                <marker date="1446766513057" expanded="true" signature="17898:17964" placeholder="SELECT * FRO..tbl_invoice_items..." />
+                <marker date="1446766513057" expanded="true" signature="18113:18406" placeholder="UPDATE tbl_i..." />
+                <marker date="1446766513057" expanded="true" signature="18758:18933" placeholder="INSERT INTO ..." />
+                <marker date="1446766513057" expanded="true" signature="19613:19858" placeholder="UPDATE tbl_i..." />
+                <marker date="1446766513057" expanded="true" signature="19613:19874" placeholder="UPDATE tbl_i..." />
+                <marker date="1446766513057" expanded="true" signature="21137:21178" placeholder="SELECT * FRO..tbl_invoices..." />
+                <marker date="1446766513057" expanded="true" signature="21601:21775" placeholder="INSERT INTO ..." />
+                <marker date="1446766513057" expanded="true" signature="22311:22485" placeholder="INSERT INTO ..." />
+                <marker date="1446766513057" expanded="true" signature="23021:23195" placeholder="INSERT INTO ..." />
+                <marker date="1446766513057" expanded="true" signature="23728:23902" placeholder="INSERT INTO ..." />
+                <marker date="1446766513057" expanded="true" signature="24439:24613" placeholder="INSERT INTO ..." />
+                <marker date="1446766513057" expanded="true" signature="25149:25323" placeholder="INSERT INTO ..." />
+                <marker date="1446766513057" expanded="true" signature="25859:26033" placeholder="INSERT INTO ..." />
+                <marker date="1446766513057" expanded="true" signature="26569:26743" placeholder="INSERT INTO ..." />
+                <marker date="1446766513057" expanded="true" signature="27279:27453" placeholder="INSERT INTO ..." />
+                <marker date="1446766513057" expanded="true" signature="27993:28168" placeholder="INSERT INTO ..." />
+                <marker date="1446766513057" expanded="true" signature="28662:28835" placeholder="INSERT INTO ..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assets/css/main.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="317" column="44" selection-start-line="317" selection-start-column="44" selection-end-line="317" selection-end-column="44" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -255,8 +258,8 @@
       <file leaf-file-name="showinvoice.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/views/finance/showinvoice.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.0">
-              <caret line="107" column="22" selection-start-line="39" selection-start-column="0" selection-end-line="107" selection-end-column="22" />
+            <state vertical-scroll-proportion="81.07692">
+              <caret line="98" column="14" selection-start-line="98" selection-start-column="14" selection-end-line="98" selection-end-column="14" />
               <folding>
                 <marker date="1446749088781" expanded="true" signature="242:283" placeholder="SELECT * FRO..tbl_customer..." />
                 <marker date="1446749088781" expanded="true" signature="423:464" placeholder="SELECT * FRO..tbl_invoices..." />
@@ -296,17 +299,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="barroc_it.tbl_invoices" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://dbtable:/ec48c8d8/38e965fd-689c-4236-ac20-e9aa1cd252e5/barroc_it..tbl_invoices">
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
+      <file leaf-file-name="authController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/authController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.5">
+              <caret line="37" column="60" selection-start-line="37" selection-start-column="60" selection-end-line="37" selection-end-column="60" />
+              <folding>
+                <marker date="1446459400011" expanded="true" signature="736:786" placeholder="SELECT * FRO..tbl_users..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -314,33 +314,34 @@
       <file leaf-file-name="editinvoice.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/views/finance/editinvoice.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.961538">
-              <caret line="316" column="118" selection-start-line="316" selection-start-column="118" selection-end-line="316" selection-end-column="118" />
+            <state vertical-scroll-proportion="-46.615383">
+              <caret line="310" column="65" selection-start-line="310" selection-start-column="65" selection-end-line="310" selection-end-column="65" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#table#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <marker date="1446750259074" expanded="true" signature="91:132" placeholder="SELECT * FRO..tbl_customer..." />
-                <marker date="1446750259074" expanded="true" signature="272:313" placeholder="SELECT * FRO..tbl_invoices..." />
-                <marker date="1446750259074" expanded="true" signature="425:479" placeholder="SELECT * FRO..tbl_invoice_items..." />
-                <marker date="1446750259074" expanded="true" signature="622:663" placeholder="SELECT * FRO..tbl_projects..." />
-                <marker date="1446750259074" expanded="true" signature="774:839" placeholder="SELECT * FRO..tbl_invoice_items..." />
-                <marker date="1446750259074" expanded="true" signature="949:1014" placeholder="SELECT * FRO..tbl_invoice_items..." />
-                <marker date="1446750259074" expanded="true" signature="1124:1189" placeholder="SELECT * FRO..tbl_invoice_items..." />
-                <marker date="1446750259074" expanded="true" signature="1299:1364" placeholder="SELECT * FRO..tbl_invoice_items..." />
-                <marker date="1446750259074" expanded="true" signature="1474:1539" placeholder="SELECT * FRO..tbl_invoice_items..." />
-                <marker date="1446750259074" expanded="true" signature="1649:1714" placeholder="SELECT * FRO..tbl_invoice_items..." />
-                <marker date="1446750259074" expanded="true" signature="1824:1889" placeholder="SELECT * FRO..tbl_invoice_items..." />
-                <marker date="1446750259074" expanded="true" signature="1999:2064" placeholder="SELECT * FRO..tbl_invoice_items..." />
-                <marker date="1446750259074" expanded="true" signature="2174:2239" placeholder="SELECT * FRO..tbl_invoice_items..." />
-                <marker date="1446750259074" expanded="true" signature="2349:2415" placeholder="SELECT * FRO..tbl_invoice_items..." />
-                <marker date="1446750259074" expanded="true" signature="10687:10731" placeholder="..." />
-                <marker date="1446750259074" expanded="true" signature="11312:11356" placeholder="..." />
-                <marker date="1446750259074" expanded="true" signature="11937:11981" placeholder="..." />
-                <marker date="1446750259074" expanded="true" signature="12562:12606" placeholder="..." />
-                <marker date="1446750259074" expanded="true" signature="13812:13856" placeholder="..." />
-                <marker date="1446750259074" expanded="true" signature="14437:14481" placeholder="..." />
-                <marker date="1446750259074" expanded="true" signature="15062:15106" placeholder="..." />
-                <marker date="1446750259074" expanded="true" signature="15687:15731" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="editcustomer.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/views/customers/editcustomer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.65384614">
+              <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="209" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="appointmentController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/appointmentController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.65384614">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding>
+                <marker date="1446459399919" expanded="true" signature="1121:1409" placeholder="INSERT INTO ..." />
+                <marker date="1446459399919" expanded="true" signature="2466:2864" placeholder="UPDATE tbl_a..." />
               </folding>
             </state>
           </provider>
@@ -349,12 +350,12 @@
       <file leaf-file-name="invoiceinfo.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/views/finance/invoiceinfo.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.423077">
-              <caret line="76" column="24" selection-start-line="76" selection-start-column="24" selection-end-line="76" selection-end-column="24" />
+            <state vertical-scroll-proportion="-10.653846">
+              <caret line="72" column="199" selection-start-line="72" selection-start-column="199" selection-end-line="72" selection-end-column="199" />
               <folding>
                 <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <marker date="1446749461759" expanded="true" signature="75:125" placeholder="SELECT * FRO..tbl_invoices..." />
-                <marker date="1446749461759" expanded="true" signature="267:308" placeholder="SELECT * FRO..tbl_projects..." />
+                <marker date="1446762837127" expanded="true" signature="75:125" placeholder="SELECT * FRO..tbl_invoices..." />
+                <marker date="1446762837127" expanded="true" signature="267:308" placeholder="SELECT * FRO..tbl_projects..." />
               </folding>
             </state>
           </provider>
@@ -407,8 +408,8 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/38e965fd-689c-4236-ac20-e9aa1cd252e5/console.sql" />
         <option value="$PROJECT_DIR$/public/views/finance/addinvoice.php" />
         <option value="$PROJECT_DIR$/public/views/finance/showinvoice.php" />
-        <option value="$PROJECT_DIR$/public/views/finance/invoiceinfo.php" />
         <option value="$PROJECT_DIR$/public/views/finance/editinvoice.php" />
+        <option value="$PROJECT_DIR$/public/views/finance/invoiceinfo.php" />
         <option value="$PROJECT_DIR$/app/controllers/invoiceController.php" />
       </list>
     </option>
@@ -888,7 +889,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="15" />
+      <option name="time" value="16" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1025,27 +1026,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/authController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.461538">
-          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-          <folding>
-            <marker date="1446459400011" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tbl_users..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/appointmentController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.269231">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <marker date="1446459399919" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1446459399919" expanded="true" signature="-1:-1" placeholder="UPDATE tbl_a..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1222,17 +1202,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/customers/editcustomer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.269231">
-          <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="209" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#div#2;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1446713669110" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..tbl_customer..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/views/finance/finance.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.423077">
@@ -1319,17 +1288,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/sales/addappointment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="6.8076925">
-          <caret line="36" column="209" selection-start-line="36" selection-start-column="209" selection-end-line="36" selection-end-column="209" />
-          <folding>
-            <marker date="1446714113310" expanded="true" signature="84:146" placeholder="SELECT * FRO..tbl_appointment..." />
-            <marker date="1446714113310" expanded="true" signature="263:304" placeholder="SELECT * FRO..tbl_customer..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/38e965fd-689c-4236-ac20-e9aa1cd252e5/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.05074627">
@@ -1338,34 +1296,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/finance/addinvoice.php">
+    <entry file="file://$PROJECT_DIR$/public/views/customers/editcustomer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="46.423077">
-          <caret line="138" column="63" selection-start-line="138" selection-start-column="63" selection-end-line="138" selection-end-column="63" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <marker date="1446734469581" expanded="true" signature="75:116" placeholder="SELECT * FRO..tbl_projects..." />
-            <marker date="1446734469581" expanded="true" signature="256:297" placeholder="SELECT * FRO..tbl_customer..." />
-          </folding>
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="209" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/finance/invoiceinfo.php">
+    <entry file="file://$PROJECT_DIR$/app/controllers/appointmentController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.423077">
-          <caret line="76" column="24" selection-start-line="76" selection-start-column="24" selection-end-line="76" selection-end-column="24" />
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1446749461759" expanded="true" signature="75:125" placeholder="SELECT * FRO..tbl_invoices..." />
-            <marker date="1446749461759" expanded="true" signature="267:308" placeholder="SELECT * FRO..tbl_projects..." />
+            <marker date="1446459399919" expanded="true" signature="1121:1409" placeholder="INSERT INTO ..." />
+            <marker date="1446459399919" expanded="true" signature="2466:2864" placeholder="UPDATE tbl_a..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/views/finance/showinvoice.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.0">
-          <caret line="107" column="22" selection-start-line="39" selection-start-column="0" selection-end-line="107" selection-end-column="22" />
+        <state vertical-scroll-proportion="81.07692">
+          <caret line="98" column="14" selection-start-line="98" selection-start-column="14" selection-end-line="98" selection-end-column="14" />
           <folding>
             <marker date="1446749088781" expanded="true" signature="242:283" placeholder="SELECT * FRO..tbl_customer..." />
             <marker date="1446749088781" expanded="true" signature="423:464" placeholder="SELECT * FRO..tbl_invoices..." />
@@ -1404,35 +1357,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/authController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.5">
+          <caret line="37" column="60" selection-start-line="37" selection-start-column="60" selection-end-line="37" selection-end-column="60" />
+          <folding>
+            <marker date="1446459400011" expanded="true" signature="736:786" placeholder="SELECT * FRO..tbl_users..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/views/finance/editinvoice.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.961538">
-          <caret line="316" column="118" selection-start-line="316" selection-start-column="118" selection-end-line="316" selection-end-column="118" />
+        <state vertical-scroll-proportion="-46.615383">
+          <caret line="310" column="65" selection-start-line="310" selection-start-column="65" selection-end-line="310" selection-end-column="65" />
           <folding>
             <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#table#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1446750259074" expanded="true" signature="91:132" placeholder="SELECT * FRO..tbl_customer..." />
-            <marker date="1446750259074" expanded="true" signature="272:313" placeholder="SELECT * FRO..tbl_invoices..." />
-            <marker date="1446750259074" expanded="true" signature="425:479" placeholder="SELECT * FRO..tbl_invoice_items..." />
-            <marker date="1446750259074" expanded="true" signature="622:663" placeholder="SELECT * FRO..tbl_projects..." />
-            <marker date="1446750259074" expanded="true" signature="774:839" placeholder="SELECT * FRO..tbl_invoice_items..." />
-            <marker date="1446750259074" expanded="true" signature="949:1014" placeholder="SELECT * FRO..tbl_invoice_items..." />
-            <marker date="1446750259074" expanded="true" signature="1124:1189" placeholder="SELECT * FRO..tbl_invoice_items..." />
-            <marker date="1446750259074" expanded="true" signature="1299:1364" placeholder="SELECT * FRO..tbl_invoice_items..." />
-            <marker date="1446750259074" expanded="true" signature="1474:1539" placeholder="SELECT * FRO..tbl_invoice_items..." />
-            <marker date="1446750259074" expanded="true" signature="1649:1714" placeholder="SELECT * FRO..tbl_invoice_items..." />
-            <marker date="1446750259074" expanded="true" signature="1824:1889" placeholder="SELECT * FRO..tbl_invoice_items..." />
-            <marker date="1446750259074" expanded="true" signature="1999:2064" placeholder="SELECT * FRO..tbl_invoice_items..." />
-            <marker date="1446750259074" expanded="true" signature="2174:2239" placeholder="SELECT * FRO..tbl_invoice_items..." />
-            <marker date="1446750259074" expanded="true" signature="2349:2415" placeholder="SELECT * FRO..tbl_invoice_items..." />
-            <marker date="1446750259074" expanded="true" signature="10687:10731" placeholder="..." />
-            <marker date="1446750259074" expanded="true" signature="11312:11356" placeholder="..." />
-            <marker date="1446750259074" expanded="true" signature="11937:11981" placeholder="..." />
-            <marker date="1446750259074" expanded="true" signature="12562:12606" placeholder="..." />
-            <marker date="1446750259074" expanded="true" signature="13812:13856" placeholder="..." />
-            <marker date="1446750259074" expanded="true" signature="14437:14481" placeholder="..." />
-            <marker date="1446750259074" expanded="true" signature="15062:15106" placeholder="..." />
-            <marker date="1446750259074" expanded="true" signature="15687:15731" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/finance/addinvoice.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.730769">
+          <caret line="147" column="49" selection-start-line="147" selection-start-column="36" selection-end-line="147" selection-end-column="49" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <marker date="1446734469581" expanded="true" signature="75:116" placeholder="SELECT * FRO..tbl_projects..." />
+            <marker date="1446734469581" expanded="true" signature="256:297" placeholder="SELECT * FRO..tbl_customer..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/finance/invoiceinfo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.653846">
+          <caret line="72" column="199" selection-start-line="72" selection-start-column="199" selection-end-line="72" selection-end-column="199" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <marker date="1446762837127" expanded="true" signature="75:125" placeholder="SELECT * FRO..tbl_invoices..." />
+            <marker date="1446762837127" expanded="true" signature="267:308" placeholder="SELECT * FRO..tbl_projects..." />
           </folding>
         </state>
       </provider>
@@ -1450,44 +1415,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/sales/addappointment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="6.8076925">
+          <caret line="36" column="209" selection-start-line="36" selection-start-column="209" selection-end-line="36" selection-end-column="209" />
+          <folding>
+            <marker date="1446714113310" expanded="true" signature="84:146" placeholder="SELECT * FRO..tbl_appointment..." />
+            <marker date="1446714113310" expanded="true" signature="263:304" placeholder="SELECT * FRO..tbl_customer..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/invoiceController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46616542">
-          <caret line="193" column="22" selection-start-line="193" selection-start-column="22" selection-end-line="193" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.58458644">
+          <caret line="487" column="44" selection-start-line="487" selection-start-column="44" selection-end-line="487" selection-end-column="44" />
           <folding>
-            <marker date="1446753673241" expanded="true" signature="3990:4265" placeholder="UPDATE tbl_i..." />
-            <marker date="1446753673241" expanded="true" signature="3990:4266" placeholder="UPDATE tbl_i..." />
-            <marker date="1446753673241" expanded="true" signature="4755:5030" placeholder="INSERT INTO ..." />
-            <marker date="1446753673241" expanded="true" signature="4755:5031" placeholder="UPDATE tbl_i..." />
-            <marker date="1446753673241" expanded="true" signature="5520:5795" placeholder="INSERT INTO ..." />
-            <marker date="1446753673241" expanded="true" signature="5520:5796" placeholder="UPDATE tbl_i..." />
-            <marker date="1446753673241" expanded="true" signature="6290:6565" placeholder="INSERT INTO ..." />
-            <marker date="1446753673241" expanded="true" signature="6290:6566" placeholder="UPDATE tbl_i..." />
-            <marker date="1446753673241" expanded="true" signature="7055:7330" placeholder="INSERT INTO ..." />
-            <marker date="1446753673241" expanded="true" signature="7055:7331" placeholder="UPDATE tbl_i..." />
-            <marker date="1446753673241" expanded="true" signature="7820:8095" placeholder="INSERT INTO ..." />
-            <marker date="1446753673241" expanded="true" signature="7820:8096" placeholder="UPDATE tbl_i..." />
-            <marker date="1446753673241" expanded="true" signature="8585:8860" placeholder="INSERT INTO ..." />
-            <marker date="1446753673241" expanded="true" signature="8585:8861" placeholder="UPDATE tbl_i..." />
-            <marker date="1446753673241" expanded="true" signature="9350:9625" placeholder="INSERT INTO ..." />
-            <marker date="1446753673241" expanded="true" signature="9350:9626" placeholder="UPDATE tbl_i..." />
-            <marker date="1446753673241" expanded="true" signature="10115:10390" placeholder="INSERT INTO ..." />
-            <marker date="1446753673241" expanded="true" signature="10115:10391" placeholder="UPDATE tbl_i..." />
-            <marker date="1446753673241" expanded="true" signature="10884:11159" placeholder="INSERT INTO ..." />
-            <marker date="1446753673241" expanded="true" signature="10884:11161" placeholder="UPDATE tbl_i..." />
-            <marker date="1446753673241" expanded="true" signature="11796:12041" placeholder="UPDATE tbl_i..." />
-            <marker date="1446753673241" expanded="true" signature="13385:13426" placeholder="SELECT * FRO..tbl_invoices..." />
-            <marker date="1446753673241" expanded="true" signature="13849:14023" placeholder="INSERT INTO ..." />
-            <marker date="1446753673241" expanded="true" signature="14559:14733" placeholder="INSERT INTO ..." />
-            <marker date="1446753673241" expanded="true" signature="15269:15443" placeholder="INSERT INTO ..." />
-            <marker date="1446753673241" expanded="true" signature="15976:16150" placeholder="INSERT INTO ..." />
-            <marker date="1446753673241" expanded="true" signature="16687:16861" placeholder="INSERT INTO ..." />
-            <marker date="1446753673241" expanded="true" signature="17397:17571" placeholder="INSERT INTO ..." />
-            <marker date="1446753673241" expanded="true" signature="18107:18281" placeholder="INSERT INTO ..." />
-            <marker date="1446753673241" expanded="true" signature="18817:18991" placeholder="INSERT INTO ..." />
-            <marker date="1446753673241" expanded="true" signature="19527:19701" placeholder="INSERT INTO ..." />
-            <marker date="1446753673241" expanded="true" signature="20241:20416" placeholder="INSERT INTO ..." />
-            <marker date="1446753673241" expanded="true" signature="20910:21083" placeholder="INSERT INTO ..." />
+            <marker date="1446766513057" expanded="true" signature="3980:4034" placeholder="SELECT * FRO..tbl_invoices..." />
+            <marker date="1446766513057" expanded="true" signature="3980:4045" placeholder="SELECT * FRO..tbl_invoice_items..." />
+            <marker date="1446766513057" expanded="true" signature="4192:4484" placeholder="UPDATE tbl_i..." />
+            <marker date="1446766513057" expanded="true" signature="4832:5006" placeholder="INSERT INTO ..." />
+            <marker date="1446766513057" expanded="true" signature="5525:5579" placeholder="SELECT * FRO..tbl_invoice_items..." />
+            <marker date="1446766513057" expanded="true" signature="5525:5590" placeholder="SELECT * FRO..tbl_invoice_items..." />
+            <marker date="1446766513057" expanded="true" signature="5739:6031" placeholder="UPDATE tbl_i..." />
+            <marker date="1446766513057" expanded="true" signature="6379:6553" placeholder="INSERT INTO ..." />
+            <marker date="1446766513057" expanded="true" signature="7071:7136" placeholder="SELECT * FRO..tbl_invoice_items..." />
+            <marker date="1446766513057" expanded="true" signature="7285:7577" placeholder="UPDATE tbl_i..." />
+            <marker date="1446766513057" expanded="true" signature="7925:8099" placeholder="INSERT INTO ..." />
+            <marker date="1446766513057" expanded="true" signature="8618:8683" placeholder="SELECT * FRO..tbl_invoice_items..." />
+            <marker date="1446766513057" expanded="true" signature="8832:9124" placeholder="UPDATE tbl_i..." />
+            <marker date="1446766513057" expanded="true" signature="9472:9646" placeholder="INSERT INTO ..." />
+            <marker date="1446766513057" expanded="true" signature="10164:10229" placeholder="SELECT * FRO..tbl_invoice_items..." />
+            <marker date="1446766513057" expanded="true" signature="10378:10670" placeholder="UPDATE tbl_i..." />
+            <marker date="1446766513057" expanded="true" signature="11018:11192" placeholder="INSERT INTO ..." />
+            <marker date="1446766513057" expanded="true" signature="11710:11775" placeholder="SELECT * FRO..tbl_invoice_items..." />
+            <marker date="1446766513057" expanded="true" signature="11924:12216" placeholder="UPDATE tbl_i..." />
+            <marker date="1446766513057" expanded="true" signature="12564:12738" placeholder="INSERT INTO ..." />
+            <marker date="1446766513057" expanded="true" signature="13256:13321" placeholder="SELECT * FRO..tbl_invoice_items..." />
+            <marker date="1446766513057" expanded="true" signature="13470:13762" placeholder="UPDATE tbl_i..." />
+            <marker date="1446766513057" expanded="true" signature="14110:14284" placeholder="INSERT INTO ..." />
+            <marker date="1446766513057" expanded="true" signature="14802:14867" placeholder="SELECT * FRO..tbl_invoice_items..." />
+            <marker date="1446766513057" expanded="true" signature="15016:15308" placeholder="UPDATE tbl_i..." />
+            <marker date="1446766513057" expanded="true" signature="15656:15830" placeholder="INSERT INTO ..." />
+            <marker date="1446766513057" expanded="true" signature="16348:16413" placeholder="SELECT * FRO..tbl_invoice_items..." />
+            <marker date="1446766513057" expanded="true" signature="16562:16854" placeholder="UPDATE tbl_i..." />
+            <marker date="1446766513057" expanded="true" signature="17202:17376" placeholder="INSERT INTO ..." />
+            <marker date="1446766513057" expanded="true" signature="17898:17964" placeholder="SELECT * FRO..tbl_invoice_items..." />
+            <marker date="1446766513057" expanded="true" signature="18113:18406" placeholder="UPDATE tbl_i..." />
+            <marker date="1446766513057" expanded="true" signature="18758:18933" placeholder="INSERT INTO ..." />
+            <marker date="1446766513057" expanded="true" signature="19613:19858" placeholder="UPDATE tbl_i..." />
+            <marker date="1446766513057" expanded="true" signature="19613:19874" placeholder="UPDATE tbl_i..." />
+            <marker date="1446766513057" expanded="true" signature="21137:21178" placeholder="SELECT * FRO..tbl_invoices..." />
+            <marker date="1446766513057" expanded="true" signature="21601:21775" placeholder="INSERT INTO ..." />
+            <marker date="1446766513057" expanded="true" signature="22311:22485" placeholder="INSERT INTO ..." />
+            <marker date="1446766513057" expanded="true" signature="23021:23195" placeholder="INSERT INTO ..." />
+            <marker date="1446766513057" expanded="true" signature="23728:23902" placeholder="INSERT INTO ..." />
+            <marker date="1446766513057" expanded="true" signature="24439:24613" placeholder="INSERT INTO ..." />
+            <marker date="1446766513057" expanded="true" signature="25149:25323" placeholder="INSERT INTO ..." />
+            <marker date="1446766513057" expanded="true" signature="25859:26033" placeholder="INSERT INTO ..." />
+            <marker date="1446766513057" expanded="true" signature="26569:26743" placeholder="INSERT INTO ..." />
+            <marker date="1446766513057" expanded="true" signature="27279:27453" placeholder="INSERT INTO ..." />
+            <marker date="1446766513057" expanded="true" signature="27993:28168" placeholder="INSERT INTO ..." />
+            <marker date="1446766513057" expanded="true" signature="28662:28835" placeholder="INSERT INTO ..." />
           </folding>
         </state>
       </provider>

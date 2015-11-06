@@ -53,11 +53,10 @@
     <table name="tbl_invoice_items" schema="" catalog="barroc_it" type="TABLE">
       <column name="invoice_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="item" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
-      <column name="description" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="description" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
       <column name="amount" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
       <column name="price" sqlType="DECIMAL" precision="10" scale="2" nullable="true" jdbcType="3"/>
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="tbl_invoices" schema="" catalog="barroc_it" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
