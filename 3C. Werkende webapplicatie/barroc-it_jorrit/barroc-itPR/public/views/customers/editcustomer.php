@@ -23,7 +23,7 @@ $customer = $q->fetch();
 
                 <ul class="nav navbar-nav">
                     <li><a href="../dashboard/dashboard.php">Home</a></li>
-                    <li class="active"><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li>
+                    <?php if(!in_array("Development",$_SESSION['user'])){ ?><li class="active"><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li> <?php } ?>
                     <li><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
                     <?php if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>  <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li> <?php } ?>
                 </ul>
@@ -136,7 +136,7 @@ $customer = $q->fetch();
                         <label for="creditworthy" class="col-4">Credit Worthy:</label>
                         <input type="text" name="creditworthy" value="<?php if($customer['creditworthy']) { echo 'Yes'; } else {echo 'No';}?>" <?php if(!in_array("Finance",$_SESSION['user'])) { ?> readonly <?php } ?>>
                     </div>
-                    <?php if(in_array("Finance",$_SESSION['user'])) { ?>
+                    <?php if(in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>
                     <div class="form-group">
                         <label for="ledgeraccountnumber" class="col-4">Ledger account number:</label>
                         <input type="text" name="ledgeraccountnumber" value="<?= $customer['ledgeraccountnumber']?>">
@@ -163,7 +163,7 @@ $customer = $q->fetch();
             </div><!--end grid--->
             <div class="buttons">
                 <input class="btn btn-primary" type="submit" value="Save">
-                <a style="float: right" class="btn btn-primary" onclick="goBack()">Back</a>
+                <a style="float: right" class="btn btn-primary" href="customerinfo.php?id=<?= $customer['id'] ?>">Back</a>
             </div>
         </form>
 

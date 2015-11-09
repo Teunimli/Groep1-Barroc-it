@@ -25,7 +25,7 @@ $projects = $q->fetchAll(PDO::FETCH_ASSOC);
 
                 <ul class="nav navbar-nav">
                     <li><a href="../dashboard/dashboard.php">Home</a></li>
-                    <li><a href="../customers/customerinfo.php?id=<?= $id ?>">Customer Info</a></li>
+                    <?php if(!in_array("Development",$_SESSION['user'])){ ?><li><a href="../customers/customerinfo.php?id=<?= $id ?>">Customer Info</a></li> <?php } ?>
                     <li class="active"><a href="../project/viewprojects.php?id=<?= $id ?>">Projects</a></li>
                     <?php if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>  <li><a href="../sales/appointments.php?id=<?= $id ?>">Appointments</a></li> <?php } ?>
 
@@ -40,7 +40,13 @@ $projects = $q->fetchAll(PDO::FETCH_ASSOC);
 
     </header>
     <div class="container-content">
-        <h1>Projects</h1>
+        <div class="message">
+            <?php
+            if($messageBag->hasMsg()){
+                echo $messageBag->show();
+            }
+            ?>
+        </div>
         <ul class="list-group">
             <li class="list-group-item">
                 <table class="table">
@@ -99,7 +105,7 @@ $projects = $q->fetchAll(PDO::FETCH_ASSOC);
 
                         </tr>
                         <tr class="buttons">
-                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><?php if(!in_array("Finance",$_SESSION['user'])) { echo "<td></td><td></td>"; }  ?>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><?php if(in_array("Sales",$_SESSION['user']) || in_array("Development",$_SESSION['user'])) { echo "<td></td><td></td>"; }  ?>
                             <?php if(in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?><td><a class="btn btn-primary" href="<?= '../finance/addinvoice.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>">Add <br /> invoice</a></td>
                             <td><a class="btn btn-primary" href="<?= '../finance/invoiceinfo.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>">View<br /> invoice</a><?php } ?></td>
                             <td><a class="btn btn-primary" href="<?= '../project/editproject.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>">Edit</a></td>
@@ -113,7 +119,11 @@ $projects = $q->fetchAll(PDO::FETCH_ASSOC);
         </ul>
 
         <div class="buttons">
-            <a style="float: right;" class="btn btn-primary" onclick="goBack()">Back</a>
+            <?php
+            if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>
+                <a class="btn btn-primary" href="<?php echo  'addproject.php?id=' . $project['customer_id']?>">make project</a>
+            <?php } ?>
+            <a style="float: right;" class="btn btn-primary" href="<?php if(in_array("Development",$_SESSION['user'])) { echo '../dashboard/dashboard.php'; }else{ echo  '../customers/customerinfo.php?id=' . $id; } ?>">Back</a>
         </div>
     </div><!--end container-content-->
 </div><!--end container--->

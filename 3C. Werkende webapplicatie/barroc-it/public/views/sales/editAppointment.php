@@ -37,9 +37,9 @@ $appointment = $q->fetch();
 
                 <ul class="nav navbar-nav">
                     <li><a href="../dashboard/dashboard.php">Home</a></li>
-                    <li><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li>
+                    <?php if(!in_array("Development",$_SESSION['user'])){ ?><li><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li> <?php } ?>
                     <li><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
-                    <?php if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>  <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li> <?php } ?>
+                    <?php if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>  <li class="active"><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li> <?php } ?>
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -52,6 +52,13 @@ $appointment = $q->fetch();
 
     </header>
     <div class="container-content">
+        <div class="message">
+            <?php
+            if($messageBag->hasMsg()){
+                echo $messageBag->show();
+            }
+            ?>
+        </div>
         <form action="../../../app/controllers/appointmentController.php" method="POST">
             <input type="hidden" name="type" value="edit">
             <input type="hidden" name="appointment_id" value="<?= $appointment['id'] ?>">
@@ -95,7 +102,7 @@ $appointment = $q->fetch();
 
             <div class="buttons">
                 <input class="btn btn-primary" type="submit" value="Submit">
-                <a style="float: right" class="btn btn-primary" onclick="goBack()">Back</a>
+                <a style="float: right" class="btn btn-primary" href="appointments.php<?php echo '?id=' . $customer['id']?>">Back</a>
             </div>
         </form>
 

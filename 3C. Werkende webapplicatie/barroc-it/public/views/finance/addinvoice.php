@@ -32,7 +32,7 @@ $customer = $q->fetch();
 
                 <ul class="nav navbar-nav">
                     <li><a href="../dashboard/dashboard.php">Home</a></li>
-                    <li><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li>
+                    <?php if(!in_array("Development",$_SESSION['user'])){ ?><li><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li> <?php } ?>
                     <li class="active"><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
                     <?php if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>  <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li> <?php } ?>
 
@@ -46,17 +46,17 @@ $customer = $q->fetch();
         </form>
 
     </header>
+    <div class="message">
+        <?php
+        if($messageBag->hasMsg()){
+            echo $messageBag->show();
+        }
+        ?>
+    </div>
     <div class="container-content">
 
         <form action="<? echo '../../../app/controllers/invoiceController.php'?>"  method="POST">
-            <div class="message">
-                <?php
-                if($messageBag->hasMsg()){
-                    echo $messageBag->show();
-                }
-                ?>
-            </div>
-            <h2 class="text-center">Add invoice</h2>
+
             <input type="hidden" name="type" value="add">
             <input type="hidden" name="customerid" value="<?= $customer['id'] ?>" />
             <input type="hidden" name="id" value="<?= $project['id'] ?>" />
@@ -235,7 +235,7 @@ $customer = $q->fetch();
             </div><!--end grid--->
             <div class="buttons">
                 <input class="btn btn-primary" type="submit" value="Submit">
-                <a style="float: right" class="btn btn-primary" onclick="goBack()">Back</a>
+                <a style="float: right" class="btn btn-primary" href="<?= 'invoiceinfo.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>">Back</a>
             </div>
 
         </form>

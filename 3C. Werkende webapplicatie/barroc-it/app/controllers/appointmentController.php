@@ -3,40 +3,46 @@ require_once __DIR__ . '/../init.php';
 switch( $_POST['type'] ) {
     case 'add' :
 
-        add($_POST['customer_id'],
+        if(add($_POST['customer_id'],
             $_POST['appointment_date'],
             $_POST['description'],
             $_POST['employee'],
             $_POST['lastcontact'],
-            $db );
+            $db )) {
+            header('location: ../../public/views/sales/appointments.php?id=' . $_POST['customer_id']);
+        }else {
+           echo "<script> history.go(-1); </script>";
+        }
         break;
     case 'edit' :
-        edit($_POST['appointment_id'],
-            $_POST['id'],
+        if(edit($_POST['appointment_id'],
             $_POST['appointment_date'],
             $_POST['description'],
             $_POST['employee'],
             $_POST['lastcontact'],
-            $db );
+            $db )) {
+            header('location: ../../public/views/sales/appointments.php?id=' . $_POST['íd']);
+        } else {
+            echo "<script> history.go(-1); </script>";
+        }
         break;
     case 'delete' :
+        if(delete($_POST['appointment_id'], $db)) {
+            header('location: ../../public/views/sales/appointments.php?id=' . $_POST['id']);
+        }
         break;
 }
 
 
 function add($customer_id, $appointment_date, $description, $employee, $lastcontact, $db) {
     global $messageBag;
-    $controle = 2;
     $created_at = time();
     $app_date = strtotime($appointment_date);
     if(empty($customer_id) || empty($appointment_date) || empty($description) || empty($employee) ){
 
         $messageBag->add('w', 'One or more fields are missing');
-        $controle = 1;
-        // header('location:' . HTTP . '/public/views/customers/add.php');
+        return false;
     }
-
-    if($controle == 2) {
 
 
         $sql = "INSERT INTO tbl_appointment (customer_id, appointment_date, description,
@@ -54,25 +60,20 @@ function add($customer_id, $appointment_date, $description, $employee, $lastcont
         $q->bindParam(':created_at', $created_at);
         $q->execute();
         $messageBag->add('s', 'Appointment is created');
-        header('location: ../../public/views/dashboard/dashboard.php');
-    }
+        return true;
 
 }
 
-function edit($id, $customerid, $appointment_date, $description, $employee, $lastcontact, $db) {
+function edit($id, $appointment_date, $description, $employee, $lastcontact, $db) {
     global $messageBag;
-    $controle = 2;
     $updated_at = time();
     $app_date = strtotime($appointment_date);
     $lastcont = strtotime($lastcontact);
     if(empty($appointment_date) || empty($description) || empty($employee) ){
 
         $messageBag->add('w', 'One or more fields are missing');
-        $controle = 1;
-        // header('location:' . HTTP . '/public/views/customers/add.php');
+        return false;
     }
-
-    if($controle == 2) {
 
 
         $sql = "UPDATE tbl_appointment SET
@@ -92,6 +93,14 @@ function edit($id, $customerid, $appointment_date, $description, $employee, $las
         $q->bindParam(':id',$id);
         $q->execute();
         $messageBag->add('s', 'Appointment is updated');
-        header('location: ../../public/views/sales/appointments.php?id=' . $customerid);
-    }
+        return true;
+}
+
+function delete($id, $db) {
+    $sql = "DELETE FROM tbl_appointment WHERE id = :id";
+    $q = $db->prepare($sql);
+    $q->bindparam(':id', $id);
+    $q->execute();
+    return true;
+
 }

@@ -41,7 +41,13 @@ $customers = $q->fetchAll();
         </form>
 
     </header>
-
+    <div class="message">
+        <?php
+        if($messageBag->hasMsg()){
+            echo $messageBag->show();
+        }
+        ?>
+    </div>
     <ul class="list-group">
         <?php foreach($customers as $customer): ?>
             <li class="list-group-item">

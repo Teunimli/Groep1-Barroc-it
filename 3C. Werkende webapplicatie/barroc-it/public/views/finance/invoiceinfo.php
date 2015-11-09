@@ -17,9 +17,7 @@ $q->execute();
 
 $project = $q->fetch();
 
-if($messageBag->hasMsg()){
-    echo $messageBag->show();
-}
+
 ?>
 
 <div class="container">
@@ -35,7 +33,7 @@ if($messageBag->hasMsg()){
 
                 <ul class="nav navbar-nav">
                     <li><a href="../dashboard/dashboard.php">Home</a></li>
-                    <li><a href="../customers/customerinfo.php?id=<?= $project['customer_id'] ?>">Customer Info</a></li>
+                    <?php if(!in_array("Development",$_SESSION['user'])){ ?><li><a href="../customers/customerinfo.php?id=<?= $project['customer_id'] ?>">Customer Info</a></li> <?php } ?>
                     <li class="active"><a href="../project/viewprojects.php?id=<?= $project['customer_id'] ?>">Projects</a></li>
                     <?php if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>  <li><a href="../sales/appointments.php?id=<?= $project['customer_id'] ?>">Appointments</a></li> <?php } ?>
                 </ul>
@@ -48,7 +46,12 @@ if($messageBag->hasMsg()){
 
     </header>
     <div class="container-content">
-        <h1>Invoices</h1>
+        <?php
+            if($messageBag->hasMsg()) {
+                echo $messageBag->show();
+            }
+        ?>
+
         <ul class="list-group">
             <li class="list-group-item">
                 <table class="table">
@@ -79,7 +82,7 @@ if($messageBag->hasMsg()){
         </ul>
 
         <div class="buttons">
-            <a style="float: right" class="btn btn-primary" onclick="goBack()">Back</a>
+            <a style="float: right" class="btn btn-primary" href="<?php echo  '../project/viewprojects.php?id=' . $project['customer_id']?>">Back</a>
         </div>
     </div><!--end container-content-->
 </div><!--end container--->

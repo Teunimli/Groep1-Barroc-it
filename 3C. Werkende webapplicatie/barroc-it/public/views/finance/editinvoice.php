@@ -115,7 +115,7 @@ $item10 = $q->fetch();
 
                 <ul class="nav navbar-nav">
                     <li><a href="../dashboard/dashboard.php">Home</a></li>
-                    <li><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li>
+                    <?php if(!in_array("Development",$_SESSION['user'])){ ?><li><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li> <?php } ?>
                     <li class="active"><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
                     <?php if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>  <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li> <?php } ?>
                 </ul>
@@ -128,22 +128,20 @@ $item10 = $q->fetch();
 
     </header>
     <div class="container-content">
-
+        <div class="message">
+            <?php
+            if($messageBag->hasMsg()){
+                echo $messageBag->show();
+            }
+            ?>
+        </div>
         <form action="<? echo '../../../app/controllers/invoiceController.php'?>"  method="POST">
-            <div class="message">
-                <?php
-                if($messageBag->hasMsg()){
-                    echo $messageBag->show();
-                }
-                ?>
-            </div>
-            <h2 class="text-center">Edit invoice</h2>
             <input type="hidden" name="type" value="edit">
             <input type="hidden" name="customerid" value="<?= $customer['id'] ?>" />
             <input type="hidden" name="id" value="<?= $invoice['projects_id'] ?>" />
 
 
-            <div class="grid" style="color: black">
+            <div class="grid">
                 <div class="col-6">
                     <div class="form-group">
                         <label for="contact_name" class="col-4">Contact firstname:</label>
@@ -322,7 +320,7 @@ $item10 = $q->fetch();
             </div><!--end grid--->
             <div class="buttons">
                 <input class="btn btn-primary" type="submit" value="Submit">
-                <a class="btn btn-primary" onclick="goBack()">Back</a>
+                <a class="btn btn-primary" href="<?= 'invoiceinfo.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>">Back</a>
             </div>
         </form>
 

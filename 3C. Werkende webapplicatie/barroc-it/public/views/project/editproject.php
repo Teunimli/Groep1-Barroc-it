@@ -31,7 +31,7 @@ $project = $q->fetch();
 
                 <ul class="nav navbar-nav">
                     <li><a href="../dashboard/dashboard.php">Home</a></li>
-                    <li><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li>
+                    <?php if(!in_array("Development",$_SESSION['user'])){ ?><li><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li> <?php } ?>
                     <li class="active"><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
                     <?php if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>  <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li> <?php } ?>
 
@@ -46,8 +46,14 @@ $project = $q->fetch();
 
     </header>
     <div class="container-content">
-        <h2 class="text-center">Project information</h2>
-        <form action="../../../app/controllers/projectController.php" method="POST"">
+        <div class="message">
+            <?php
+            if($messageBag->hasMsg()){
+                echo $messageBag->show();
+            }
+            ?>
+        </div>
+        <form action="../../../app/controllers/projectController.php" method="POST">
         <div class="grid">
             <div class="col-6">
                 <div class="form-group">
@@ -134,7 +140,7 @@ $project = $q->fetch();
         </div><!--end grid--->
         <div class="buttons">
             <input class="btn btn-primary" type="submit" value="Submit">
-            <a style="float: right" class="btn btn-primary" onclick="goBack()">Back</a>
+            <a style="float: right" class="btn btn-primary" href="<?php echo  'viewprojects.php?id=' . $customer['id']?>>Back</a>
         </div>
         </form>
 

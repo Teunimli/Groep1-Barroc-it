@@ -25,7 +25,7 @@ $q->execute();
 $customer = $q->fetch();
 
 
-if(! in_array("Sales",$_SESSION['user'])) {
+if(in_array("Development",$_SESSION['user']) || in_array("Finance",$_SESSION['user'])) {
     var_dump($_SESSION);
     $messageBag->add('w','Please log in as Sales');
     header('location: ../dashboard/dashboard.php');
@@ -44,9 +44,9 @@ if(! in_array("Sales",$_SESSION['user'])) {
 
                 <ul class="nav navbar-nav">
                     <li><a href="../dashboard/dashboard.php">Home</a></li>
-                    <li><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li>
+                    <?php if(!in_array("Development",$_SESSION['user'])){ ?><li><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li> <?php } ?>
                     <li><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
-                    <?php if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>  <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li> <?php } ?>
+                    <?php if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>  <li class="active"><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li> <?php } ?>
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -58,30 +58,46 @@ if(! in_array("Sales",$_SESSION['user'])) {
         </form>
 
     </header>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Appointment_date</th>
-            <th>Description</th>
+    <div class="message">
+        <?php
+        if($messageBag->hasMsg()){
+            echo $messageBag->show();
+        }
+        ?>
+    </div>
+    <form action="../../../app/controllers/appointmentController.php" method="POST" style="color: black">
 
-        </tr>
-        </thead>
-
-
-        <tbody> <?php foreach($customers as $customer){ ?>
-            <?php if(time() <= $customer['appointment_date']) {?>
-            <tr class="buttons">
-                <td> <?= date('d/m/Y', $customer['appointment_date']); ?></td>
-                <td> <?= $customer['description']; ?> </td>
-                <td>  <a style="float: right" class="btn btn-primary" href="editAppointment.php<?php echo '?customer_id=' . $customer['customer_id'] . '&id=' . $customer['id']?>">Edit</a> </td>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Appointment_date</th>
+                <th>Description</th>
 
             </tr>
-        <?php } } ?>
-        </tbody>
+            </thead>
 
-    </table>
+
+            <tbody> <?php foreach($customers as $customer){ ?>
+                <?php if(time() <= $customer['appointment_date']) {?>
+                    <input type="hidden" name="type" value="delete">
+                    <input type="hidden" name="appointment_id" value="<?= $customer['id'] ?>">
+                    <input type="hidden" name="id" value="<?= $customer['customer_id'] ?>">
+                    <tr class="buttons">
+                        <td> <?= date('d/m/Y', $customer['appointment_date']); ?></td>
+                        <td> <?= $customer['description']; ?> </td>
+                        <td> <input style="float: right; margin-left: 5px;" type="submit" class="btn btn-primary" value="delete">
+                             <a style="float: right" class="btn btn-primary" href="editAppointment.php<?php echo '?customer_id=' . $customer['customer_id'] . '&id=' . $customer['id']?>">Edit</a>
+
+                        </td>
+
+                    </tr>
+                <?php } } ?>
+            </tbody>
+
+        </table>
+    </form>
     <div class="buttons">
         <a class="btn btn-primary" href="addAppointment.php<?php echo '?customer_id=' . $id ?>">Add Appointment</a>
-        <a style="float: right" class="btn btn-primary" onclick="goBack()">Back</a>
+        <a style="float: right" class="btn btn-primary" href="<?=  '../customers/customerinfo.php?id=' . $id ?>">Back</a>
     </div>
 </div>

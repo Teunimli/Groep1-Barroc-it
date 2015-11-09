@@ -22,7 +22,7 @@ switch( $_POST['type'] ) {
             $db )) {
             header('location: ../../public/views/dashboard/dashboard.php');
         } else {
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            echo "<script> history.go(-1); </script>";
         }
 
         break;
@@ -52,16 +52,22 @@ switch( $_POST['type'] ) {
             $db )) {
             header('location: ../../public/views/dashboard/dashboard.php');
         } else {
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            echo "<script> history.go(-1); </script>";
         }
         break;
     case 'archive' :
         $id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
-        archive($db, $_POST['id']);
+        if(archive($db, $_POST['id'])) {
+            header('location: ../../public/views/dashboard/dashboard.php');
+        } else {
+            header('location: ../../public/views/dashboard/dashboard.php');
+        }
         break;
     case 'dearchive':
         $id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
-        dearchive($db, $_POST['id']);
+        if(dearchive($db, $_POST['id'])) {
+            header('location: ../../public/views/dashboard/dashboard.php');
+        }
         break;
 }
 
@@ -75,7 +81,6 @@ function add($contact_name, $contact_lastname,
              $fax, $email, $db) {
 
     global $messageBag;
-    $controle = 2;
 
     $created_at = time();
     $sql = "SELECT * FROM tbl_customer WHERE companyname = :companyname";
@@ -86,7 +91,6 @@ function add($contact_name, $contact_lastname,
     // kijkt of de rij al bestaat
     if ($q->rowCount() > 0) {
         $messageBag->add('w', 'Customer already excists');
-        $controle = 1;
         return false;
 
     } else if(
@@ -103,12 +107,9 @@ function add($contact_name, $contact_lastname,
 
 
         $messageBag->add('w', 'One ore more fields are missing');
-        $controle = 1;
         return false;
-       // header('location:' . HTTP . '/public/views/customers/add.php');
     }
 
-    if($controle == 2) {
 
         $archive = 0;
 
@@ -147,7 +148,6 @@ function add($contact_name, $contact_lastname,
         $q->execute();
         $messageBag->add('s', 'customer is succesfully created');
         return true;
-    }
 }
 
 function edit ($id, $contact_name, $contact_lastname,
@@ -291,13 +291,14 @@ function archive($db, $id){
             $q->bindParam(':id', $id);
             $q->bindParam('time', $now);
             $q->execute();
+            return true;
 
-            header('location: ../../public/views/dashboard/dashboard.php');
 
         }else{
             foreach($resulten as $resul){
                 if($resul['archived_at'] == 0 || $resul['paid'] == 0){
                     $messageBag->add('w', 'Not all projects are done or not all invoices are paid');
+                    return false;
                 }else{
 
                     $sql = "UPDATE tbl_customer SET archived_at = :time WHERE id = :id";
@@ -306,20 +307,19 @@ function archive($db, $id){
                     $q->bindParam(':id', $id);
                     $q->bindParam('time', $now);
                     $q->execute();
-
-                    header('location: ../../public/views/dashboard/dashboard.php');
+                    return false;
 
                 }
 
             }
         }
-        header('location: ../../public/views/dashboard/dashboard.php');
+        return false;
 
 
 
 
     }else{
-        header('location: ../../public/dashboard/dashboard.php');
+        return false;
     }
 
 }
@@ -335,6 +335,6 @@ function dearchive($db,$id){
     $q->bindParam('time', $now);
     $q->execute();
 
-    header('location: ../../public/views/dashboard/dashboard.php');
+    return true;
 
 }

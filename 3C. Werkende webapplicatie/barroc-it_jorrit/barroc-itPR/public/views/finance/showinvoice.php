@@ -185,7 +185,7 @@ $item10 = $q->fetch();
             <td><?= $item1['description'] ?></td>
             <td class="text-right"><?= $item1['amount'] ?></td>
             <td class="text-right"><?= $item1['price'] ?></td>
-            <td class="text-right"><?= $item1tot = $item1['price'] * $item1['amount'] ?></td>
+            <td class="text-right"><?= round($item1tot = $item1['price'] * $item1['amount'], 2); ?></td>
         </tr>
         <?php } if(!empty($item2['item'])) { ?>
         <tr>
@@ -193,7 +193,7 @@ $item10 = $q->fetch();
             <td><?= $item2['description'] ?></td>
             <td class="text-right"><?= $item2['amount'] ?></td>
             <td class="text-right"><?= $item2['price'] ?></td>
-            <td class="text-right"><?= $item2tot = $item2['price'] * $item2['amount'] ?></td>
+            <td class="text-right"><?= round($item2tot = $item2['price'] * $item2['amount'], 2) ?></td>
         </tr>
         <?php } if(!empty($item3['item'])) { ?>
         <tr>
@@ -201,7 +201,7 @@ $item10 = $q->fetch();
             <td><?= $item3['description'] ?></td>
             <td class="text-right"><?= $item3['amount'] ?></td>
             <td class="text-right"><?= $item3['price'] ?></td>
-            <td class="text-right"><?= $item3tot = $item3['price'] * $item3['amount'] ?></td>
+            <td class="text-right"><?= round($item3tot = $item3['price'] * $item3['amount'], 2) ?></td>
         </tr>
         <?php } if(!empty($item4['item'])) { ?>
         <tr>
@@ -209,7 +209,7 @@ $item10 = $q->fetch();
             <td><?= $item4['description'] ?></td>
             <td class="text-right"><?= $item4['amount'] ?></td>
             <td class="text-right"><?= $item4['price'] ?></td>
-            <td class="text-right"><?= $item4tot = $item4['price'] * $item4['amount'] ?></td>
+            <td class="text-right"><?= round($item4tot = $item4['price'] * $item4['amount'], 2) ?></td>
         </tr>
         <?php } if(!empty($item5['item'])) { ?>
         <tr>
@@ -217,7 +217,7 @@ $item10 = $q->fetch();
             <td><?= $item5['description'] ?></td>
             <td class="text-right"><?= $item5['amount'] ?></td>
             <td class="text-right"><?= $item5['price'] ?></td>
-            <td class="text-right"><?= $item5tot = $item5['price'] * $item5['amount'] ?></td>
+            <td class="text-right"><?= round($item5tot = $item5['price'] * $item5['amount'], 2) ?></td>
         </tr>
         <?php } if(!empty($item6['item'])) { ?>
         <tr>
@@ -225,7 +225,7 @@ $item10 = $q->fetch();
             <td><?= $item6['description'] ?></td>
             <td class="text-right"><?= $item6['amount'] ?></td>
             <td class="text-right"><?= $item6['price'] ?></td>
-            <td class="text-right"><?= $item6tot = $item6['price'] * $item6['amount'] ?></td>
+            <td class="text-right"><?= round($item6tot = $item6['price'] * $item6['amount'], 2) ?></td>
         </tr>
         <?php } if(!empty($item7['item'])) { ?>
         <tr>
@@ -233,7 +233,7 @@ $item10 = $q->fetch();
             <td><?= $item7['description'] ?></td>
             <td class="text-right"><?= $item7['amount'] ?></td>
             <td class="text-right"><?= $item7['price'] ?></td>
-            <td class="text-right"><?= $item7tot = $item7['price'] * $item7['amount'] ?></td>
+            <td class="text-right"><?= round($item7tot = $item7['price'] * $item7['amount'], 2) ?></td>
         </tr>
         <?php } if(!empty($item8['item'])) { ?>
         <tr>
@@ -241,7 +241,7 @@ $item10 = $q->fetch();
             <td><?= $item8['description'] ?></td>
             <td class="text-right"><?= $item8['amount'] ?></td>
             <td class="text-right"><?= $item8['price'] ?></td>
-            <td class="text-right"><?= $item8tot = $item8['price'] * $item8['amount'] ?></td>
+            <td class="text-right"><?= round($item8tot = $item8['price'] * $item8['amount'], 2) ?></td>
         </tr>
         <?php } if(!empty($item9['item'])) { ?>
         <tr>
@@ -249,7 +249,7 @@ $item10 = $q->fetch();
             <td><?= $item9['description'] ?></td>
             <td class="text-right"><?= $item9['amount'] ?></td>
             <td class="text-right"><?= $item9['price'] ?></td>
-            <td class="text-right"><?= $item9tot = $item9['price'] * $item9['amount'] ?></td>
+            <td class="text-right"><?= round($item9tot = $item9['price'] * $item9['amount'], 2) ?></td>
         </tr>
         <?php } if(!empty($item10['item'])) { ?>
         <tr>
@@ -257,7 +257,7 @@ $item10 = $q->fetch();
             <td><?= $item10['description'] ?></td>
             <td class="text-right"><?= $item10['amount'] ?></td>
             <td class="text-right"><?= $item10['price'] ?></td>
-            <td class="text-right"><?= $item10tot = $item10['price'] * $item2['amount'] ?></td>
+            <td class="text-right"><?= round($item10tot = $item10['price'] * $item2['amount'], 2) ?></td>
         </tr>
         <?php } ?>
         </tbody>
@@ -274,10 +274,10 @@ $item10 = $q->fetch();
         </div>
         <div class="col-xs-2">
             <strong>
-                <?= $subtot = $item1tot + $item2tot + $item3tot + $item4tot + $item5tot + $item6tot
-                    + $item7tot + $item8tot + $item9tot + $item10tot?> <br>
-                <?= $subtot * 0.21 ?> <br>
-                <?= $subtot * 1.21 ?> <br>
+                <?= round($subtot = $item1tot + $item2tot + $item3tot + $item4tot + $item5tot + $item6tot
+                    + $item7tot + $item8tot + $item9tot + $item10tot, 2) ?> <br>
+                <?= round($subtot * 0.21, 2) ?> <br>
+                <?= round($subtot * 1.21, 2) ?> <br>
             </strong>
         </div>
     </div>
@@ -313,7 +313,7 @@ $item10 = $q->fetch();
                 </div>
             </div>
             <div class="buttons">
-                <a class="btn btn-primary" href="javascript:window.print()">Print</a>
+                <a class="btn btn-primary no-print" href="javascript:window.print()">Print</a>
             </div>
         </div>
     </div>

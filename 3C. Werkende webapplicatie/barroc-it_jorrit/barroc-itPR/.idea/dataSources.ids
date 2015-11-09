@@ -63,7 +63,7 @@
       <column name="date_of_invoice" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="end_invoice_date" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="projects_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="paid" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="paid" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="fk_invoices_projects" columns="projects_id" ref-table="tbl_projects" ref-schema="" ref-catalog="barroc_it" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="unique_id" unique="true" columns="id"/>
@@ -95,22 +95,12 @@
       <exported-key name="fk_invoices_projects" table="tbl_invoices" schema="" catalog="barroc_it" columns="projects_id"/>
       <index name="fk_projects_customer1_idx" unique="false" columns="customer_id"/>
     </table>
-    <table name="tbl_role" schema="" catalog="barroc_it" type="TABLE">
-      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
-      <column name="desciption" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
-      <primary-key name="PRIMARY" columns="id"/>
-      <exported-key name="fk_users_role1" table="tbl_users" schema="" catalog="barroc_it" columns="role_id"/>
-    </table>
     <table name="tbl_users" schema="" catalog="barroc_it" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="username" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
       <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
-      <column name="role_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
-      <foreign-key name="fk_users_role1" columns="role_id" ref-table="tbl_role" ref-schema="" ref-catalog="barroc_it" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="username_UNIQUE" unique="true" columns="username"/>
-      <index name="fk_users_role1_idx" unique="false" columns="role_id"/>
     </table>
   </data-source>
 </component>

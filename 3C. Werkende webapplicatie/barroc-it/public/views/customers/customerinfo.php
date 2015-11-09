@@ -25,7 +25,7 @@ $customer = $q->fetch();
 
                     <ul class="nav navbar-nav">
                         <li><a href="../dashboard/dashboard.php">Home</a></li>
-                        <li class="active"><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li>
+                        <?php if(!in_array("Development",$_SESSION['user'])){ ?><li class="active"><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li> <?php } ?>
                         <li><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
                       <?php if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>  <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li> <?php } ?>
                     </ul>
@@ -133,7 +133,7 @@ $customer = $q->fetch();
                         <label for="creditworthy" class="col-4">Creditworthy:</label>
                         <input type="email" name="creditworthy" value="<?php if($customer['creditworthy']) { echo 'Yes'; } else {echo 'No';}?>" readonly>
                     </div>
-                    <?php if(in_array("Finance",$_SESSION['user'])) { ?>
+                    <?php if(in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>
                         <div class="form-group">
                             <label for="ledgeraccountnumber" class="col-4">Ledger account number:</label>
                             <input type="text" name="ledgeraccountnumber" value="<?= $customer['ledgeraccountnumber']?>">
@@ -176,18 +176,18 @@ $customer = $q->fetch();
                         <a class="btn btn-primary" href="../sales/appointments.php<?php echo '?id=' . $customer['id']?>">Appointments</a>
                         <?php
                     }
-                    if(in_array("Finance",$_SESSION['user'])) { ?>
-                        <a class="btn btn-primary" href="<?php echo  '../project/viewprojects.php?id=' . $customer['id']?>">Project</a>
+                    if(in_array("Finance",$_SESSION['user']) || in_array("Admin", $_SESSION['user'])) { ?>
+                        <a class="btn btn-primary" href="<?php echo  '../project/viewprojects.php?id=' . $customer['id']?>">Projects</a>
 
                     <?php }
 
                     if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user']) || in_array("Development", $_SESSION['user'])) { ?>
                         <a class="btn btn-primary" href="<?php echo  '../project/viewprojects.php?id=' . $customer['id']?>">View project</a>
                     <?php }
-                    if(in_array("Sales",$_SESSION['user'])) { ?>
+                    if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>
                         <a class="btn btn-primary" href="<?php echo  '../project/addproject.php?id=' . $customer['id']?>">make project</a>
                     <?php } ?>
-                    <a style="float: right; margin-left: 5px;" class="btn btn-primary" onclick="goBack()">Back</a>
+                    <a style="float: right; margin-left: 5px;" class="btn btn-primary" href="../dashboard/dashboard.php">Back</a>
                     <?php
                     if(in_array("Sales",$_SESSION['user']) || in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>
                         <a style="float: right; margin-left: 5px;" class="btn btn-primary" href="../customers/editcustomer.php<?php echo '?id=' . $customer['id'] ?>">edit</a>

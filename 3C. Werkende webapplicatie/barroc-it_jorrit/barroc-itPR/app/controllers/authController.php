@@ -41,14 +41,15 @@ function login($username, $password, $db) {
             $_SESSION['user']['role_id'] = $user['role_id'];
             $messageBag->add('s', 'Welcome ' . $_SESSION['user']['username']);
             return true;
+        } else {
+            $messageBag->add('w', 'Username or password are incorrect');
         }
     } else {
         $messageBag->add('w', 'User does not excists');
         return false;
     }
+
     return false;
-
-
 }
 
 function logout() {

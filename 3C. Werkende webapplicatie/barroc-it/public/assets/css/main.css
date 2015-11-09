@@ -204,6 +204,7 @@ input[type="text"]{
 .grid{
 	overflow: hidden;
 	margin-bottom: 20px;
+	color: black;
 }
 
 .col-1{
@@ -319,4 +320,11 @@ input[type="text"]{
 	background-color: #CFC1B5;
 	color: #FFFFFF;
 	/*border-radius: 10px;*/
+}
+@media print
+{
+	.no-print, .no-print *
+	{
+		display: none !important;
+	}
 }

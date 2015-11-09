@@ -24,7 +24,7 @@ $customers = $q->fetchAll();
 
                 <ul class="nav navbar-nav">
                     <li><a href="../dashboard/dashboard.php">Home</a></li>
-                    <li><a href="../customers/customerinfo.php?id=<?= $id ?>">Customer Info</a></li>
+                    <?php if(!in_array("Development",$_SESSION['user'])){ ?><li><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li> <?php } ?>
                     <li class="active"><a href="../project/viewprojects.php?id=<?= $id?>">Projects</a></li>
                     <?php if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>  <li><a href="../sales/appointments.php?id=<?= $id ?>">Appointments</a></li> <?php } ?>
 
@@ -39,6 +39,13 @@ $customers = $q->fetchAll();
 
     </header>
     <div class="container-content">
+        <div class="message">
+            <?php
+            if($messageBag->hasMsg()){
+                echo $messageBag->show();
+            }
+            ?>
+        </div>
         <form action="<? echo '../../../app/controllers/projectController.php'?>"  method="POST">
             <div class="grid">
                 <div class="col-6">
@@ -121,7 +128,7 @@ $customers = $q->fetchAll();
             </div><!--end grid--->
             <div class="buttons">
                 <input class="btn btn-primary" type="submit" value="Submit">
-                <a style="float: right" class="btn btn-primary" onclick="goBack()">Back</a>
+                <a style="float: right" class="btn btn-primary" href="<?php echo  'viewprojects.php?id=' . $customers['id']?>>Back</a>
             </div>
         </form>
 

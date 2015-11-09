@@ -4,7 +4,7 @@ require_once '../init.php';
 
 switch( $_POST['type'] ) {
     case 'add':
-        add($_POST['customer_id'],
+        if(add($_POST['customer_id'],
             $_POST['projectname'],
             $_POST['start_date'],
             $_POST['end_date'],
@@ -18,10 +18,14 @@ switch( $_POST['type'] ) {
             $_POST['deadline'],
             $_POST['active'],
             $db
-        );
+        )) {
+            header('location: ../../public/views/project/viewprojects.php?id=' . $_POST['customer_id']);
+        } else {
+            echo "<script> history.go(-1); </script>";
+        }
         break;
     case 'edit':
-        edit($_POST['id'],
+        if(edit($_POST['id'],
             $_POST['projectname'],
             $_POST['start_date'],
             $_POST['end_date'],
@@ -36,27 +40,26 @@ switch( $_POST['type'] ) {
             $_POST['active'],
             $_POST['customer_id'],
             $db
-        );
+        )) {
+            header('location: ../../public/views/project/viewprojects.php?id=' . $_POST['customer_id']);
+        } else {
+            echo "<script> history.go(-1); </script>";
+        }
         break;
     case 'archive':
         break;
 
 }
 
-function alert($string)
-{
-    echo '<script type="text/javascript">alert("' . $string . '");</script>';
-    echo '<script type="text/javascript">history.go(-1);</script>';
-}
 
 
 function add($customer_id, $projectname, $start_date, $end_date,
              $hardware, $software, $operating_system, $status,
              $description, $limiten, $maintenance_contract, $deadline, $active, $db){
-
+    global $messageBag;
     $created_at = time();
 
-    $controle = 2;
+
 
     $sql = "SELECT * FROM tbl_customer WHERE id = :id";
     $q = $db->prepare($sql);
@@ -68,7 +71,7 @@ function add($customer_id, $projectname, $start_date, $end_date,
     if ($q->rowCount() > 0) {
         if(isset($customer['creditworthy'])) {
             if ($customer['creditworthy'] == 1) {
-                $controle = 2;
+
 
                 $sql = "SELECT * FROM tbl_projects WHERE customer_id = :id AND active = 1";
                 $q = $db->prepare($sql);
@@ -77,9 +80,7 @@ function add($customer_id, $projectname, $start_date, $end_date,
 
 
                     if ($q->rowCount() == 1 && $_POST['active'] == 'Yes' || $q->rowCount() >= 1 && $_POST['active'] == 'yes') {
-                        $active = 'There is already a project active';
-                        alert($active);
-                        $controle = 1;
+                        $messageBag->add('w','There is already a project active');
                     }else if (
                         empty($_POST['projectname']) ||
                         empty($_POST['start_date']) ||
@@ -90,19 +91,15 @@ function add($customer_id, $projectname, $start_date, $end_date,
                         empty($_POST['deadline']) ||
                         !isset($_POST['active'])) {
 
-                        $notFilled = 'data is incomplete';
-                        alert($notFilled);
-                        $controle = 1;
-                    } else {
-                        $controle = 2;
+                        $messageBag->add('w','Not all fields are filled in');
+                        return false;
                     }
             } else {
-                $controle = 1;
+                $messageBag->add('w','Customer is not creditworthy');
+                return false;
             }
         }
     }
-
-    if($controle == 2){
 
         if($_POST['maintenance_contract'] == 'yes' || $_POST['maintenance_contract'] == 'Yes'){
             $maintenance_contract = 1;
@@ -147,18 +144,17 @@ function add($customer_id, $projectname, $start_date, $end_date,
         $q->bindParam(':archived_at', $archive);
         $q->execute();
 
-        header('location: ../../public/views/project/viewprojects.php?id=' . $_POST['customer_id']);
-    }
+        return true;
+
 
 }
 
 function edit($id, $projectname, $start_date, $end_date,
               $hardware, $software, $operating_system, $status,
               $description, $limiten, $maintenance_contract, $deadline, $active,$customerid, $db){
-
+    global $messageBag;
     $updated_at = time();
 
-    $controle = 2;
 
     $start_timestamp = strtotime($start_date);
     $end_timestamp = strtotime($end_date);
@@ -173,9 +169,8 @@ function edit($id, $projectname, $start_date, $end_date,
             empty($_POST['deadline']) ||
             !isset($_POST['active'])
         ){
-            $notFilled = 'data is incomplete';
-            alert($notFilled);
-            $controle = 1;
+        $messageBag->add('w','One or more fields are missing');
+        return false;
 
         }else{
             $sql= "SELECT * FROM tbl_projects WHERE customer_id = :id AND active = 1";
@@ -184,14 +179,11 @@ function edit($id, $projectname, $start_date, $end_date,
             $q->execute();
 
         if($q->rowCount() >= 1 && $_POST['active'] == 'Yes' || $q->rowCount() >= 1 && $_POST['active'] == 'yes'){
-            $controle = 1;
-            header('location: ../../public/views/project/viewprojects.php?id=' . $_POST['customer_id']);
-        }else{
-            $controle = 2;
+            $messageBag->add('w','There is already a project active');
+            return false;
         }
     }
 
-    if($controle == 2){
 
         if($_POST['maintenance_contract'] == 'yes' || $_POST['maintenance_contract'] == 'Yes'){
             $maintenance_contract = 1;
@@ -238,7 +230,6 @@ function edit($id, $projectname, $start_date, $end_date,
         $q->bindParam(':updated_at', $updated_at);
         $q->bindParam(':id', $id);
         $q->execute();
-        header('location: ../../public/views/project/viewprojects.php?id=' . $_POST['customer_id']);
-    }
+        return false;
 
 }

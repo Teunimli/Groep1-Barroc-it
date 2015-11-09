@@ -4,7 +4,7 @@ require_once '../init.php';
 
 switch( $_POST['type'] ) {
     case 'add':
-        add($_POST['id'],
+        if(add($_POST['id'],
             $_POST['date_of_invoice'],
             $_POST['end_invoice_date'],
             $_POST['invoicenumber'],
@@ -47,10 +47,14 @@ switch( $_POST['type'] ) {
             $_POST['price7'],
             $_POST['price8'],
             $_POST['price9'],
-            $_POST['price10']);
+            $_POST['price10'])) {
+            header('location: ../../public/views/finance/invoiceinfo.php?id=' . $_POST['id']. '&customerid=' .$_POST['customerid']);
+        } else {
+            echo "<script> history.go(-1); </script>";
+        }
         break;
     case 'edit':
-
+        if(
         edit($_POST['invoicenumber'],
             $_POST['date_of_invoice'],
             $_POST['end_invoice_date'],
@@ -94,7 +98,11 @@ switch( $_POST['type'] ) {
             $_POST['price7'],
             $_POST['price8'],
             $_POST['price9'],
-            $_POST['price10']);
+            $_POST['price10'])) {
+            header('location: ../../public/views/finance/invoiceinfo.php?id=' . $_POST['id'] . '&customerid=' . $_POST['customerid']);
+        } else {
+            echo "<script> history.go(-1); </script>";
+        }
 
         break;
 }
@@ -108,19 +116,18 @@ function edit($id, $date_of_invoice, $end_invoice_date, $paid, $item1, $item2, $
 {
     global $db;
     global $messageBag;
-    $controle = 2;
 
     if (empty($_POST['date_of_invoice']) ||
         empty($_POST['end_invoice_date']) ||
         !isset($_POST['paid'])
     ) {
-
-        $controle = 1;
         $messageBag->add('w', 'Not all fields are filled in');
+        return false;
     }
     if (!empty($item1)) {
         if (empty($description1) || empty($amount1) || empty($price1)) {
             $messageBag->add('w', 'Not all fields are filled in');
+            return false;
         }
 
         $sql ="SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 1";
@@ -158,6 +165,7 @@ function edit($id, $date_of_invoice, $end_invoice_date, $paid, $item1, $item2, $
     if (!empty($item2)) {
         if (empty($description2) || empty($amount2) || empty($price2)) {
             $messageBag->add('w', 'Not all fields are filled in');
+            return false;
         }
         $sql ="SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 2";
         $q = $db->prepare($sql);
@@ -195,6 +203,7 @@ function edit($id, $date_of_invoice, $end_invoice_date, $paid, $item1, $item2, $
     if (!empty($item3)) {
         if (empty($description3) || empty($amount3) || empty($price3)) {
             $messageBag->add('w', 'Not all fields are filled in');
+            return false;
         }
         $sql ="SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 3";
         $q = $db->prepare($sql);
@@ -232,6 +241,7 @@ function edit($id, $date_of_invoice, $end_invoice_date, $paid, $item1, $item2, $
     if (!empty($item4)) {
         if (empty($description4) || empty($amount4) || empty($price4)) {
             $messageBag->add('w', 'Not all fields are filled in');
+            return false;
         }
 
         $sql ="SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 4";
@@ -270,6 +280,7 @@ function edit($id, $date_of_invoice, $end_invoice_date, $paid, $item1, $item2, $
     if (!empty($item5)) {
         if (empty($description5) || empty($amount5) || empty($price5)) {
             $messageBag->add('w', 'Not all fields are filled in');
+            return false;
         }
         $sql ="SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 5";
         $q = $db->prepare($sql);
@@ -307,6 +318,7 @@ function edit($id, $date_of_invoice, $end_invoice_date, $paid, $item1, $item2, $
     if (!empty($item6)) {
         if (empty($description6) || empty($amount6) || empty($price6)) {
             $messageBag->add('w', 'Not all fields are filled in');
+            return false;
         }
         $sql ="SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 6";
         $q = $db->prepare($sql);
@@ -344,6 +356,7 @@ function edit($id, $date_of_invoice, $end_invoice_date, $paid, $item1, $item2, $
     if (!empty($item7)) {
         if (empty($description7) || empty($amount7) || empty($price7)) {
             $messageBag->add('w', 'Not all fields are filled in');
+            return false;
         }
         $sql ="SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 7";
         $q = $db->prepare($sql);
@@ -381,6 +394,7 @@ function edit($id, $date_of_invoice, $end_invoice_date, $paid, $item1, $item2, $
     if (!empty($item8)) {
         if (empty($description8) || empty($amount8) || empty($price8)) {
             $messageBag->add('w', 'Not all fields are filled in');
+            return false;
         }
         $sql ="SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 8";
         $q = $db->prepare($sql);
@@ -418,6 +432,7 @@ function edit($id, $date_of_invoice, $end_invoice_date, $paid, $item1, $item2, $
     if (!empty($item9)) {
         if (empty($description9) || empty($amount9) || empty($price9)) {
             $messageBag->add('w', 'Not all fields are filled in');
+            return false;
         }
         $sql ="SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 9";
         $q = $db->prepare($sql);
@@ -455,6 +470,7 @@ function edit($id, $date_of_invoice, $end_invoice_date, $paid, $item1, $item2, $
     if (!empty($item10)) {
         if (empty($description10) || empty($amount10) || empty($price10)) {
             $messageBag->add('w', 'Not all fields are filled in');
+            return false;
         }
         $sql ="SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 10";
         $q = $db->prepare($sql);
@@ -489,7 +505,7 @@ function edit($id, $date_of_invoice, $end_invoice_date, $paid, $item1, $item2, $
             $q->execute();
         }
     }
-    if ($controle == 2) {
+
 
         if ($_POST['paid'] == 'yes' || $_POST['paid'] == 'Yes') {
             $paid = 1;
@@ -513,8 +529,7 @@ function edit($id, $date_of_invoice, $end_invoice_date, $paid, $item1, $item2, $
         $q->bindParam(':id', $id);
         $q->execute();
 
-        header('location: ../../public/views/finance/invoiceinfo.php?id=' . $_POST['id'] . '&customerid=' . $_POST['customerid']);
-    }
+        return true;
 }
 
 
@@ -529,14 +544,13 @@ function add($id, $date_of_invoice, $end_invoice_date, $invoicenumber, $item1, $
 
     global $messageBag;
     global $db;
-    $controle = 2;
 
 
     if(empty($_POST['date_of_invoice']) ||
         empty($_POST['end_invoice_date']) ||
         empty($_POST['invoicenumber'])){
-        $controle = 1;
         $messageBag->add('w','Not all fields are filled in');
+        return false;
 
     }else{
 
@@ -545,16 +559,16 @@ function add($id, $date_of_invoice, $end_invoice_date, $invoicenumber, $item1, $
         $q->bindParam(':id', $invoicenumber);
         $q->execute();
 
-        if($q->rowCount() == 0){
-            $controle = 2;
-        }else{
-            $controle = 1;
+        if($q->rowCount() > 0){
+            $messageBag->add('w', 'Invoice number already exists');
+           return false;
         }
     }
 
     if(!empty($item1)) {
         if(empty($description1) || empty($amount1) || empty($price1)){
             $messageBag->add('w','Not all fields are filled in');
+            return false;
         }else {
             $sql = "INSERT INTO tbl_invoice_items(id, invoice_id, item, description, amount, price)
                                   VALUES(1, :invoice_id, :item, :description, :amount, :price)";
@@ -571,6 +585,7 @@ function add($id, $date_of_invoice, $end_invoice_date, $invoicenumber, $item1, $
     if(!empty($item2)) {
         if(empty($description2) || empty($amount2) || empty($price2)){
             $messageBag->add('w','Not all fields are filled in');
+            return false;
         }else {
             $sql = "INSERT INTO tbl_invoice_items(id, invoice_id, item, description, amount, price)
                                   VALUES(2, :invoice_id, :item, :description, :amount, :price)";
@@ -587,6 +602,7 @@ function add($id, $date_of_invoice, $end_invoice_date, $invoicenumber, $item1, $
     if(!empty($item3)) {
         if(empty($description3) || empty($amount3) || empty($price3)){
             $messageBag->add('w','Not all fields are filled in');
+            return false;
         }else {
             $sql = "INSERT INTO tbl_invoice_items(id, invoice_id, item, description, amount, price)
                                   VALUES(3, :invoice_id, :item, :description, :amount, :price)";
@@ -603,6 +619,7 @@ function add($id, $date_of_invoice, $end_invoice_date, $invoicenumber, $item1, $
     if(!empty($item4)) {
         if(empty($description4) || empty($amount4) || empty($price4)){
             $messageBag->add('w','Not all fields are filled in');
+            return false;
         } else {
             $sql = "INSERT INTO tbl_invoice_items(id, invoice_id, item, description, amount, price)
                                   VALUES(4, :invoice_id, :item, :description, :amount, :price)";
@@ -620,6 +637,7 @@ function add($id, $date_of_invoice, $end_invoice_date, $invoicenumber, $item1, $
     if(!empty($item5)) {
         if(empty($description5) || empty($amount5) || empty($price5)){
             $messageBag->add('w','Not all fields are filled in');
+            return false;
         }else {
             $sql = "INSERT INTO tbl_invoice_items(id, invoice_id, item, description, amount, price)
                                   VALUES(5, :invoice_id, :item, :description, :amount, :price)";
@@ -636,6 +654,7 @@ function add($id, $date_of_invoice, $end_invoice_date, $invoicenumber, $item1, $
     if(!empty($item6)) {
         if(empty($description6) || empty($amount6) || empty($price6)){
             $messageBag->add('w','Not all fields are filled in');
+            return false;
         }else {
             $sql = "INSERT INTO tbl_invoice_items(id, invoice_id, item, description, amount, price)
                                   VALUES(6, :invoice_id, :item, :description, :amount, :price)";
@@ -652,6 +671,7 @@ function add($id, $date_of_invoice, $end_invoice_date, $invoicenumber, $item1, $
     if(!empty($item7)) {
         if(empty($description7) || empty($amount7) || empty($price7)){
             $messageBag->add('w','Not all fields are filled in');
+            return false;
         }else {
             $sql = "INSERT INTO tbl_invoice_items(id, invoice_id, item, description, amount, price)
                                   VALUES(7, :invoice_id, :item, :description, :amount, :price)";
@@ -668,6 +688,7 @@ function add($id, $date_of_invoice, $end_invoice_date, $invoicenumber, $item1, $
     if(!empty($item8)) {
         if(empty($description8) || empty($amount8) || empty($price8)){
             $messageBag->add('w','Not all fields are filled in');
+            return false;
         }else {
             $sql = "INSERT INTO tbl_invoice_items(id, invoice_id, item, description, amount, price)
                                   VALUES(8, :invoice_id, :item, :description, :amount, :price)";
@@ -684,6 +705,7 @@ function add($id, $date_of_invoice, $end_invoice_date, $invoicenumber, $item1, $
     if(!empty($item9)) {
         if(empty($description9) || empty($amount9) || empty($price9)){
             $messageBag->add('w','Not all fields are filled in');
+            return false;
         }else {
             $sql = "INSERT INTO tbl_invoice_items(id, invoice_id, item, description, amount, price)
                                   VALUES(9, :invoice_id, :item, :description, :amount, :price)";
@@ -700,6 +722,7 @@ function add($id, $date_of_invoice, $end_invoice_date, $invoicenumber, $item1, $
     if(!empty($item10)) {
         if(empty($description10) || empty($amount10) || empty($price10)){
             $messageBag->add('w','Not all fields are filled in');
+            return false;
         }else {
             $sql = "INSERT INTO tbl_invoice_items(id, invoice_id, item, description, amount, price)
                                   VALUES(10, :invoice_id, :item, :description, :amount, :price)";
@@ -713,7 +736,6 @@ function add($id, $date_of_invoice, $end_invoice_date, $invoicenumber, $item1, $
             $q->execute();
         }
     }
-    if($controle == 2){
 
         $dateofinvoice = strtotime($date_of_invoice);
         $endinvoicedate = strtotime($end_invoice_date);
@@ -728,12 +750,7 @@ function add($id, $date_of_invoice, $end_invoice_date, $invoicenumber, $item1, $
         $q->bindParam(':date_of_invoice', $dateofinvoice);
         $q->execute();
 
-        header('location: ../../public/views/finance/invoiceinfo.php?id=' . $_POST['id']. '&customerid=' .$_POST['customerid']);
 
-    }else{
-        $messageBag->add('w','Something went wrong');
-
-        header('location: ../../public/views/finance/invoiceinfo.php?id=' . $_POST['id']. '&customerid=' .$_POST['customerid']);
-    }
+        return true;
 
 }

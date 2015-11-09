@@ -22,6 +22,13 @@
         </form>
 
     </header>
+    <div class="message">
+        <?php
+        if($messageBag->hasMsg()){
+            echo $messageBag->show();
+        }
+        ?>
+    </div>
     <div class="container-content">
 
         <form action="../../../app/controllers/customercontroller.php" method="POST">
@@ -115,7 +122,7 @@
             </div><!--end grid--->
             <div class="buttons">
                 <input class="btn btn-primary" type="submit" value="Create">
-                <a class="btn btn-primary" onclick="goBack()">Back</a>
+                <a class="btn btn-primary" href="../dashboard/dashboard.php">Back</a>
             </div>
         </form>
 

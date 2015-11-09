@@ -11,7 +11,7 @@ if(empty($_SESSION['user'])) {
 <?php
 
 // de query die gedaan moet worden
-$sql = "SELECT * FROM tbl_customer WHERE archived_at = 0";
+$sql = "SELECT * FROM tbl_customer WHERE archived_at = 0 ORDER BY creditworthy DESC ";
 
 // de query wordt opgeslagen
 $q = $db->query($sql);
@@ -56,7 +56,7 @@ $customers = $q->fetchAll();
 
         </div>
     <div class="buttons">
-        <a style="margin-bottom: 10px;" href="../customers/addcustomer.php" class="btn btn-primary">Add Customer</a>
+       <?php if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?> <a style="margin-bottom: 10px;" href="../customers/addcustomer.php" class="btn btn-primary">Add Customer</a> <?php } ?>
     </div>
     <?php
     if(in_array("Sales",$_SESSION['user']) || in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>
@@ -68,12 +68,11 @@ $customers = $q->fetchAll();
                 $id = $customer['id'];
                 $sql = "SELECT *
                         FROM tbl_projects
-                        WHERE customer_id = :id";
+                        WHERE customer_id = :id ";
                 $q = $db->prepare($sql);
                 $q->BindParam(':id', $id);
                 $q->execute();
                 $projects = $q->fetchAll(PDO::FETCH_ASSOC);
-
 
 
                 foreach($projects as $project) {
@@ -82,42 +81,55 @@ $customers = $q->fetchAll();
                     $projectid = $project['id'];
                     $sql = "SELECT *
                         FROM tbl_invoices
-                        WHERE projects_id = :id";
+                        WHERE projects_id = :id ";
                     $q = $db->prepare($sql);
                     $q->BindParam(':id', $projectid);
                     $q->execute();
-                    $invoices = $q->fetchAll(PDO::FETCH_ASSOC);
                     $limit = $project['limiten'];
-                    foreach($invoices as $invoice) {
+                    $invoices = $q->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($invoices as $invoice) {
+                        $invoice_id = $invoice['id'];
+                        $sql = "SELECT * FROM tbl_invoice_items WHERE invoice_id = :invoice_id";
+                        $q = $db->prepare($sql);
+                        $q->bindParam(':invoice_id', $invoice_id);
+                        $q->execute();
+                        $items = $q->fetchAll(PDO::FETCH_ASSOC);
 
-                        if($invoice['paid'] == 0) {
+                        foreach ($items as $item) {
+                            if ($invoice['paid'] == 0) {
+                                $arrears = $arrears + ($item['price'] * $item['amount']);
 
-                            $arrears = $arrears + $invoice['total_price'];
+                            }
+
 
                         }
+
+
                     }
-                }
-                ?>
+                    ?>
                 <li class="list-group-item">
-                    <b><a href="<?php echo  '../customers/customerinfo.php?id=' . $customer['id']?>"
+                    <b><a href="<?=  '../customers/customerinfo.php?id=' . $customer['id']?>"
                           class="
                <?php
-                          if(! in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) {
+
+                          if(in_array("Sales",$_SESSION['user'])) {
                               if($arrears > $limit || $customer['creditworthy'] == 0 ) {
                                   echo 'limit';
                               } else {
                                   echo 'nolimit';
                               } } else if(in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) {
                               if($customer['bkrcheck'] == 0) {
+                                      echo 'nobkr';
+                              } else {
                                   if($arrears > $limit) {
                                       echo 'limitF';
                                   } else {
-                                      echo 'nobkr';
+                                      echo 'nolimit';
                                   }
-                              } else {
-                                  echo 'nolimit';
                               }
-                          } ?> st"><?= $customer['companyname'] ?></a></b>
+                          }
+                    }
+                ?> st"><?= $customer['companyname'] ?></a></b>
                     <div class="buttons">
                         <a class="btn btn-primary" href="<?php echo  '../customers/editcustomer.php?id=' . $customer['id']?>" style="float: right;">edit</a>
                     </div>
@@ -126,14 +138,7 @@ $customers = $q->fetchAll();
                     </form>
                     <br />
                 </li>
-            <?php } }
-        ?>
-
-
-
-        <?
-
-        } ?>
+            <?php } } } ?>
     </ul>
         <?php
         if(in_array("Development",$_SESSION['user'])) {
@@ -146,12 +151,11 @@ $customers = $q->fetchAll();
                 $id = $customer['id'];
                 $sql = "SELECT *
                         FROM tbl_projects
-                        WHERE customer_id = :id";
+                        WHERE customer_id = :id ";
                 $q = $db->prepare($sql);
                 $q->BindParam(':id', $id);
                 $q->execute();
                 $projects = $q->fetchAll(PDO::FETCH_ASSOC);
-
 
 
                 foreach($projects as $project) {
@@ -160,33 +164,45 @@ $customers = $q->fetchAll();
                     $projectid = $project['id'];
                     $sql = "SELECT *
                         FROM tbl_invoices
-                        WHERE projects_id = :id";
+                        WHERE projects_id = :id ";
                     $q = $db->prepare($sql);
                     $q->BindParam(':id', $projectid);
                     $q->execute();
-                    $invoices = $q->fetchAll(PDO::FETCH_ASSOC);
                     $limit = $project['limiten'];
-                    foreach($invoices as $invoice) {
+                    $invoices = $q->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($invoices as $invoice) {
+                        $invoice_id = $invoice['id'];
+                        $sql = "SELECT * FROM tbl_invoice_items WHERE invoice_id = :invoice_id";
+                        $q = $db->prepare($sql);
+                        $q->bindParam(':invoice_id', $invoice_id);
+                        $q->execute();
+                        $items = $q->fetchAll(PDO::FETCH_ASSOC);
 
-                        if($invoice['paid'] == 0) {
+                        foreach ($items as $item) {
+                            if ($invoice['paid'] == 0) {
+                                $arrears = $arrears + ($item['price'] * $item['amount']);
 
-                            $arrears = $arrears + $invoice['total_price'];
+                            }
+
 
                         }
+
+
                     }
-                }
-                ?>
+                    ?>
                 <li class="list-group-item">
                     <b><a href="<?php echo  '../project/viewprojects.php?id=' . $customer['id']?>"
                           class="
                <?php
                           if(in_array("Development",$_SESSION['user'])) {
-                              if($arrears > $limit || $customer['creditworthy'] == 0 ) {
+                              if ($arrears > $limit || $customer['creditworthy'] == 0) {
                                   echo 'limit';
                               } else {
                                   echo 'nolimit';
                               }
-                          } ?> st"><?= $customer['companyname'] ?></a></b>
+                          }
+                }
+                ?> st"><?= $customer['companyname'] ?></a></b>
                     <br />
                 </li>
             <?php } } }
