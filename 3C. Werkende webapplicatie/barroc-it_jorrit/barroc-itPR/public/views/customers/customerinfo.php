@@ -9,6 +9,12 @@ $q->execute();
 
 $customer = $q->fetch();
 
+$id = $_GET['id'];
+$sql = "SELECT * FROM tbl_projects WHERE customer_id = :id AND active = 1";
+$qu = $db->prepare($sql);
+$qu->bindParam(':id', $id);
+$qu->execute();
+
 ?>
 
 
@@ -151,7 +157,7 @@ $customer = $q->fetch();
                     <?php } ?>
                     <div class="form-group">
                         <label for="open_project" class="col-4">Open project:</label>
-                        <input type="text" name="open_project" value="<?php if($customer['open_project']) { echo 'Yes'; } else {echo 'No';}?>">
+                        <input type="text" name="open_project" value="<?php if($qu->rowCount() >= 1) { echo 'Yes'; } else {echo 'No';}?>" readonly>
                     </div>
 
                     <div class="form-group">

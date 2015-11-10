@@ -69,10 +69,10 @@ $customers = $q->fetchAll();
                 $sql = "SELECT *
                         FROM tbl_projects
                         WHERE customer_id = :id ";
-                $q = $db->prepare($sql);
-                $q->BindParam(':id', $id);
-                $q->execute();
-                $projects = $q->fetchAll(PDO::FETCH_ASSOC);
+                $qp = $db->prepare($sql);
+                $qp->BindParam(':id', $id);
+                $qp->execute();
+                $projects = $qp->fetchAll(PDO::FETCH_ASSOC);
 
 
                 foreach($projects as $project) {
@@ -129,6 +129,13 @@ $customers = $q->fetchAll();
                               }
                           }
                     }
+                if($qp->rowCount() == 0) {
+                    if(in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) {
+                        echo 'nobkr';
+                    } else if(in_array("Sales",$_SESSION['user'])) {
+                        echo 'limit';
+                    }
+                }
                 ?> st"><?= $customer['companyname'] ?></a></b>
                     <div class="buttons">
                         <a class="btn btn-primary" href="<?php echo  '../customers/editcustomer.php?id=' . $customer['id']?>" style="float: right;">edit</a>

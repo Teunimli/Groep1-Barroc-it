@@ -520,9 +520,10 @@ function edit($id, $date_of_invoice, $end_invoice_date, $paid, $item1, $item2, $
         $sql = "UPDATE tbl_invoices SET date_of_invoice = :date_of_invoice,
                                         end_invoice_date = :end_invoice_date,
                                         paid = :paid
-                                        WHERE id = :id AND :invoice_id";
+                                        WHERE id = :id";
 
         $q = $db->prepare($sql);
+
         $q->bindParam(':end_invoice_date', $endinvoicedate);
         $q->bindParam(':date_of_invoice', $dateofinvoice);
         $q->bindParam(':paid', $paid);
