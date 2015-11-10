@@ -24,26 +24,41 @@ $appointment = $q->fetch();
 ?>
 
 
-<div class="contaier">
+<div class="container">
     <header>
+        <div class="top-img">
+            <img src="../../assets/img/jumbotron_small.jpg" alt="barroc-it image" class="barroc-img">
+            <h1 class="barroc-title">BARROC IT. </h1>
+            <h2 class="text-center subhead tophead">Add Invoice</h2>
+        </div>
+        <form action="../../../app/controllers/authController.php" method="POST">
+            <input type="hidden" name="type" value="logout">
+            <nav role="navigation" class="navbar navbar-default">
 
-
-        <nav role="navigation" class="navbar navbar-default">
-            <!-- Brand and toggle get grouped for better mobile display -->
-
-            <!-- Collection of nav links and other content for toggling -->
-            <div id="navbarCollapse" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="../dashboard/dashboard.php">Home</a></li>
+                    <li><a href="../dashboard/dashboard.php">Home</a></li>
+                    <?php if(!in_array("Development",$_SESSION['user'])){ ?><li><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li> <?php } ?>
+                    <li><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
+                    <?php if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>  <li class="active"><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li> <?php } ?>
 
                 </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><input type="submit" value="LOGOUT" class="logout"></a></li>
+                </ul>
 
-            </div>
-        </nav>
+
+            </nav>
+        </form>
 
     </header>
     <div class="container-content">
-        <h2 class="text-center">Edit Appointment</h2>
+        <div class="message">
+            <?php
+            if($messageBag->hasMsg()){
+                echo $messageBag->show();
+            }
+            ?>
+        </div>
         <form action="../../../app/controllers/appointmentController.php" method="POST">
             <input type="hidden" name="type" value="edit">
             <input type="hidden" name="appointment_id" value="<?= $appointment['id'] ?>">
@@ -63,7 +78,7 @@ $appointment = $q->fetch();
                     <div class="form-group">
                         <h3>Appointment</h3>
                         <label for="appointment_date">date:</label>
-                        <input type="text" name="appointment_date" value="<?= date('Y-m-d', $appointment['appointment_date']); ?>">
+                        <input type="date" name="appointment_date" value="<?= date('Y-m-d',$appointment['appointment_date'])?>">
                     </div>
 
 
@@ -75,19 +90,22 @@ $appointment = $q->fetch();
 
                     <div class="form-group">
                         <label for="created_at">Date of input:</label>
-                        <input type="date" name="created_at" value="<?= date('Y-m-d', $appointment['created_at']); ?>" readonly>
+                        <input type="date" name="created_at" value="<?= date('Y-m-d',$appointment['created_at'])?>" readonly>
                     </div>
 
                     <div class="form-group">
                         <label for="lastcontact">Last contact:</label>
-                        <input type="text" name="lastcontact" value="<?= $appointment['lastcontact'] ?>">
+                        <input type="date" name="lastcontact" value="<?= date('Y-m-d',$appointment['lastcontact'])?>">
                     </div>
 
 
 
-            <input type="submit" value="Submit">
+            <div class="buttons">
+                <input class="btn btn-primary" type="submit" value="Submit">
+                <a style="float: right" class="btn btn-primary" href="appointments.php<?php echo '?id=' . $customer['id']?>">Back</a>
+            </div>
         </form>
-        <a onclick="goBack()">Back</a>
+
 
     </div><!--end container-content-->
 </div><!--end container--->

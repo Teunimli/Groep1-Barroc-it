@@ -8,6 +8,7 @@ body {
 
 }
 
+
 .jumbotron {
 	position: relative;
 	margin-top: 0px;
@@ -108,7 +109,12 @@ input.form-control, textarea.form-control {
 	border: 0px;
 	border-radius: 0px;
 }
-
+label{
+	color: #333;
+}
+input[type="text"]{
+	color: #333 !important;
+}
 .address {
 	margin-top: 20px;
 }
@@ -198,6 +204,7 @@ input.form-control, textarea.form-control {
 .grid{
 	overflow: hidden;
 	margin-bottom: 20px;
+	color: black;
 }
 
 .col-1{
@@ -257,4 +264,67 @@ input.form-control, textarea.form-control {
 [class*='col-']:last-of-type{
 	padding-right: 0px;
 
+}
+/* Dashboard: */
+
+
+.top-img {
+	position: relative;
+	width: 100%; /* for IE 6 */
+}
+
+.barroc-img {
+	width: 100%;
+}
+.barroc-title {
+	position: absolute;
+	top: 20%;
+	left: 42%;
+	text-shadow: 2px 2px 3px black;
+	color: gray;
+	line-height: 0.8em;
+}
+.st:hover {
+	text-decoration: none;
+	color: rgb(207,192,180);
+}
+.limit {
+	color: red;
+	pointer-events: none;
+}
+.limitF {
+	color: red;
+}
+.nolimit {
+	color: black;
+	pointer-events: auto;
+}
+
+.nobkr {
+	color: #ed9c28;
+}
+.tophead {
+	position: absolute;
+	top: 62%;
+	left: 0;
+	width: 100%;
+}
+.logout {
+	background:none!important; border:none;
+	padding:0!important;
+	font: inherit;
+	cursor: pointer;
+	margin-right: 10px;
+}
+.buttons  a, .buttons input, .buttons button{
+	background-color: #CFC1B5;
+	color: #FFFFFF;
+	/*border-radius: 10px;*/
+}
+@media print
+{
+	.no-print, .no-print *
+	{
+		display: none !important;
+	}
 }

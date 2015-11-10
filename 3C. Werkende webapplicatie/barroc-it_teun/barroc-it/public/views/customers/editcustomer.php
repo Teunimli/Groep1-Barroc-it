@@ -7,156 +7,161 @@ $q = $db->prepare($sql);
 $q->bindParam(':id', $id);
 $q->execute();
 
-$contact = $q->fetch();
+$customer = $q->fetch();
 
 ?>
 <div class="container">
     <header>
+        <div class="top-img">
+            <img src="../../assets/img/jumbotron_small.jpg" alt="barroc-it image" class="barroc-img">
+            <h1 class="barroc-title">BARROC IT. </h1>
+            <h2 class="text-center subhead tophead">Edit Customer</h2>
+        </div>
+        <form action="../../../app/controllers/authController.php" method="POST">
+            <input type="hidden" name="type" value="logout">
+            <nav role="navigation" class="navbar navbar-default">
 
-
-        <nav role="navigation" class="navbar navbar-default">
-            <!-- Brand and toggle get grouped for better mobile display -->
-
-            <!-- Collection of nav links and other content for toggling -->
-            <div id="navbarCollapse" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="../dashboard/dashboard.php">Home</a></li>
-
+                    <li><a href="../dashboard/dashboard.php">Home</a></li>
+                    <?php if(!in_array("Development",$_SESSION['user'])){ ?><li class="active"><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li> <?php } ?>
+                    <li><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
+                    <?php if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>  <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li> <?php } ?>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><input type="submit" value="LOGOUT" class="logout"></a></li>
                 </ul>
 
-            </div>
-        </nav>
+            </nav>
+        </form>
 
     </header>
     <div class="container-content">
 
-    <form action="../../../app/controllers/customercontroller.php" method="POST">
-        <div class="message">
-            <?php
-            if($messageBag->hasMsg()){
-                echo $messageBag->show();
-            }
-            ?>
-        </div>
-         <h2 class="text-center">Edit customer</h2>
-         <input type="hidden" name="type" value="edit">
-        <input type="hidden" name="id" value="<?= $contact['id'] ?>" />
+        <form action="../../../app/controllers/customercontroller.php" method="POST">
+            <div class="message">
+                <?php
+                if($messageBag->hasMsg()){
+                    echo $messageBag->show();
+                }
+                ?>
+            </div>
+            <input type="hidden" name="type" value="edit">
+            <input type="hidden" name="id" value="<?= $customer['id'] ?>" />
 
-        <div class="grid">
-            <div class="col-6">
-                <div class="form-group">
-                    <label for="contact_name">Contact firstname *:</label>
-                    <input type="text" name="contact_name" value="<?= $contact['contact_name']?>">
-                </div>
+            <div class="grid">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="contact_name" class="col-4">Contact firstname *:</label>
+                        <input type="text" name="contact_name" value="<?= $customer['contact_name']?>">
+                    </div>
 
-                <div class="form-group">
-                    <label for="contact_lastname">Contact lastname *:</label>
-                    <input type="text" name="contact_lastname" value="<?= $contact['contact_lastname']?>">
-                </div>
+                    <div class="form-group">
+                        <label for="contact_lastname" class="col-4">Contact lastname *:</label>
+                        <input type="text" name="contact_lastname" value="<?= $customer['contact_lastname']?>">
+                    </div>
 
-                <div class="form-group">
-                    <label for="initials">Initials *:</label>
-                    <input type="text" name="initials" value="<?= $contact['initials']?>">
-                </div>
+                    <div class="form-group">
+                        <label for="initials" class="col-4">Initials *:</label>
+                        <input type="text" name="initials" value="<?= $customer['initials']?>">
+                    </div>
 
-                <div class="form-group">
-                    <label for="companyname">Company name *:</label>
-                    <input type="text" name="companyname" value="<?= $contact['companyname']?>">
-                </div>
+                    <div class="form-group">
+                        <label for="companyname" class="col-4">Company name *:</label>
+                        <input type="text" name="companyname" value="<?= $customer['companyname']?>">
+                    </div>
 
-                <div class="form-group">
-                    <label for="first_adress">address *:</label>
-                    <input type="text" name="first_adress" value="<?= $contact['first_adress']?>">
-                </div>
+                    <div class="form-group">
+                        <label for="first_adress" class="col-4">Address *:</label>
+                        <input type="text" name="first_adress" value="<?= $customer['first_adress']?>">
+                    </div>
 
-                <div class="form-group">
-                    <label for="first_zipcode">Zipcode *:</label>
-                    <input type="text" name="first_zipcode" value="<?= $contact['first_zipcode']?>">
-                </div>
+                    <div class="form-group">
+                        <label for="first_zipcode" class="col-4">Zipcode *:</label>
+                        <input type="text" name="first_zipcode" value="<?= $customer['first_zipcode']?>">
+                    </div>
 
-                <div class="form-group">
-                    <label for="first_city">City *:</label>
-                    <input type="text" name="first_city" value="<?= $contact['first_city']?>">
-                </div>
+                    <div class="form-group">
+                        <label for="first_city" class="col-4">City *:</label>
+                        <input type="text" name="first_city" value="<?= $customer['first_city']?>">
+                    </div>
 
-                <div class="form-group">
-                    <label for="first_housenumber">housenumber *:</label>
-                    <input type="text" name="first_housenumber" value="<?= $contact['first_housenumber']?>">
-                </div>
+                    <div class="form-group">
+                        <label for="first_housenumber" class="col-4">housenumber *:</label>
+                        <input type="text" name="first_housenumber" value="<?= $customer['first_housenumber']?>">
+                    </div>
 
-                <div class="form-group">
-                    <label for="second_adress">address 2:</label>
-                    <input type="text" name="second_adress" value="<?= $contact['second_adress']?>">
-                </div>
+                    <div class="form-group">
+                        <label for="second_adress" class="col-4">Address 2:</label>
+                        <input type="text" name="second_adress" value="<?= $customer['second_adress']?>">
+                    </div>
 
-                <div class="form-group">
-                    <label for="second_zipcode">Zipcode 2:</label>
-                    <input type="text" name="second_zipcode" value="<?= $contact['second_zipcode']?>">
-                </div>
+                    <div class="form-group">
+                        <label for="second_zipcode" class="col-4">Zipcode 2:</label>
+                        <input type="text" name="second_zipcode" value="<?= $customer['second_zipcode']?>">
+                    </div>
 
-                <div class="form-group">
-                    <label for="second_city">City 2:</label>
-                    <input type="text" name="second_city" value="<?= $contact['second_city']?>">
-                </div>
+                    <div class="form-group">
+                        <label for="second_city" class="col-4">City 2:</label>
+                        <input type="text" name="second_city" value="<?= $customer['second_city']?>">
+                    </div>
 
-                <div class="form-group">
-                    <label for="second_housenumber">Housenumber 2:</label>
-                    <input type="text" name="second_housenumber" value="<?= $contact['second_housenumber']?>">
-                </div>
-            </div><!--end col-6--->
+                    <div class="form-group">
+                        <label for="second_housenumber" class="col-4">Housenumber 2:</label>
+                        <input type="text" name="second_housenumber" value="<?= $customer['second_housenumber']?>">
+                    </div>
+                </div><!--end col-6--->
 
-            <div class="col-6">
-                <div class="form-group">
-                    <label for="first_telephonenumber">Tel 1:</label>
-                    <input type="text" name="first_telephonenumber" value="<?= $contact['first_telephonenumber']?>">
-                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="first_telephonenumber" class="col-4">Tel 1 *:</label>
+                        <input type="text" name="first_telephonenumber" value="<?= $customer['first_telephonenumber']?>">
+                    </div>
 
-                <div class="form-group">
-                    <label for="second_telephonenumber">Tel 2:</label>
-                    <input type="text" name="second_telephonenumber" value="<?= $contact['second_telephonenumber']?>">
-                </div>
+                    <div class="form-group">
+                        <label for="second_telephonenumber" class="col-4">Tel 2:</label>
+                        <input type="text" name="second_telephonenumber" value="<?= $customer['second_telephonenumber']?>">
+                    </div>
 
-                <div class="form-group">
-                    <label for="fax">Faxnumber:</label>
-                    <input type="text" name="fax" value="<?= $contact['fax']?>">
-                </div>
+                    <div class="form-group">
+                        <label for="fax" class="col-4">Faxnumber:</label>
+                        <input type="text" name="fax" value="<?= $customer['fax']?>">
+                    </div>
 
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" name="email" value="<?= $contact['email']?>">
-                </div>
+                    <div class="form-group">
+                        <label for="email" class="col-4">Email *:</label>
+                        <input type="email" name="email" value="<?= $customer['email']?>">
+                    </div>
 
-                <div class="form-group">
-                    <label for="ledgeraccountnumber">Ledger account number:</label>
-                    <input type="text" name="ledgeraccountnumber" value="<?= $contact['ledgeraccountnumber']?>">
-                </div>
+                    <div class="form-group">
+                        <label for="creditworthy" class="col-4">Credit Worthy:</label>
+                        <input type="text" name="creditworthy" value="<?php if($customer['creditworthy']) { echo 'Yes'; } else {echo 'No';}?>" <?php if(!in_array("Finance",$_SESSION['user'])) { ?> readonly <?php } ?>>
+                    </div>
+                    <?php if(in_array("Finance",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>
+                    <div class="form-group">
+                        <label for="ledgeraccountnumber" class="col-4">Ledger account number:</label>
+                        <input type="text" name="ledgeraccountnumber" value="<?= $customer['ledgeraccountnumber']?>">
+                    </div>
 
-                <div class="form-group">
-                    <label for="taxcode">Taxcode:</label>
-                    <input type="text" name="taxcode" value="<?= $contact['taxcode']?>">
-                </div>
+                    <div class="form-group">
+                        <label for="taxcode" class="col-4">Taxcode:</label>
+                        <input type="text" name="taxcode" value="<?= $customer['taxcode']?>">
+                    </div>
 
-                <div class="form-group">
-                    <label for="creditworthy">Credit Worthy:</label>
-                    <input type="text" name="creditworthy" value="<?php if($contact['creditworthy']) { echo 'Yes'; } else {echo 'No';}?>">
-                </div>
+                    <div class="form-group">
+                        <label for="bkrcheck" class="col-4">BKR-check:</label>
+                        <input type="text" name="bkrcheck" value="<?php if($customer['bkrcheck']) { echo 'Yes'; } else {echo 'No';}?>">
+                    </div>
+                    <?php } ?>
 
-                <div class="form-group">
-                    <label for="bkrcheck">BKR-check:</label>
-                    <input type="text" name="bkrcheck" value="<?php if($contact['bkrcheck']) { echo 'Yes'; } else {echo 'No';}?>">
-                </div>
+                </div><!--end col-6--->
 
-                <div class="form-group">
-                    <label for="open_project">Open project:</label>
-                    <input type="text" name="open_project" value="<?php if($contact['open_project']) { echo 'Yes'; } else {echo 'No';}?>">
-                </div>
+            </div><!--end grid--->
+            <div class="buttons">
+                <input class="btn btn-primary" type="submit" value="Save">
+                <a style="float: right" class="btn btn-primary" href="customerinfo.php?id=<?= $customer['id'] ?>">Back</a>
+            </div>
+        </form>
 
-            </div><!--end col-6--->
-
-        </div><!--end grid--->
-        <input type="submit" value="Save">
-    </form>
-        <a onclick="goBack()">Back</a>
 
     </div><!--end container-content-->
 </div><!--end container--->

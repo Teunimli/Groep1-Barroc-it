@@ -20,12 +20,6 @@ switch( $_POST['type'] ) {
 
 }
 
-function alert($string)
-{
-    echo '<script type="text/javascript">alert("' . $string . '");</script>';
-    echo '<script type="text/javascript">history.go(-1);</script>';
-}
-
 function login($username, $password, $db) {
     global $messageBag;
     if(empty($username) ||
@@ -42,19 +36,20 @@ function login($username, $password, $db) {
     if ($q->rowCount() > 0) {
         $user = $q->fetch();
         if (password_verify($password, $user['password'])) {
-            session_start();
             $_SESSION['user']['username'] = $user['username'];
             $_SESSION['user']['id'] = $user['id'];
             $_SESSION['user']['role_id'] = $user['role_id'];
+            $messageBag->add('s', 'Welcome ' . $_SESSION['user']['username']);
             return true;
+        } else {
+            $messageBag->add('w', 'Username or password are incorrect');
         }
     } else {
         $messageBag->add('w', 'User does not excists');
         return false;
     }
+
     return false;
-
-
 }
 
 function logout() {

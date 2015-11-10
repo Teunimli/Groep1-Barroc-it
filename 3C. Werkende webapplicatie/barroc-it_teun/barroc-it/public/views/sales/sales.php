@@ -1,7 +1,11 @@
 <?php require_once '../../header.php';?>
-<div class="contaier">
+<div class="container">
 <header>
-
+    <div class="top-img">
+        <img src="../../assets/img/jumbotron_small.jpg" alt="barroc-it image" class="barroc-img">
+        <h1 class="barroc-title">BARROC IT. </h1>
+        <h2 class="text-center subhead tophead">Sales</h2>
+    </div>
 
     <nav role="navigation" class="navbar navbar-default">
         <!-- Brand and toggle get grouped for better mobile display -->

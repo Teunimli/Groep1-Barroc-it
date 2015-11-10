@@ -17,44 +17,125 @@ $q->execute();
 
 $invoice = $q->fetch();
 
-$project = $_GET['projectid'];
+$sql = "SELECT * FROM tbl_invoice_items WHERE invoice_id = :id";
+$q = $db->prepare($sql);
+$q->bindParam(':id', $invoicesid);
+$q->execute();
+
+$items = $q->fetch();
+
+$projectid = $_GET['projectid'];
 $sql = "SELECT * FROM tbl_projects WHERE id = :id";
 $q = $db->prepare($sql);
-$q->bindParam(':id', $project);
+$q->bindParam(':id', $projectid);
 $q->execute();
 
 $project = $q->fetch();
 
+$sql = "SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 1";
+$q = $db->prepare($sql);
+$q->bindParam(':id', $invoicesid);
+$q->execute();
+
+$item1 = $q->fetch();
+
+$sql = "SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 2";
+$q = $db->prepare($sql);
+$q->bindParam(':id', $invoicesid);
+$q->execute();
+
+$item2 = $q->fetch();
+
+$sql = "SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 3";
+$q = $db->prepare($sql);
+$q->bindParam(':id', $invoicesid);
+$q->execute();
+
+$item3 = $q->fetch();
+
+$sql = "SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 4";
+$q = $db->prepare($sql);
+$q->bindParam(':id', $invoicesid);
+$q->execute();
+
+$item4 = $q->fetch();
+
+$sql = "SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 5";
+$q = $db->prepare($sql);
+$q->bindParam(':id', $invoicesid);
+$q->execute();
+
+$item5 = $q->fetch();
+
+$sql = "SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 6";
+$q = $db->prepare($sql);
+$q->bindParam(':id', $invoicesid);
+$q->execute();
+
+$item6 = $q->fetch();
+
+$sql = "SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 7";
+$q = $db->prepare($sql);
+$q->bindParam(':id', $invoicesid);
+$q->execute();
+
+$item7 = $q->fetch();
+
+$sql = "SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 8";
+$q = $db->prepare($sql);
+$q->bindParam(':id', $invoicesid);
+$q->execute();
+
+$item8 = $q->fetch();
+
+$sql = "SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 9";
+$q = $db->prepare($sql);
+$q->bindParam(':id', $invoicesid);
+$q->execute();
+
+$item9 = $q->fetch();
+
+$sql = "SELECT * FROM tbl_invoice_items WHERE invoice_id = :id AND id = 10";
+$q = $db->prepare($sql);
+$q->bindParam(':id', $invoicesid);
+$q->execute();
+
+$item10 = $q->fetch();
 ?>
 <div class="container">
     <header>
+        <div class="top-img">
+            <img src="../../assets/img/jumbotron_small.jpg" alt="barroc-it image" class="barroc-img">
+            <h1 class="barroc-title">BARROC IT. </h1>
+            <h2 class="text-center subhead tophead">Edit Invoice</h2>
+        </div>
+        <form action="../../../app/controllers/authController.php" method="POST">
+            <input type="hidden" name="type" value="logout">
+            <nav role="navigation" class="navbar navbar-default">
 
-
-        <nav role="navigation" class="navbar navbar-default">
-            <!-- Brand and toggle get grouped for better mobile display -->
-
-            <!-- Collection of nav links and other content for toggling -->
-            <div id="navbarCollapse" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="../dashboard/dashboard.php">Home</a></li>
-
+                    <li><a href="../dashboard/dashboard.php">Home</a></li>
+                    <?php if(!in_array("Development",$_SESSION['user'])){ ?><li><a href="../customers/customerinfo.php?id=<?= $customer['id'] ?>">Customer Info</a></li> <?php } ?>
+                    <li class="active"><a href="../project/viewprojects.php?id=<?= $customer['id'] ?>">Projects</a></li>
+                    <?php if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>  <li><a href="../sales/appointments.php?id=<?= $customer['id'] ?>">Appointments</a></li> <?php } ?>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><input type="submit" value="LOGOUT" class="logout"></a></li>
                 </ul>
 
-            </div>
-        </nav>
+            </nav>
+        </form>
 
     </header>
     <div class="container-content">
-
+        <div class="message">
+            <?php
+            if($messageBag->hasMsg()){
+                echo $messageBag->show();
+            }
+            ?>
+        </div>
         <form action="<? echo '../../../app/controllers/invoiceController.php'?>"  method="POST">
-            <div class="message">
-                <?php
-                if($messageBag->hasMsg()){
-                    echo $messageBag->show();
-                }
-                ?>
-            </div>
-            <h2 class="text-center">Edit invoice</h2>
             <input type="hidden" name="type" value="edit">
             <input type="hidden" name="customerid" value="<?= $customer['id'] ?>" />
             <input type="hidden" name="id" value="<?= $invoice['projects_id'] ?>" />
@@ -155,24 +236,95 @@ $project = $q->fetch();
 
                 </div><!--end col-6--->
             </div><!--end grid--->
-            <div class="grid">
-                <div class="col-9">
-                    <h2>Activities*</h2>
-                    <div class="form-group">
-                        <textarea name="activities"><?= $invoice['inv_description']?></textarea>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <h2>Price*</h2>
-                    <div class="form-group">
-                        <input type="text" name="price" value="<?= $invoice['total_price']?>">
-                    </div>
-                </div>
+            <table style="color: black" class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>
+                        <h4>Item / activity</h4>
+                    </th>
+                    <th>
+                        <h4>Description</h4>
+                    </th>
+                    <th>
+                        <h4>Amount</h4>
+                    </th>
+                    <th>
+                        <h4>Price</h4>
+                    </th>
+                </tr>
+                </thead>
+                <tbody id="test">
+                <tr>
+                    <td><input placeholder="Item / activity name" type="text" name="item1" value="<?= $item1['item'] ?>"></td>
+                    <td><textarea  name="description1" placeholder="description of item / activity"><?= $item1['description'] ?> </textarea></td>
+                    <td class="text-right"><input placeholder="amount of items / hours" type="text" name="amount1" value="<?= $item1['amount'] ?>"></td>
+                    <td class="text-right"><input placeholder="price of the item / activity" type="text" name="price1" value="<?= $item1['price'] ?>"></td>
+                </tr>
+                <tr>
+                    <td><input placeholder="Item / activity name" type="text" name="item2" value="<?= $item2['item'] ?>"></td>
+                    <td><textarea  name="description2" placeholder="description of item / activity"><?= $item2['description'] ?> </textarea></td>
+                    <td class="text-right"><input placeholder="amount of items / hours" type="text" name="amount2" value="<?= $item2['amount'] ?>"></td>
+                    <td class="text-right"><input placeholder="price of the item / activity" type="text" name="price2" value="<?= $item2['price'] ?>"></td>
+                </tr>
+                <tr>
+                    <td><input placeholder="Item / activity name" type="text" name="item3" value="<?= $item3['item'] ?>"></td>
+                    <td><textarea  name="description3" placeholder="description of item / activity"><?= $item3['description'] ?> </textarea></td>
+                    <td class="text-right"><input placeholder="amount of items / hours" type="text" name="amount3" value="<?= $item3['amount'] ?>"></td>
+                    <td class="text-right"><input placeholder="price of the item / activity" type="text" name="price3" value="<?= $item3['price'] ?>"></td>
+                </tr>
+                <tr>
+                    <td><input placeholder="Item / activity name" type="text" name="item4" value="<?= $item4['item'] ?>"></td>
+                    <td><textarea  name="description4" placeholder="description of item / activity"><?= $item4['description'] ?> </textarea></td>
+                    <td class="text-right"><input placeholder="amount of items / hours" type="text" name="amount4" value="<?= $item4['amount'] ?>"></td>
+                    <td class="text-right"><input placeholder="price of the item / activity" type="text" name="price4" value="<?= $item4['price'] ?>"></td>
+                </tr>
+                <tr>
+                    <td><input placeholder="Item / activity name" type="text" name="item5" value="<?= $item5['item'] ?>"></td>
+                    <td><textarea  name="description5" placeholder="description of item / activity"><?= $item5['description'] ?> </textarea></td>
+                    <td class="text-right"><input placeholder="amount of items / hours" type="text" name="amount5" value="<?= $item5['amount'] ?>"></td>
+                    <td class="text-right"><input placeholder="price of the item / activity" type="text" name="price5" value="<?= $item5['price'] ?>"></td>
+                </tr>
+                <tr>
+                    <td><input placeholder="Item / activity name" type="text" name="item6" value="<?= $item6['item'] ?>"></td>
+                    <td><textarea  name="description6" placeholder="description of item / activity"><?= $item6['description'] ?> </textarea></td>
+                    <td class="text-right"><input placeholder="amount of items / hours" type="text" name="amount6" value="<?= $item6['amount'] ?>"></td>
+                    <td class="text-right"><input placeholder="price of the item / activity" type="text" name="price6" value="<?= $item6['price'] ?>"></td>
+                </tr>
+                <tr>
+                    <td><input placeholder="Item / activity name" type="text" name="item7" value="<?= $item7['item'] ?>"></td>
+                    <td><textarea  name="description7" placeholder="description of item / activity"><?= $item7['description'] ?> </textarea></td>
+                    <td class="text-right"><input placeholder="amount of items / hours" type="text" name="amount7" value="<?= $item7['amount'] ?>"></td>
+                    <td class="text-right"><input placeholder="price of the item / activity" type="text" name="price7" value="<?= $item7['price'] ?>"></td>
+                </tr>
+                <tr>
+                    <td><input placeholder="Item / activity name" type="text" name="item8" value="<?= $item8['item'] ?>"></td>
+                    <td><textarea  name="description8" placeholder="description of item / activity"><?= $item8['description'] ?> </textarea></td>
+                    <td class="text-right"><input placeholder="amount of items / hours" type="text" name="amount8" value="<?= $item8['amount'] ?>"></td>
+                    <td class="text-right"><input placeholder="price of the item / activity" type="text" name="price8" value="<?= $item8['price'] ?>"></td>
+                </tr>
+                <tr>
+                    <td><input placeholder="Item / activity name" type="text" name="item9" value="<?= $item9['item'] ?>"></td>
+                    <td><textarea  name="description9" placeholder="description of item / activity"><?= $item9['description'] ?> </textarea></td>
+                    <td class="text-right"><input placeholder="amount of items / hours" type="text" name="amount9" value="<?= $item9['amount'] ?>"></td>
+                    <td class="text-right"><input placeholder="price of the item / activity" type="text" name="price9" value="<?= $item9['price'] ?>"></td>
+                </tr>
+                <tr>
+                    <td><input placeholder="Item / activity name" type="text" name="item10" value="<?= $item10['item'] ?>"></td>
+                    <td><textarea  name="description10" placeholder="description of item / activity"><?= $item10['description'] ?> </textarea></td>
+                    <td class="text-right"><input placeholder="amount of items / hours" type="text" name="amount10" value="<?= $item10['amount'] ?>"></td>
+                    <td class="text-right"><input placeholder="price of the item / activity" type="text" name="price10" value="<?= $item10['price'] ?>"></td>
+                </tr>
+                </tbody>
+            </table>
                 <p>* You must fill these fields in</p>
             </div><!--end grid--->
-            <input type="submit" value="Submit">
+            <div class="buttons">
+                <input class="btn btn-primary" type="submit" value="Submit">
+                <a class="btn btn-primary" href="<?= 'invoiceinfo.php?id=' . $project['id'] . '&customerid='.$project['customer_id']?>">Back</a>
+            </div>
         </form>
-        <a onclick="goBack()">Back</a>
+
+
 
     </div><!--end container-content-->
 </div><!--end container--->

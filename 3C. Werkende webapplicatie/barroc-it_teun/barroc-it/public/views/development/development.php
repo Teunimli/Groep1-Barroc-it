@@ -1,5 +1,5 @@
 <?php require_once '../../header.php';?>
-<div class="contaier">
+<div class="container">
     <header>
 
 

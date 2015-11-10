@@ -9,42 +9,49 @@ $q->execute();
 
 $invoices = $q->fetchAll(PDO::FETCH_ASSOC);
 
-if($messageBag->hasMsg()){
-    echo $messageBag->show();
-}
+$id = $_GET['id'];
+$sql = "SELECT * FROM tbl_projects WHERE id = :id";
+$q= $db->prepare($sql);
+$q->bindParam(':id', $id);
+$q->execute();
+
+$project = $q->fetch();
+
+
 ?>
 
-<div class="contaier">
+<div class="container">
     <header>
+        <div class="top-img">
+            <img src="../../assets/img/jumbotron_small.jpg" alt="barroc-it image" class="barroc-img">
+            <h1 class="barroc-title">BARROC IT. </h1>
+            <h2 class="text-center subhead tophead">Invoices</h2>
+        </div>
+        <form action="../../../app/controllers/authController.php" method="POST">
+            <input type="hidden" name="type" value="logout">
+            <nav role="navigation" class="navbar navbar-default">
 
-
-        <nav role="navigation" class="navbar navbar-default">
-            <!-- Brand and toggle get grouped for better mobile display -->
-
-            <!-- Collection of nav links and other content for toggling -->
-            <div id="navbarCollapse" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="../dashboard/dashboard.php">Home</a></li>
+                    <?php if(!in_array("Development",$_SESSION['user'])){ ?><li><a href="../customers/customerinfo.php?id=<?= $project['customer_id'] ?>">Customer Info</a></li> <?php } ?>
+                    <li class="active"><a href="../project/viewprojects.php?id=<?= $project['customer_id'] ?>">Projects</a></li>
+                    <?php if(in_array("Sales",$_SESSION['user']) || in_array("Admin",$_SESSION['user'])) { ?>  <li><a href="../sales/appointments.php?id=<?= $project['customer_id'] ?>">Appointments</a></li> <?php } ?>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><input type="submit" value="LOGOUT" class="logout"></a></li>
                 </ul>
 
-                <div class="homesales">
-                    <form action="">
-                        <label for="search"></label>
-                        <input type="text" name="search" id="search">
-                        <input type="submit" name="search" value="Zoeken">
-                    </form>
-                </div><!--homesales-->
-
-                <ul class="nav navbar-nav logout-button">
-                    <li><a href="">Logout</a></li>
-                </ul>
-
-            </div>
-        </nav>
+            </nav>
+        </form>
 
     </header>
     <div class="container-content">
-        <h1>Invoices</h1>
+        <?php
+            if($messageBag->hasMsg()) {
+                echo $messageBag->show();
+            }
+        ?>
+
         <ul class="list-group">
             <li class="list-group-item">
                 <table class="table">
@@ -59,14 +66,14 @@ if($messageBag->hasMsg()){
 
 
                     <tbody> <?php foreach($invoices as $invoice){ ?>
-                        <tr>
+                        <tr class="buttons">
 
                             <td> <?= $invoice['id']; ?> </td>
                             <td> <?= date('d.m.Y',$invoice['date_of_invoice']); ?> </td>
                             <td> <?= date('d.m.Y',$invoice['end_invoice_date']); ?> </td>
                             <td> <?if($invoice['paid'] == 1){ echo'Yes';}else{echo'No';} ?> </td>
-                            <td> <button> <a href="<?= '../finance/editinvoice.php?id=' . $invoice['id'] . '&projectid='.$invoice['projects_id']. '&customerid=' . $_GET['customerid']?>"</a>Edit</button></td>
-
+                            <td> <a class="btn btn-primary" href="<?= '../finance/editinvoice.php?id=' . $invoice['id'] . '&projectid='.$invoice['projects_id']. '&customerid=' . $_GET['customerid']?>">Edit</a></td>
+                            <td> <a class="btn btn-primary" href="showinvoice.php?id=<?= $invoice['id']. '&customerid=' . $project['customer_id'] . '&projectid=' . $project['id']  ?>" target="_blank">Details</a></td>
                         </tr>
                     <?php } ?>
                     </tbody>
@@ -74,8 +81,9 @@ if($messageBag->hasMsg()){
             </li>
         </ul>
 
-
-        <a onclick="goBack()">Back</a>
+        <div class="buttons">
+            <a style="float: right" class="btn btn-primary" href="<?php echo  '../project/viewprojects.php?id=' . $project['customer_id']?>">Back</a>
+        </div>
     </div><!--end container-content-->
 </div><!--end container--->
 
